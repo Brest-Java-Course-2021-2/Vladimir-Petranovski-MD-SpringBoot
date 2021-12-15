@@ -2,7 +2,7 @@
 
 # Brest Java Course 2021 2
 
-# Vladimir-Petranovski-multimodule
+# Vladimir-Petranovski-MD-SpringBoot
 
 This is sample 'Motor depot' web application.
 
@@ -14,7 +14,7 @@ ${project}/documents/src/motor_depot.md
 
 * JDK 11
 * Apache Maven
-* Clone repository from https://github.com/Brest-Java-Course-2021-2/Vladimir-Petranovski-multimodule
+* Clone repository from https://github.com/Brest-Java-Course-2021-2/Vladimir-Petranovski-MD-SpringBoot
 
 ## Build application:
 ```
