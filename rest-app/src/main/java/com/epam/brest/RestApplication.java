@@ -23,11 +23,11 @@ public class RestApplication extends SpringBootServletInitializer {
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
         return args -> {
-            LOG.debug("Let's inspect the bean provided by Spring Boot");
+            LOG.info("Let's inspect the bean provided by Spring Boot");
             String[] beanName = ctx.getBeanDefinitionNames();
             Arrays.sort(beanName);
             for (String name : beanName) {
-                LOG.debug(name);
+                LOG.info(name);
             }
         };
     }
