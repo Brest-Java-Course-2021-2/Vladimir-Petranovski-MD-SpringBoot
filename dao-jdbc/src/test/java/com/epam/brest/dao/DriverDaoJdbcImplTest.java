@@ -8,8 +8,8 @@ import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -30,7 +30,7 @@ import static org.mockito.Mockito.*;
 @MockitoSettings(strictness = Strictness.LENIENT)
 class DriverDaoJdbcImplTest {
 
-    public static final Logger LOG = LoggerFactory.getLogger(DriverDaoJdbcImplTest.class);
+    public static final Logger LOG = LogManager.getLogger(DriverDaoJdbcImplTest.class);
 
     @InjectMocks
     private DriverDaoJdbcImpl driverDaoJdbc;
