@@ -24,7 +24,8 @@
         <spring-boot.version>2.6.1</spring-boot.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <junit.version>5.4.0</junit.version>
-        <slf4j.version>2.0.0-alpha4</slf4j.version>
+<!--        <slf4j.version>2.0.0-alpha4</slf4j.version>-->
+        <log4j2.version>2.14.1</log4j2.version>
         <spring.version>5.3.13</spring.version>
         <thymeleaf-spring5.version>3.0.12.RELEASE</thymeleaf-spring5.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
@@ -110,10 +111,20 @@
                 <scope>test</scope>
             </dependency>
 
+<!--            <dependency>-->
+<!--                <groupId>org.slf4j</groupId>-->
+<!--                <artifactId>slf4j-log4j12</artifactId>-->
+<!--                <version>${slf4j.version}</version>-->
+<!--            </dependency>-->
             <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-log4j12</artifactId>
-                <version>${slf4j.version}</version>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${log4j2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j2.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

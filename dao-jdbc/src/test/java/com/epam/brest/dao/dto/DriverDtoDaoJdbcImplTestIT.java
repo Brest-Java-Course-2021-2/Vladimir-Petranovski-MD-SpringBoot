@@ -3,14 +3,13 @@ package com.epam.brest.dao.dto;
 import com.epam.brest.dao_api.dto.DriverDtoDao;
 import com.epam.brest.model.dto.DriverDto;
 import com.epam.brest.test_db.config.SpringJdbcConfig;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,9 +26,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @Rollback
 class DriverDtoDaoJdbcImplTestIT {
 
-    public static final Logger LOG = LoggerFactory.getLogger(DriverDtoDaoJdbcImplTestIT.class);
+    public static final Logger LOG = LogManager.getLogger(DriverDtoDaoJdbcImplTestIT.class);
 
-    private DriverDtoDaoJdbcImpl driverDtoDaoJdbc;
+    private final DriverDtoDaoJdbcImpl driverDtoDaoJdbc;
 
     public DriverDtoDaoJdbcImplTestIT(@Autowired DriverDtoDao driverDtoDaoJdbc) {
         this.driverDtoDaoJdbc = (DriverDtoDaoJdbcImpl) driverDtoDaoJdbc;

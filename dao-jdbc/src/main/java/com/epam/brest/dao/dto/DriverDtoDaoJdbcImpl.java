@@ -2,8 +2,8 @@ package com.epam.brest.dao.dto;
 
 import com.epam.brest.dao_api.dto.DriverDtoDao;
 import com.epam.brest.model.dto.DriverDto;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -16,7 +16,7 @@ import static com.epam.brest.dao.Queries.DRIVER_FIND_DRIVERS_ON_RANGE_DATE;
 
 public class DriverDtoDaoJdbcImpl implements DriverDtoDao {
 
-    public static final Logger LOG = LoggerFactory.getLogger(DriverDtoDaoJdbcImpl.class);
+    public static final Logger LOG = LogManager.getLogger(DriverDtoDaoJdbcImpl.class);
 
     /**
      * Field namedParameterJdbcTemplate.
