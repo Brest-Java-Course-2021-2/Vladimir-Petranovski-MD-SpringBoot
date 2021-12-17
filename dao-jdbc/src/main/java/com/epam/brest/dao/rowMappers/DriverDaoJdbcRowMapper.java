@@ -2,10 +2,12 @@ package com.epam.brest.dao.rowMappers;
 
 import com.epam.brest.model.Driver;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Component
 public class DriverDaoJdbcRowMapper implements RowMapper<Driver> {
 
     /**
