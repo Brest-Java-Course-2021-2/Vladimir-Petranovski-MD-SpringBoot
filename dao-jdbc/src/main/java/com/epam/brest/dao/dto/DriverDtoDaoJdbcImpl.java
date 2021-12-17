@@ -8,12 +8,14 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 import static com.epam.brest.dao.Queries.DRIVER_COUNT_CAR;
 import static com.epam.brest.dao.Queries.DRIVER_FIND_DRIVERS_ON_RANGE_DATE;
 
+@Component
 public class DriverDtoDaoJdbcImpl implements DriverDtoDao {
 
     public static final Logger LOG = LogManager.getLogger(DriverDtoDaoJdbcImpl.class);
