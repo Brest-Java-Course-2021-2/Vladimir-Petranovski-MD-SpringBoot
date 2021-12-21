@@ -45,6 +45,8 @@ class DriverControllerTestIT {
 
     public static final String DRIVERS_ENDPOINT = "/drivers";
 
+    public static final String DRIVERS_DTO_ENDPOINT = "/drivers_dto";
+
     @Autowired
     private DriverController driverController;
 
@@ -192,7 +194,7 @@ class DriverControllerTestIT {
         Driver driverDst = new Driver(driver.getDriverName(), driverDateStartWork, driverSalary);
 
         MockHttpServletResponse response =
-                mockMvc.perform(MockMvcRequestBuilders.post(DRIVERS_ENDPOINT)
+                mockMvc.perform(MockMvcRequestBuilders.post(DRIVERS_DTO_ENDPOINT)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(objectMapper.writeValueAsString(driverDst))
                                 .accept(MediaType.APPLICATION_JSON)
@@ -237,7 +239,7 @@ class DriverControllerTestIT {
 
             String json = objectMapper.writeValueAsString(driver);
             MockHttpServletResponse response = mockMvc.perform(
-                            MockMvcRequestBuilders.post(DRIVERS_ENDPOINT)
+                            MockMvcRequestBuilders.post(DRIVERS_DTO_ENDPOINT)
                                     .contentType(MediaType.APPLICATION_JSON)
                                     .content(json)
                                     .accept(MediaType.APPLICATION_JSON)

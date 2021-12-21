@@ -95,7 +95,7 @@ public class DriverServiceRest implements DriverService {
                         + " with driver: {} started of class {}",
                 driver, getClass().getName());
         ResponseEntity responseEntity = restTemplate.postForEntity(
-                url, driver, Integer.class);
+                url + "_dto", driver, Integer.class);
         return (Integer) responseEntity.getBody();
     }
 

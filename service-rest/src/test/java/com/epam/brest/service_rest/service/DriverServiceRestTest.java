@@ -42,6 +42,8 @@ class DriverServiceRestTest {
 
     public static final String DRIVERS_URL = "http://localhost:8088/drivers";
 
+    public static final String DRIVERS_DTO_URL = "http://localhost:8088/drivers_dto";
+
     @Autowired
     private RestTemplate restTemplate;
 
@@ -110,7 +112,7 @@ class DriverServiceRestTest {
         Driver driver = new Driver()
                 .setDriverName(RandomStringUtils.randomAlphabetic(DRIVER_NAME_SIZE));
 
-        mockRestServiceServer.expect(ExpectedCount.once(), requestTo(new URI(DRIVERS_URL)))
+        mockRestServiceServer.expect(ExpectedCount.once(), requestTo(new URI(DRIVERS_DTO_URL)))
                 .andExpect(method(HttpMethod.POST))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
