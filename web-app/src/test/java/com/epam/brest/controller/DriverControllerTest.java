@@ -2,7 +2,6 @@ package com.epam.brest.controller;
 
 import com.epam.brest.model.Driver;
 import com.epam.brest.model.dto.DriverDto;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
@@ -14,7 +13,6 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -31,16 +29,10 @@ import org.springframework.web.context.WebApplicationContext;
 
 import java.math.BigDecimal;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.time.Instant;
 import java.util.Arrays;
-import java.util.List;
 
-import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.hasItem;
-import static org.hamcrest.Matchers.hasProperty;
-import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withStatus;
@@ -72,7 +64,9 @@ public class DriverControllerTest {
         restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
         mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
         mockRestServiceServer = MockRestServiceServer.createServer(restTemplate);
-        objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
+        objectMapper = new ObjectMapper().registerModule(new JavaTimeModule()).registerModule(new Jdk8Module())
+                .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS,
+                        false);
     }
 
     @Test
@@ -102,7 +96,9 @@ public class DriverControllerTest {
                                 hasProperty("driverName", is(driverDto1.getDriverName())),
                                 hasProperty("driverDateStartWork", is(driverDto1.getDriverDateStartWork())),
                                 hasProperty("driverSalary", is(driverDto1.getDriverSalary())),
-                                hasProperty("countOfCarsAssignedToDriver", is(driverDto1.getCountOfCarsAssignedToDriver()))
+                                hasProperty("countOfCarsAssignedToDriver", is(driverDto1.getCountOfCarsAssignedToDriver())),
+                                hasProperty("fromDateChoose", is(driverDto1.getFromDateChoose())),
+                                hasProperty("toDateChoose", is(driverDto1.getToDateChoose()))
                         )
                 ))).andExpect(model().attribute("driverList", hasItem(
                         allOf(
@@ -110,7 +106,9 @@ public class DriverControllerTest {
                                 hasProperty("driverName", is(driverDto2.getDriverName())),
                                 hasProperty("driverDateStartWork", is(driverDto2.getDriverDateStartWork())),
                                 hasProperty("driverSalary", is(driverDto2.getDriverSalary())),
-                                hasProperty("countOfCarsAssignedToDriver", is(driverDto2.getCountOfCarsAssignedToDriver()))
+                                hasProperty("countOfCarsAssignedToDriver", is(driverDto2.getCountOfCarsAssignedToDriver())),
+                                hasProperty("fromDateChoose", is(driverDto2.getFromDateChoose())),
+                                hasProperty("toDateChoose", is(driverDto2.getToDateChoose()))
                         )
                 ))).andExpect(model().attribute("driverList", hasItem(
                         allOf(
@@ -118,7 +116,9 @@ public class DriverControllerTest {
                                 hasProperty("driverName", is(driverDto3.getDriverName())),
                                 hasProperty("driverDateStartWork", is(driverDto3.getDriverDateStartWork())),
                                 hasProperty("driverSalary", is(driverDto3.getDriverSalary())),
-                                hasProperty("countOfCarsAssignedToDriver", is(driverDto3.getCountOfCarsAssignedToDriver()))
+                                hasProperty("countOfCarsAssignedToDriver", is(driverDto3.getCountOfCarsAssignedToDriver())),
+                                hasProperty("fromDateChoose", is(driverDto3.getFromDateChoose())),
+                                hasProperty("toDateChoose", is(driverDto3.getToDateChoose()))
                         )
                 )));
         mockRestServiceServer.verify();
@@ -370,54 +370,54 @@ public class DriverControllerTest {
                 .andExpect(view().name("drivers/form-range"));
     }
 
-//    @Test
-//    void shouldDoChooseDriverFromDateToDate() throws Exception {
-//        LOG.info("Method shouldDoChooseDriverFromDateToDate() started of class {}", getClass().getName());
-//        // WHEN
-//        DriverDto driverDto1 = createDriverDto(1, "VASIA", Instant.parse("1998-10-01T12:02:01.8472Z"), BigDecimal.valueOf(500), 2);
-//        DriverDto driverDto2 = createDriverDto(2, "VOVA", Instant.parse("2010-10-11T08:30:30.1234Z"), BigDecimal.valueOf(850), 0);
-//        DriverDto driverDto3 = createDriverDto(3, "VITALIY", Instant.parse("2005-04-28T14:44:50.5327Z"), BigDecimal.valueOf(650), 3);
-//
-//        mockRestServiceServer.expect(ExpectedCount.once(), requestTo(new URI(DRIVERS_DTO_URL + "/drivers-range")))
-//                .andExpect(method(HttpMethod.GET))
-//                .andRespond(withStatus(HttpStatus.OK)
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .body(objectMapper.writeValueAsString(Arrays.asList(driverDto1, driverDto2, driverDto3)))
-//                );
-//        // THEN
-//        mockMvc.perform(
-//                        MockMvcRequestBuilders.get("/drivers_dto/drivers-range")
-//                ).andDo(MockMvcResultHandlers.print())
-//                .andExpect(MockMvcResultMatchers.status().isOk())
-//                .andExpect(MockMvcResultMatchers.content().contentType("text/html;charset=UTF-8"))
-//                .andExpect(view().name("drivers/drivers-range"))
-//                .andExpect(model().attribute("driverList", hasItem(
-//                        allOf(
-//                                hasProperty("driverId", is(driverDto1.getDriverId())),
-//                                hasProperty("driverName", is(driverDto1.getDriverName())),
-//                                hasProperty("driverDateStartWork", is(driverDto1.getDriverDateStartWork())),
-//                                hasProperty("driverSalary", is(driverDto1.getDriverSalary())),
+    @Test
+    void shouldDoChooseDriverFromDateToDate() throws Exception {
+        LOG.info("Method shouldDoChooseDriverFromDateToDate() started of class {}", getClass().getName());
+        // WHEN
+        DriverDto driverDto1 = createDriverDto(1, "VASIA", Instant.parse("1998-10-01T12:02:01.8472Z"), BigDecimal.valueOf(500), 2);
+        DriverDto driverDto2 = createDriverDto(2, "VOVA", Instant.parse("2010-10-11T08:30:30.1234Z"), BigDecimal.valueOf(850), 0);
+        DriverDto driverDto3 = createDriverDto(3, "VITALIY", Instant.parse("2005-04-28T14:44:50.5327Z"), BigDecimal.valueOf(650), 3);
+
+        mockRestServiceServer.expect(ExpectedCount.once(), requestTo(new URI(DRIVERS_DTO_URL + "/drivers-range?fromDateChoose&toDateChoose")))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(withStatus(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(objectMapper.writeValueAsString(Arrays.asList(driverDto1, driverDto2, driverDto3)))
+                );
+        // THEN
+        mockMvc.perform(
+                        MockMvcRequestBuilders.get("/drivers_dto/drivers-range?fromDateChoose&toDateChoose")
+                ).andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().contentType("text/html;charset=UTF-8"))
+                .andExpect(view().name("drivers/drivers-range"))
+                .andExpect(model().attribute("driverList", hasItem(
+                        allOf(
+                                hasProperty("driverId", is(driverDto1.getDriverId())),
+                                hasProperty("driverName", is(driverDto1.getDriverName())),
+                                hasProperty("driverDateStartWork", is(driverDto1.getDriverDateStartWork())),
+                                hasProperty("driverSalary", is(driverDto1.getDriverSalary()))
 //                                hasProperty("countOfCarsAssignedToDriver", is(driverDto1.getCountOfCarsAssignedToDriver()))
-//                        )
-//                ))).andExpect(model().attribute("driverList", hasItem(
-//                        allOf(
-//                                hasProperty("driverId", is(driverDto2.getDriverId())),
-//                                hasProperty("driverName", is(driverDto2.getDriverName())),
-//                                hasProperty("driverDateStartWork", is(driverDto2.getDriverDateStartWork())),
-//                                hasProperty("driverSalary", is(driverDto2.getDriverSalary())),
+                        )
+                ))).andExpect(model().attribute("driverList", hasItem(
+                        allOf(
+                                hasProperty("driverId", is(driverDto2.getDriverId())),
+                                hasProperty("driverName", is(driverDto2.getDriverName())),
+                                hasProperty("driverDateStartWork", is(driverDto2.getDriverDateStartWork())),
+                                hasProperty("driverSalary", is(driverDto2.getDriverSalary()))
 //                                hasProperty("countOfCarsAssignedToDriver", is(driverDto2.getCountOfCarsAssignedToDriver()))
-//                        )
-//                ))).andExpect(model().attribute("driverList", hasItem(
-//                        allOf(
-//                                hasProperty("driverId", is(driverDto3.getDriverId())),
-//                                hasProperty("driverName", is(driverDto3.getDriverName())),
-//                                hasProperty("driverDateStartWork", is(driverDto3.getDriverDateStartWork())),
-//                                hasProperty("driverSalary", is(driverDto3.getDriverSalary())),
+                        )
+                ))).andExpect(model().attribute("driverList", hasItem(
+                        allOf(
+                                hasProperty("driverId", is(driverDto3.getDriverId())),
+                                hasProperty("driverName", is(driverDto3.getDriverName())),
+                                hasProperty("driverDateStartWork", is(driverDto3.getDriverDateStartWork())),
+                                hasProperty("driverSalary", is(driverDto3.getDriverSalary()))
 //                                hasProperty("countOfCarsAssignedToDriver", is(driverDto3.getCountOfCarsAssignedToDriver()))
-//                        )
-//                )));
-//        mockRestServiceServer.verify();
-//    }
+                        )
+                )));
+        mockRestServiceServer.verify();
+    }
 
     private DriverDto createDriverDto(int driverId, String name, Instant dateStartWork, BigDecimal salary, Integer countCar) {
         DriverDto driver = new DriverDto();
