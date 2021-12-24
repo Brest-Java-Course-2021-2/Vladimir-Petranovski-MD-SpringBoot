@@ -7,6 +7,12 @@ import org.springframework.web.client.RestTemplate;
 @TestConfiguration
 public class ServiceRestTestConfig {
 
+    /**
+     * Bean restTemplate RestTemplate.
+     *
+     * @return restTemplate.
+     */
+
     @Bean
     RestTemplate restTemplate() {
         return new RestTemplate();

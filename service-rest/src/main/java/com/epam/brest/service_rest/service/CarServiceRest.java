@@ -4,6 +4,7 @@ import com.epam.brest.model.Car;
 import com.epam.brest.service_api.CarService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -59,9 +60,11 @@ public class CarServiceRest implements CarService {
     public List<Car> findAllCars() {
         LOG.info("Method findAllCars() started of class {}",
                 getClass().getName());
-        ResponseEntity responseEntity = restTemplate.getForEntity(
-                url, List.class);
-        return (List<Car>) responseEntity.getBody();
+        ParameterizedTypeReference<List<Car>> typeReference =
+                new ParameterizedTypeReference<>() {};
+        ResponseEntity<List<Car>> responseEntity = restTemplate
+                .exchange(url, HttpMethod.GET, null, typeReference);
+        return responseEntity.getBody();
     }
 
     /**
@@ -94,9 +97,9 @@ public class CarServiceRest implements CarService {
         LOG.info("Method saveDriver()"
                         + " with driver: {} started of class {}",
                 car, getClass().getName());
-        ResponseEntity responseEntity = restTemplate.postForEntity(
+        ResponseEntity<Integer> responseEntity = restTemplate.postForEntity(
                 url, car, Integer.class);
-        return (Integer) responseEntity.getBody();
+        return responseEntity.getBody();
     }
 
     /**

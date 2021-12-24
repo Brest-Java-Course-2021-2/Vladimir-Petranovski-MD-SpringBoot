@@ -10,9 +10,10 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Collection;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class DriverController {
@@ -124,7 +125,8 @@ public class DriverController {
         LOG.info("Method showFormForUpdatingDriver()"
                         + " with id {} started of class {}",
                 id, getClass().getName());
-        model.addAttribute("driver", driverService.findDriverById(id));
+        model.addAttribute("driver",
+                driverService.findDriverById(id));
         return "drivers/update-driver";
     }
 
@@ -169,13 +171,17 @@ public class DriverController {
     }
 
     @GetMapping("/drivers_dto/form-range")
-    public String showFormForChoseDateRange(@ModelAttribute("driver") DriverDto driverDto) {
-        LOG.info("Method showFormForChoseDateRange() started of class {}", getClass().getName());
+    public String showFormForChoseDateRange(
+            @ModelAttribute("driver") final DriverDto driverDto) {
+        LOG.info("Method showFormForChoseDateRange() started of class {}",
+                getClass().getName());
         return "drivers/form-range";
     }
 
     @GetMapping("/drivers_dto/drivers-range")
-    public String showDriversListOnRange(@ModelAttribute("driver") DriverDto driverDto, Model model) {
+    public String showDriversListOnRange(
+            @ModelAttribute("driver") final DriverDto driverDto,
+            final Model model) {
         LOG.info("Method showDriversListOnRange() started of class {}", getClass().getName());
         model.addAttribute("driverList", driverDtoService.chooseDriverOnDateRange(driverDto.getFromDateChoose(), driverDto.getToDateChoose()));
         return "drivers/drivers-range";

@@ -21,7 +21,7 @@ public interface CarDao {
      * @return car.
      */
 
-    Car findCarById(Integer id);
+    Car findCarById(final Integer id);
 
     /**
      * Persist new car.
@@ -30,7 +30,7 @@ public interface CarDao {
      * @return persisted car id.
      */
 
-    Integer saveCar(Car car);
+    Integer saveCar(final Car car);
 
     /**
      * Update car.
@@ -40,7 +40,7 @@ public interface CarDao {
      * @return number of updated records in the database.
      */
 
-    Integer updateCarById(Integer id, Car car);
+    Integer updateCarById(final Integer id, final Car car);
 
     /**
      * Delete car.
@@ -49,7 +49,7 @@ public interface CarDao {
      * @return number of updated records in the database.
      */
 
-    Integer deleteCarById(Integer id);
+    Integer deleteCarById(final Integer id);
 
     /**
      * Count cars.

@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class VersionController {
 
-    public static final Logger LOG = LogManager.getLogger(VersionController.class);
+    public static final Logger LOG = LogManager.getLogger(
+            VersionController.class);
 
     /**
      * Field VERSION.

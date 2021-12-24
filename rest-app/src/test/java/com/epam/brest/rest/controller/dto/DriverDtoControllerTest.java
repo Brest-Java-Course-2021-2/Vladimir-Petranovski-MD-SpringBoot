@@ -90,12 +90,10 @@ class DriverDtoControllerTest {
                 .andExpect(jsonPath("$[0].driverName", Matchers.is("d0")))
                 .andExpect(jsonPath("$[0].driverDateStartWork", Matchers.is(0.0)))
                 .andExpect(jsonPath("$[0].driverSalary", Matchers.is(100)))
-//                .andExpect(jsonPath("$[0].countOfCarsAssignedToDriver", Matchers.is(100)))
                 .andExpect(jsonPath("$[1].driverId", Matchers.is(1)))
                 .andExpect(jsonPath("$[1].driverName", Matchers.is("d1")))
                 .andExpect(jsonPath("$[1].driverDateStartWork", Matchers.is(0.001)))
                 .andExpect(jsonPath("$[1].driverSalary", Matchers.is(101)));
-//                .andExpect(jsonPath("$[1].countOfCarsAssignedToDriver", Matchers.is(101)));
 
         verify(driverDtoService, times(1)).chooseDriverOnDateRange(stringCaptor.capture(), stringCaptor.capture());
     }

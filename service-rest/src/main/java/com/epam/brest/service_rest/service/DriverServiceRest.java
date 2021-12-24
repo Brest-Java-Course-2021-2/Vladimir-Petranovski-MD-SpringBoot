@@ -4,6 +4,7 @@ import com.epam.brest.model.Driver;
 import com.epam.brest.service_api.DriverService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -59,9 +60,11 @@ public class DriverServiceRest implements DriverService {
     public List<Driver> findAllDrivers() {
         LOG.info("Method findAllDrivers() started of class {}",
                 getClass().getName());
-        ResponseEntity responseEntity = restTemplate.getForEntity(
-                url, List.class);
-        return (List<Driver>) responseEntity.getBody();
+        ParameterizedTypeReference<List<Driver>> typeReference =
+                new ParameterizedTypeReference<>() {};
+        ResponseEntity<List<Driver>> responseEntity = restTemplate
+                .exchange(url, HttpMethod.GET, null, typeReference);
+        return responseEntity.getBody();
     }
 
     /**
@@ -94,9 +97,9 @@ public class DriverServiceRest implements DriverService {
         LOG.info("Method saveDriver()"
                         + " with driver: {} started of class {}",
                 driver, getClass().getName());
-        ResponseEntity responseEntity = restTemplate.postForEntity(
+        ResponseEntity<Integer> responseEntity = restTemplate.postForEntity(
                 url + "_dto", driver, Integer.class);
-        return (Integer) responseEntity.getBody();
+        return responseEntity.getBody();
     }
 
     /**

@@ -12,10 +12,10 @@ import java.util.Collection;
 
 @RestController
 @CrossOrigin
-//@RequestMapping("/drivers")
 public class DriverController {
 
-    public static final Logger LOG = LogManager.getLogger(DriverController.class);
+    public static final Logger LOG = LogManager.getLogger(
+            DriverController.class);
 
     /**
      * Field driverService.

@@ -96,9 +96,7 @@ public class DriverControllerTest {
                                 hasProperty("driverName", is(driverDto1.getDriverName())),
                                 hasProperty("driverDateStartWork", is(driverDto1.getDriverDateStartWork())),
                                 hasProperty("driverSalary", is(driverDto1.getDriverSalary())),
-                                hasProperty("countOfCarsAssignedToDriver", is(driverDto1.getCountOfCarsAssignedToDriver())),
-                                hasProperty("fromDateChoose", is(driverDto1.getFromDateChoose())),
-                                hasProperty("toDateChoose", is(driverDto1.getToDateChoose()))
+                                hasProperty("countOfCarsAssignedToDriver", is(driverDto1.getCountOfCarsAssignedToDriver()))
                         )
                 ))).andExpect(model().attribute("driverList", hasItem(
                         allOf(
@@ -106,9 +104,7 @@ public class DriverControllerTest {
                                 hasProperty("driverName", is(driverDto2.getDriverName())),
                                 hasProperty("driverDateStartWork", is(driverDto2.getDriverDateStartWork())),
                                 hasProperty("driverSalary", is(driverDto2.getDriverSalary())),
-                                hasProperty("countOfCarsAssignedToDriver", is(driverDto2.getCountOfCarsAssignedToDriver())),
-                                hasProperty("fromDateChoose", is(driverDto2.getFromDateChoose())),
-                                hasProperty("toDateChoose", is(driverDto2.getToDateChoose()))
+                                hasProperty("countOfCarsAssignedToDriver", is(driverDto2.getCountOfCarsAssignedToDriver()))
                         )
                 ))).andExpect(model().attribute("driverList", hasItem(
                         allOf(
@@ -116,9 +112,7 @@ public class DriverControllerTest {
                                 hasProperty("driverName", is(driverDto3.getDriverName())),
                                 hasProperty("driverDateStartWork", is(driverDto3.getDriverDateStartWork())),
                                 hasProperty("driverSalary", is(driverDto3.getDriverSalary())),
-                                hasProperty("countOfCarsAssignedToDriver", is(driverDto3.getCountOfCarsAssignedToDriver())),
-                                hasProperty("fromDateChoose", is(driverDto3.getFromDateChoose())),
-                                hasProperty("toDateChoose", is(driverDto3.getToDateChoose()))
+                                hasProperty("countOfCarsAssignedToDriver", is(driverDto3.getCountOfCarsAssignedToDriver()))
                         )
                 )));
         mockRestServiceServer.verify();

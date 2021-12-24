@@ -52,9 +52,11 @@ public class DriverDtoController {
      */
 
     @GetMapping("/drivers-range")
-    public Collection<DriverDto> showDriversListOnRange(@ModelAttribute DriverDto driverDto) {
+    public Collection<DriverDto> showDriversListOnRange(
+            @ModelAttribute final DriverDto driverDto) {
         LOG.info("Method showDriversListOnRange() started of class {} - {}",
                 driverDto.getFromDateChoose(), driverDto.getToDateChoose());
-        return driverDtoService.chooseDriverOnDateRange(driverDto.getFromDateChoose(), driverDto.getToDateChoose());
+        return driverDtoService.chooseDriverOnDateRange(driverDto.getFromDateChoose(),
+                driverDto.getToDateChoose());
     }
 }
