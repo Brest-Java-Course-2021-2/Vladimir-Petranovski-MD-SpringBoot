@@ -1,8 +1,11 @@
 package com.epam.brest.rest.controller.exception;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Arrays;
 import java.util.List;
 
+@Component
 public class ErrorResponse {
 
     /**

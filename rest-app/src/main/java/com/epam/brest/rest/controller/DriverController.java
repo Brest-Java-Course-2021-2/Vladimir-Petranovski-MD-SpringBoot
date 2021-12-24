@@ -12,10 +12,10 @@ import java.util.Collection;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/drivers")
 public class DriverController {
 
-    public static final Logger LOG = LogManager.getLogger(DriverController.class);
+    public static final Logger LOG = LogManager.getLogger(
+            DriverController.class);
 
     /**
      * Field driverService.
@@ -40,7 +40,7 @@ public class DriverController {
      * @return driver's list in json.
      */
 
-    @GetMapping()
+    @GetMapping("/drivers")
     public Collection<Driver> findAllDrivers() {
         LOG.info("Method findAllDrivers() started of class {}",
                 getClass().getName());
@@ -54,7 +54,7 @@ public class DriverController {
      * @return driver in json.
      */
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/drivers/{id}")
     public final Driver findDriverById(@PathVariable("id") final Integer id) {
         LOG.info("Method findDriverById() with id {} started of class {}",
                 id, getClass().getName());
@@ -69,7 +69,7 @@ public class DriverController {
      * @return 200 ok.
      */
 
-    @PostMapping(consumes = "application/json",
+    @PostMapping(value = "/drivers_dto", consumes = "application/json",
             produces = "application/json")
     public ResponseEntity<Integer> saveDriver(
             @RequestBody final Driver driver) {
@@ -88,7 +88,7 @@ public class DriverController {
      * @return 200 ok.
      */
 
-    @PatchMapping(value = "/{id}", consumes = "application/json",
+    @PatchMapping(value = "/drivers/{id}", consumes = "application/json",
             produces = "application/json")
     public ResponseEntity<Integer> updateDriver(
             @RequestBody final Driver driver,
@@ -108,7 +108,7 @@ public class DriverController {
      * @return 200 ok.
      */
 
-    @DeleteMapping(value = "{id}/delete-driver",
+    @DeleteMapping(value = "/drivers/{id}/delete-driver",
             produces = "application/json")
     public ResponseEntity<Integer> deleteDriverById(
             @PathVariable final Integer id) {

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update car</title>
+</head>
+<body>
+<h1>Form to update car</h1>
+<br>
+<form th:method="PATCH" th:action="@{/cars/{id}(id=${car.carId})}" th:object="${car}">
+    <input type="hidden" name="_method" value="PATCH"/>
+    <label for="model">Update model: </label>
+    <input type="text" th:field="*{carModel}" id="model"/>
+    <div style="color: red" th:if="${#fields.hasErrors('carModel')}" th:errors="*{carModel}">Name error</div>
+    <br>
+    <label for="driver_id">Unique number of driver: </label>
+    <input type="text" th:field="*{driverId}" id="driver_id"/>
+    <div style="color: red" th:if="${#fields.hasErrors('driverId')}" th:errors="*{driverId}">Name error</div>
+    <br>
+    <input type="submit" value="Update car"/>
+    <br/>
+    <button><a th:href="@{/cars}">Cancel</a></button>
+</form>
+</body>
+</html>

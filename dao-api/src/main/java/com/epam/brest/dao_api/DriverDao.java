@@ -23,7 +23,7 @@ public interface DriverDao {
      * @return driver.
      */
 
-    Driver findDriverById(Integer id);
+    Driver findDriverById(final Integer id);
 
     /**
      * Persist new driver.
@@ -32,7 +32,7 @@ public interface DriverDao {
      * @return persisted driver id.
      */
 
-    Integer saveDriver(Driver driver);
+    Integer saveDriver(final Driver driver);
 
     /**
      * Update department.
@@ -42,7 +42,7 @@ public interface DriverDao {
      * @return number of updated records in the database.
      */
 
-    Integer updateDriverById(Integer id, Driver driver);
+    Integer updateDriverById(final Integer id, final Driver driver);
 
     /**
      * Delete driver.
@@ -51,7 +51,7 @@ public interface DriverDao {
      * @return number of updated records in the database.
      */
 
-    Integer deleteDriverById(Integer id);
+    Integer deleteDriverById(final Integer id);
 
     /**
      * Count drivers.

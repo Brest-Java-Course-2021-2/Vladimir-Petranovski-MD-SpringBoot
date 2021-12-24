@@ -15,7 +15,8 @@ import java.util.List;
 @Service
 public class DriverServiceImpl implements DriverService {
 
-    public static final Logger LOG = LogManager.getLogger(DriverServiceImpl.class);
+    public static final Logger LOG = LogManager.getLogger(
+            DriverServiceImpl.class);
 
     /**
      * Field driverDao.

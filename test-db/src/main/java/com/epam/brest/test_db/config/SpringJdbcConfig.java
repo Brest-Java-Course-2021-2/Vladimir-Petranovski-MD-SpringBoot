@@ -12,6 +12,12 @@ import javax.sql.DataSource;
 @Configuration
 public class SpringJdbcConfig {
 
+    /**
+     * Bean dataSource DataSource.
+     *
+     * @return dataSource.
+     */
+
     @Bean
     public DataSource dataSource() {
         return new EmbeddedDatabaseBuilder()
@@ -21,10 +27,22 @@ public class SpringJdbcConfig {
                 .build();
     }
 
+    /**
+     * Bean namedParameterJdbcTemplate NamedParameterJdbcTemplate.
+     *
+     * @return namedParameterJdbcTemplate.
+     */
+
     @Bean
     public NamedParameterJdbcTemplate namedParameterJdbcTemplate() {
         return new NamedParameterJdbcTemplate(dataSource());
     }
+
+    /**
+     * Bean transactionManager DataSourceTransactionManager.
+     *
+     * @return dataSourceTransactionManager.
+     */
 
     @Bean
     public DataSourceTransactionManager transactionManager() {

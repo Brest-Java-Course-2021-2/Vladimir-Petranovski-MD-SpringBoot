@@ -15,7 +15,8 @@ import java.util.Collection;
 @RequestMapping("/cars")
 public class CarController {
 
-    public static final Logger LOG = LogManager.getLogger(CarController.class);
+    public static final Logger LOG = LogManager.getLogger(
+            CarController.class);
 
     /**
      * Field carService.

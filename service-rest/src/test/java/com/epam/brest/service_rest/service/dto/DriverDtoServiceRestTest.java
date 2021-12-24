@@ -40,7 +40,7 @@ class DriverDtoServiceRestTest {
     public static final Logger LOG = LogManager.getLogger(
             DriverDtoServiceRestTest.class);
 
-    public static final String URL = "http://localhost:8088/drivers_dto";
+    public static final String DRIVERS_DTO_URL = "http://localhost:8088/drivers_dto";
 
     @Autowired
     private RestTemplate restTemplate;
@@ -57,7 +57,7 @@ class DriverDtoServiceRestTest {
     @BeforeEach
     void setUp() {
         objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
-        driverDtoServiceRest = new DriverDtoServiceRest(URL, restTemplate);
+        driverDtoServiceRest = new DriverDtoServiceRest(DRIVERS_DTO_URL, restTemplate);
         mockRestServiceServer = MockRestServiceServer.createServer(restTemplate);
 
         fromDate = "1990-01-02T10:10:10.002Z";
@@ -70,7 +70,7 @@ class DriverDtoServiceRestTest {
         LOG.info("Method shouldFindAllDriverWithCountCars() started {}",
                 getClass().getName());
         // given
-        mockRestServiceServer.expect(ExpectedCount.once(), requestTo(new URI(URL)))
+        mockRestServiceServer.expect(ExpectedCount.once(), requestTo(new URI(DRIVERS_DTO_URL)))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -90,7 +90,7 @@ class DriverDtoServiceRestTest {
         LOG.info("Method shouldChooseDriverOnDateRange() started {}",
                 getClass().getName());
         // given
-        mockRestServiceServer.expect(ExpectedCount.once(), requestTo(new URI(URL + "/drivers-range")))
+        mockRestServiceServer.expect(ExpectedCount.once(), requestTo(new URI(DRIVERS_DTO_URL + "/drivers-range?fromDateChoose=" + fromDate + "&toDateChoose=" + toDate)))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
