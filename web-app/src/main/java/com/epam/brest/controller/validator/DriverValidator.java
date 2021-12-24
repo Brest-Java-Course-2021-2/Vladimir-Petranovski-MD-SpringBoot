@@ -43,7 +43,8 @@ public final class DriverValidator implements Validator {
 
         if (StringUtils.hasLength(driver.getDriverName())
                 && driver.getDriverName().length() > DRIVER_NAME_SIZE) {
-            errors.rejectValue("driverName", "driverName.maxSize");
+            errors.rejectValue("driverName", "driverName.maxSize",
+                    "Car name size have to be <= 20 symbols");
         }
     }
 }
