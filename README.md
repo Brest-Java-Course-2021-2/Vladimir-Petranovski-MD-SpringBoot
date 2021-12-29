@@ -52,8 +52,8 @@ $ mvn clean verify
 ```bash
 $ mvn site
 $ mvn site:stage
-
-open in browser: ${project}/target/staging/index.html
+Open in browser: ./target/staging/index.html
+```
 
 ## Rest server
 
@@ -79,13 +79,13 @@ $ mvn jetty:run
 
 ## Available REST endpoints
 
-### version
+## version
 
 ```
 curl --request GET 'http://localhost:8088/version'
 ```
 
-### drivers_dto
+## drivers_dto
 
 ```
 curl --request GET 'http://localhost:8088/drivers_dto'
@@ -97,7 +97,7 @@ curl --request GET 'http://localhost:8088/drivers_dto'
 curl --request GET 'http://localhost:8088/drivers_dto' | json_pp
 ```
 
-### drivers
+## drivers
 
 #### findAll
 
@@ -124,7 +124,7 @@ curl --request POST 'http://localhost:8088/drivers' \
 }'
 ```
 
-## update
+### update
 
 ```
 curl --request PATCH 'http://localhost:8088/drivers/3' \
@@ -136,13 +136,13 @@ curl --request PATCH 'http://localhost:8088/drivers/3' \
 }'
 ```
 
-## delete
+### delete
 
 ```
 curl --request DELETE 'http://localhost:8088/drivers/3/delete-driver'
 ```
 
-### cars
+## cars
 
 #### findAll
 
@@ -168,7 +168,7 @@ curl --request POST 'http://localhost:8088/cars' \
 }'
 ```
 
-## update
+### update
 
 ```
 curl --request PATCH 'http://localhost:8088/cars/3' \
