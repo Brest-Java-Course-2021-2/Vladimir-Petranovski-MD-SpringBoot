@@ -17,7 +17,6 @@ This is sample 'Motor depot' web application.
 - **Build System:** [Maven](https://maven.apache.org/)
 - **Control System:** [Git](https://git-scm.com/) <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="18" height="18"/> </a>
 - **License:** [Apache license, version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
-- **Code Style:** [Codacy](https://www.codacy.com/)
 - **Automated Testing:**
     - [JUnit5](https://junit.org/junit5/)
     - [Mockito](http://site.mockito.org/)
