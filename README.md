@@ -81,40 +81,40 @@ $ mvn jetty:run
 
 ## version
 
-```
-curl --request GET 'http://localhost:8088/version'
+```bash
+$ curl --request GET 'http://localhost:8088/version'
 ```
 
 ## drivers_dto
 
-```
-curl --request GET 'http://localhost:8088/drivers_dto'
+```bash
+$ curl --request GET 'http://localhost:8088/drivers_dto'
 ```
 
 #### Pretty print json:
 
-```
-curl --request GET 'http://localhost:8088/drivers_dto' | json_pp
+```bash
+$ curl --request GET 'http://localhost:8088/drivers_dto' | json_pp
 ```
 
 ## drivers
 
 #### findAll
 
-```
-curl --request GET 'http://localhost:8088/drivers' | json_pp
+```bash
+$ curl --request GET 'http://localhost:8088/drivers' | json_pp
 ```
 
 #### findById
 
-```
-curl --request GET 'http://localhost:8088/drivers/1' | json_pp
+```bash
+$ curl --request GET 'http://localhost:8088/drivers/1' | json_pp
 ```
 
 ### create
 
-```
-curl --request POST 'http://localhost:8088/drivers' \
+```bash
+$ curl --request POST 'http://localhost:8088/drivers' \
 --header 'Accept: application/json' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -126,8 +126,8 @@ curl --request POST 'http://localhost:8088/drivers' \
 
 ### update
 
-```
-curl --request PATCH 'http://localhost:8088/drivers/3' \
+```bash
+$ curl --request PATCH 'http://localhost:8088/drivers/3' \
 --header 'Content-Type: application/json' \
 --data-raw '{
 "driverName": "SERGEI",
@@ -138,28 +138,28 @@ curl --request PATCH 'http://localhost:8088/drivers/3' \
 
 ### delete
 
-```
-curl --request DELETE 'http://localhost:8088/drivers/3/delete-driver'
+```bash
+$ curl --request DELETE 'http://localhost:8088/drivers/3/delete-driver'
 ```
 
 ## cars
 
 #### findAll
 
-```
-curl --request GET 'http://localhost:8088/cars' | json_pp
+```bash
+$ curl --request GET 'http://localhost:8088/cars' | json_pp
 ```
 
 #### findById
 
-```
-curl --request GET 'http://localhost:8088/cars/1' | json_pp
+```bash
+$ curl --request GET 'http://localhost:8088/cars/1' | json_pp
 ```
 
 ### create
 
-```
-curl --request POST 'http://localhost:8088/cars' \
+```bash
+$ curl --request POST 'http://localhost:8088/cars' \
 --header 'Accept: application/json' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -170,8 +170,8 @@ curl --request POST 'http://localhost:8088/cars' \
 
 ### update
 
-```
-curl --request PATCH 'http://localhost:8088/cars/3' \
+```bash
+$ curl --request PATCH 'http://localhost:8088/cars/3' \
 --header 'Content-Type: application/json' \
 --data-raw '{
 "carModel": "AUDI",
@@ -181,6 +181,6 @@ curl --request PATCH 'http://localhost:8088/cars/3' \
 
 ## delete
 
-```
-curl --request DELETE 'http://localhost:8088/cars/3/delete-car'
+```bash
+$ curl --request DELETE 'http://localhost:8088/cars/3/delete-car'
 ```
