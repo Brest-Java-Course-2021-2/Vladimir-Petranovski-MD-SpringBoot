@@ -51,17 +51,24 @@ $ mvn clean verify
 
 ### Start Rest
 
+#### Run local tests (H2 in memory)
+
+In the root directory of the project:
 ```bash
 $ java -jar rest-app/target/rest-app-1.0-SNAPSHOT.jar
 ```
+The rest application will be accessible at [http://localhost:8088](http://localhost:8088).
 
 ## Web
 
 ### Start Web
+#### Run local tests (H2 in memory)
 
+In the root directory of the project:
 ```bash
 $ java -jar web-app/target/web-app-1.0-SNAPSHOT.jar
 ```
+The rest application will be accessible at [http://localhost:8080](http://localhost:8080).
 
 ## Available REST endpoints
 
