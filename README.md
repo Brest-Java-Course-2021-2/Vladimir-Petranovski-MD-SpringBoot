@@ -47,33 +47,20 @@ $ mvn clean test
 $ mvn clean verify
 ```
 
-## Run project information ( coverage, dependency, etc. ):
-```bash
-$ mvn site
-$ mvn site:stage
-Open in browser: ./target/staging/index.html
-```
-
 ## Rest server
 
-### Start Rest using Maven Jetty plugin
-
-To start Rest using Maven Jetty plugin use:
+### Start Rest
 
 ```bash
-$ cd rest-app
-$ mvn jetty:run
+$ java -jar rest-app/target/rest-app-1.0-SNAPSHOT.jar
 ```
 
 ## Web
 
-### Start Web using Maven Jetty plugin
-
-To start Web using Maven Jetty plugin use:
+### Start Web
 
 ```bash
-$ cd web-app
-$ mvn jetty:run
+$ java -jar web-app/target/web-app-1.0-SNAPSHOT.jar
 ```
 
 ## Available REST endpoints
