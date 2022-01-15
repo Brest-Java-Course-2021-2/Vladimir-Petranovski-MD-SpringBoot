@@ -166,7 +166,7 @@ class DriverServiceRestTest {
                 getClass().getName());
         // given
         Integer id = 1;
-        mockRestServiceServer.expect(ExpectedCount.once(), requestTo(new URI(DRIVERS_URL + "/" + id + "/delete-driver")))
+        mockRestServiceServer.expect(ExpectedCount.once(), requestTo(new URI(DRIVERS_URL + "/" + id)))
                 .andExpect(method(HttpMethod.DELETE))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)

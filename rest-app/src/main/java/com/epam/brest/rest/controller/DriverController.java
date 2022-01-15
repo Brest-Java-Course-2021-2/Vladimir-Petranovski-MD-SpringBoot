@@ -108,7 +108,7 @@ public class DriverController {
      * @return 200 ok.
      */
 
-    @DeleteMapping(value = "/drivers/{id}/delete-driver",
+    @DeleteMapping(value = "/drivers/{id}",
             produces = "application/json")
     public ResponseEntity<Integer> deleteDriverById(
             @PathVariable final Integer id) {

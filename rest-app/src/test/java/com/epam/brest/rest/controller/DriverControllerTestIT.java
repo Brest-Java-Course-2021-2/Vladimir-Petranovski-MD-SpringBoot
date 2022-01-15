@@ -268,8 +268,7 @@ class DriverControllerTestIT {
             LOG.info("Method deleteDriver() with id: {} started of class {}", id, getClass().getName());
 
             MockHttpServletResponse response = mockMvc.perform(
-                            MockMvcRequestBuilders.delete(DRIVERS_ENDPOINT + "/" +
-                                            id + "/delete-driver")
+                            MockMvcRequestBuilders.delete(DRIVERS_ENDPOINT + "/" + id)
                                     .accept(MediaType.APPLICATION_JSON)
                     ).andExpect(status().isOk())
                     .andReturn().getResponse();

@@ -37,7 +37,7 @@
                     <a th:href="@{/drivers/{id}/update-driver(id=${driver.driverId})}" th:text="'Update driver ' + ${driver.driverName}"></a>
                 </td>
                 <td>
-                    <a th:href="@{/drivers/{id}/delete-driver(id=${driver.driverId})}" th:text="'Delete driver ' + ${driver.driverName}"></a>
+                    <a th:href="@{/drivers/{id}(id=${driver.driverId})}" th:text="'Delete driver ' + ${driver.driverName}"></a>
                 </td>
             </tr>
             </tbody>
