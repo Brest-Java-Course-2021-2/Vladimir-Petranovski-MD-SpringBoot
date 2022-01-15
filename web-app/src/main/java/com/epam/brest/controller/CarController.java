@@ -17,14 +17,6 @@ public class CarController {
     public static final Logger LOG = LogManager.getLogger(
             CarController.class);
 
-    public static final String CARS_CARS = "cars/cars";
-
-    public static final String CARS_NEW_CARS = "cars/new-car";
-
-    public static final String CARS_UPDATE_CARS = "cars/update-car";
-
-    public static final String REDIRECT_CARS = "redirect:/cars";
-
     /**
      * Field carService.
      */
@@ -63,7 +55,7 @@ public class CarController {
         LOG.info("Method findAllCars() started of class {}",
                 getClass().getName());
         model.addAttribute("carList", carService.findAllCars());
-        return CARS_CARS;
+        return "cars/cars";
     }
 
     /**
@@ -77,7 +69,7 @@ public class CarController {
     public String showFormAddingCar(@ModelAttribute("car") final Car car) {
         LOG.info("Method showFormAddingCar() with car {} started of class {}",
                 car, getClass().getName());
-        return CARS_NEW_CARS;
+        return "cars/new-car";
     }
 
     /**
@@ -96,7 +88,7 @@ public class CarController {
 
         carValidator.validate(car, result);
         if (result.hasErrors()) {
-            return CARS_NEW_CARS;
+            return "cars/new-car";
         }
         carService.saveCar(car);
         return "redirect:/cars";
@@ -116,7 +108,7 @@ public class CarController {
         LOG.info("Method showFormUpdatingCar() with id {} started of class {}",
                 id, getClass().getName());
         model.addAttribute("car", carService.findCarById(id));
-        return CARS_UPDATE_CARS;
+        return "cars/update-car";
     }
 
     /**
@@ -137,10 +129,10 @@ public class CarController {
 
         carValidator.validate(car, result);
         if (result.hasErrors()) {
-            return CARS_UPDATE_CARS;
+            return "cars/update-car";
         }
         carService.updateCarById(id, car);
-        return REDIRECT_CARS;
+        return "redirect:/cars";
     }
 
     /**
@@ -150,11 +142,11 @@ public class CarController {
      * @return view name.
      */
 
-    @GetMapping("/{id}/delete-car")
+    @GetMapping("/{id}")
     public String deleteCar(@PathVariable("id") final Integer id) {
         LOG.info("Method deleteCar() with id {} started of class {}",
                 id, getClass().getName());
         carService.deleteCarById(id);
-        return REDIRECT_CARS;
+        return "redirect:/cars";
     }
 }

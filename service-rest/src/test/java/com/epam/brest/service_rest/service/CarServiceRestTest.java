@@ -162,7 +162,7 @@ class CarServiceRestTest {
                 getClass().getName());
         // given
         Integer id = 1;
-        mockRestServiceServer.expect(ExpectedCount.once(), requestTo(new URI(CARS_URL + "/" + id + "/delete-car")))
+        mockRestServiceServer.expect(ExpectedCount.once(), requestTo(new URI(CARS_URL + "/" + id)))
                 .andExpect(method(HttpMethod.DELETE))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)

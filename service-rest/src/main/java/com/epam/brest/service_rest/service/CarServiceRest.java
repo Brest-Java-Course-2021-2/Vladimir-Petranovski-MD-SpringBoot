@@ -141,7 +141,7 @@ public class CarServiceRest implements CarService {
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         HttpEntity<Car> entity = new HttpEntity<>(headers);
         ResponseEntity<Integer> result = restTemplate.exchange(
-                url + "/" + id + "/delete-car", HttpMethod.DELETE,
+                url + "/" + id, HttpMethod.DELETE,
                 entity, Integer.class);
         return result.getBody();
     }

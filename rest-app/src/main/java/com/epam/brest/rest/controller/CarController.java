@@ -106,7 +106,7 @@ public class CarController {
      * @return 200 ok.
      */
 
-    @DeleteMapping(value = "/{id}/delete-car",
+    @DeleteMapping(value = "/{id}",
             produces = "application/json")
     public ResponseEntity<Integer> deleteCar(
             @PathVariable final Integer id) {

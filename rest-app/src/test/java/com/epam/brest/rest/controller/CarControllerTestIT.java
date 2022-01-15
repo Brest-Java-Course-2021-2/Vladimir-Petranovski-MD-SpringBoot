@@ -228,7 +228,7 @@ class CarControllerTestIT {
 
             MockHttpServletResponse response = mockMvc.perform(
                             MockMvcRequestBuilders.delete(CARS_ENDPOINT + "/" +
-                                            id + "/delete-car")
+                                            id)
                                     .accept(MediaType.APPLICATION_JSON)
                     ).andExpect(status().isOk())
                     .andReturn().getResponse();

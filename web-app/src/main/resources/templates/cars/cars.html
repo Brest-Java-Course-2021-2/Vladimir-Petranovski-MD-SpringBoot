@@ -30,7 +30,7 @@
                    th:text="'Update car ' + ${car.carModel}"></a>
             </td>
             <td>
-                <a th:href="@{/cars/{id}/delete-car(id=${car.carId})}"
+                <a th:href="@{/cars/{id}(id=${car.carId})}"
                    th:text="'Delete car ' + ${car.carModel}"></a>
             </td>
         </tr>
