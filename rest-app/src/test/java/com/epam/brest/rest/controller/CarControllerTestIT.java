@@ -50,6 +50,7 @@ class CarControllerTestIT {
 
     private MockMvc mockMvc;
 
+    @Autowired
     private ObjectMapper objectMapper;
 
     MockMvcCarService carService = new MockMvcCarService();
@@ -62,7 +63,7 @@ class CarControllerTestIT {
                 .alwaysDo(MockMvcResultHandlers.print())
                 .build();
 
-        objectMapper = new ObjectMapper();
+//        objectMapper = new ObjectMapper();
     }
 
     @Test
@@ -228,7 +229,7 @@ class CarControllerTestIT {
 
             MockHttpServletResponse response = mockMvc.perform(
                             MockMvcRequestBuilders.delete(CARS_ENDPOINT + "/" +
-                                            id + "/delete-car")
+                                            id)
                                     .accept(MediaType.APPLICATION_JSON)
                     ).andExpect(status().isOk())
                     .andReturn().getResponse();

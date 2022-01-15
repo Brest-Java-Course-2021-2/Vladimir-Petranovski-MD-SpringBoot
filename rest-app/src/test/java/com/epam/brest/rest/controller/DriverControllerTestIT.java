@@ -55,6 +55,7 @@ class DriverControllerTestIT {
 
     private MockMvc mockMvc;
 
+    @Autowired
     private ObjectMapper objectMapper;
 
     MockMvcDriverService driverService = new MockMvcDriverService();
@@ -70,7 +71,7 @@ class DriverControllerTestIT {
                 .alwaysDo(MockMvcResultHandlers.print())
                 .build();
 
-        objectMapper = new ObjectMapper().registerModule(new JSR310Module());
+//        objectMapper = new ObjectMapper().registerModule(new JSR310Module());
 
         driverDateStartWork = Instant.MIN;
         driverSalary = new BigDecimal(250);
@@ -268,8 +269,7 @@ class DriverControllerTestIT {
             LOG.info("Method deleteDriver() with id: {} started of class {}", id, getClass().getName());
 
             MockHttpServletResponse response = mockMvc.perform(
-                            MockMvcRequestBuilders.delete(DRIVERS_ENDPOINT + "/" +
-                                            id + "/delete-driver")
+                            MockMvcRequestBuilders.delete(DRIVERS_ENDPOINT + "/" + id)
                                     .accept(MediaType.APPLICATION_JSON)
                     ).andExpect(status().isOk())
                     .andReturn().getResponse();

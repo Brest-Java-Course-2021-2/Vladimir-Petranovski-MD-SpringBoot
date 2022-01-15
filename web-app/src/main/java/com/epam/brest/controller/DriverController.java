@@ -162,7 +162,7 @@ public class DriverController {
      * @return view name.
      */
 
-    @GetMapping("/drivers/{id}/delete-driver")
+    @GetMapping("/drivers/{id}")
     public String deleteDriver(@PathVariable("id") final Integer id) {
         LOG.info("Method deleteDriver() with id {} started of class {}",
                 id, getClass().getName());

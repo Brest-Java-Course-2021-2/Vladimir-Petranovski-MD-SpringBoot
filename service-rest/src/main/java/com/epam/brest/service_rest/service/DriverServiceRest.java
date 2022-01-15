@@ -143,7 +143,7 @@ public class DriverServiceRest implements DriverService {
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         HttpEntity<Driver> entity = new HttpEntity<>(headers);
         ResponseEntity<Integer> result = restTemplate.exchange(
-                url + "/" + id + "/delete-driver", HttpMethod.DELETE,
+                url + "/" + id, HttpMethod.DELETE,
                 entity, Integer.class);
         return result.getBody();
     }

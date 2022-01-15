@@ -335,7 +335,7 @@ public class DriverControllerTest {
         // WHEN
         Driver driver = createDriver(1, "VLADIMIR", Instant.parse("2001-01-01T00:00:01.00Z"), new BigDecimal(200));
 
-        mockRestServiceServer.expect(ExpectedCount.once(), requestTo(new URI(DRIVERS_URL + "/" + driver.getDriverId() + "/delete-driver")))
+        mockRestServiceServer.expect(ExpectedCount.once(), requestTo(new URI(DRIVERS_URL + "/" + driver.getDriverId())))
                 .andExpect(method(HttpMethod.DELETE))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -343,7 +343,7 @@ public class DriverControllerTest {
                 );
         // THEN
         mockMvc.perform(
-                        MockMvcRequestBuilders.get("/drivers/" + driver.getDriverId() + "/delete-driver")
+                        MockMvcRequestBuilders.get("/drivers/" + driver.getDriverId())
                 ).andDo(MockMvcResultHandlers.print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/drivers_dto"))
