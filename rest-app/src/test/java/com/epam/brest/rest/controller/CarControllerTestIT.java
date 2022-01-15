@@ -50,6 +50,7 @@ class CarControllerTestIT {
 
     private MockMvc mockMvc;
 
+    @Autowired
     private ObjectMapper objectMapper;
 
     MockMvcCarService carService = new MockMvcCarService();
@@ -62,7 +63,7 @@ class CarControllerTestIT {
                 .alwaysDo(MockMvcResultHandlers.print())
                 .build();
 
-        objectMapper = new ObjectMapper();
+//        objectMapper = new ObjectMapper();
     }
 
     @Test

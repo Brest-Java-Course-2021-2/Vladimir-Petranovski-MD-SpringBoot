@@ -55,6 +55,7 @@ class DriverControllerTestIT {
 
     private MockMvc mockMvc;
 
+    @Autowired
     private ObjectMapper objectMapper;
 
     MockMvcDriverService driverService = new MockMvcDriverService();
@@ -70,7 +71,7 @@ class DriverControllerTestIT {
                 .alwaysDo(MockMvcResultHandlers.print())
                 .build();
 
-        objectMapper = new ObjectMapper().registerModule(new JSR310Module());
+//        objectMapper = new ObjectMapper().registerModule(new JSR310Module());
 
         driverDateStartWork = Instant.MIN;
         driverSalary = new BigDecimal(250);
