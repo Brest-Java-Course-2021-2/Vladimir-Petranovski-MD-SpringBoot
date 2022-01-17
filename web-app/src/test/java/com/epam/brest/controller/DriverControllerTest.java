@@ -3,9 +3,6 @@ package com.epam.brest.controller;
 import com.epam.brest.model.Driver;
 import com.epam.brest.model.dto.DriverDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
@@ -57,6 +54,7 @@ public class DriverControllerTest {
 
     private MockRestServiceServer mockRestServiceServer;
 
+    @Autowired
     private ObjectMapper objectMapper;
 
     @BeforeEach
@@ -64,9 +62,6 @@ public class DriverControllerTest {
         restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
         mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
         mockRestServiceServer = MockRestServiceServer.createServer(restTemplate);
-        objectMapper = new ObjectMapper().registerModule(new JavaTimeModule()).registerModule(new Jdk8Module())
-                .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS,
-                        false);
     }
 
     @Test
@@ -391,7 +386,6 @@ public class DriverControllerTest {
                                 hasProperty("driverName", is(driverDto1.getDriverName())),
                                 hasProperty("driverDateStartWork", is(driverDto1.getDriverDateStartWork())),
                                 hasProperty("driverSalary", is(driverDto1.getDriverSalary()))
-//                                hasProperty("countOfCarsAssignedToDriver", is(driverDto1.getCountOfCarsAssignedToDriver()))
                         )
                 ))).andExpect(model().attribute("driverList", hasItem(
                         allOf(
@@ -399,7 +393,6 @@ public class DriverControllerTest {
                                 hasProperty("driverName", is(driverDto2.getDriverName())),
                                 hasProperty("driverDateStartWork", is(driverDto2.getDriverDateStartWork())),
                                 hasProperty("driverSalary", is(driverDto2.getDriverSalary()))
-//                                hasProperty("countOfCarsAssignedToDriver", is(driverDto2.getCountOfCarsAssignedToDriver()))
                         )
                 ))).andExpect(model().attribute("driverList", hasItem(
                         allOf(
@@ -407,7 +400,6 @@ public class DriverControllerTest {
                                 hasProperty("driverName", is(driverDto3.getDriverName())),
                                 hasProperty("driverDateStartWork", is(driverDto3.getDriverDateStartWork())),
                                 hasProperty("driverSalary", is(driverDto3.getDriverSalary()))
-//                                hasProperty("countOfCarsAssignedToDriver", is(driverDto3.getCountOfCarsAssignedToDriver()))
                         )
                 )));
         mockRestServiceServer.verify();

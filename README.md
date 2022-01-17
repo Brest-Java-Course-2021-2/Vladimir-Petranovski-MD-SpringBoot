@@ -132,7 +132,7 @@ $ curl --request PATCH 'http://localhost:8088/drivers/3' \
 ### delete
 
 ```bash
-$ curl --request DELETE 'http://localhost:8088/drivers/3/delete-driver'
+$ curl --request DELETE 'http://localhost:8088/drivers/3'
 ```
 
 ## cars
@@ -175,5 +175,5 @@ $ curl --request PATCH 'http://localhost:8088/cars/3' \
 ## delete
 
 ```bash
-$ curl --request DELETE 'http://localhost:8088/cars/3/delete-car'
+$ curl --request DELETE 'http://localhost:8088/cars/3'
 ```

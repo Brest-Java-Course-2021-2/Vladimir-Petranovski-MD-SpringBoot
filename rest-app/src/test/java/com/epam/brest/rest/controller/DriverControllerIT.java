@@ -1,11 +1,10 @@
 package com.epam.brest.rest.controller;
 
-import com.epam.brest.rest.controller.exception.CustomExceptionHandler;
 import com.epam.brest.model.Driver;
+import com.epam.brest.rest.controller.exception.CustomExceptionHandler;
 import com.epam.brest.rest.controller.exception.ErrorResponse;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JSR310Module;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -39,9 +38,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(SpringExtension.class)
 @AutoConfigureMockMvc
 @Transactional
-class DriverControllerTestIT {
+class DriverControllerIT {
 
-    public static final Logger LOG = LogManager.getLogger(DriverControllerTestIT.class);
+    public static final Logger LOG = LogManager.getLogger(DriverControllerIT.class);
 
     public static final String DRIVERS_ENDPOINT = "/drivers";
 
@@ -70,8 +69,6 @@ class DriverControllerTestIT {
                 .setControllerAdvice(customExceptionHandler)
                 .alwaysDo(MockMvcResultHandlers.print())
                 .build();
-
-//        objectMapper = new ObjectMapper().registerModule(new JSR310Module());
 
         driverDateStartWork = Instant.MIN;
         driverSalary = new BigDecimal(250);

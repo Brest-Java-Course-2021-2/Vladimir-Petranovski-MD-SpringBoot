@@ -49,13 +49,13 @@ public class CarControllerTest {
 
     private MockRestServiceServer mockRestServiceServer;
 
+    @Autowired
     private ObjectMapper objectMapper;
 
     @BeforeEach
     void seyUp() {
         mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
         mockRestServiceServer = MockRestServiceServer.createServer(restTemplate);
-        objectMapper = new ObjectMapper();
     }
 
     @Test
@@ -278,7 +278,7 @@ public class CarControllerTest {
         LOG.info("Method shouldDeleteCar() started of class {}", getClass().getName());
         // WHEN
         Car carSrc = createCar(2, "AUDI", 3);
-        mockRestServiceServer.expect(ExpectedCount.once(), requestTo(new URI(CARS_URL + "/" + carSrc.getCarId() + "/delete-car")))
+        mockRestServiceServer.expect(ExpectedCount.once(), requestTo(new URI(CARS_URL + "/" + carSrc.getCarId())))
                 .andExpect(method(HttpMethod.DELETE))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -286,7 +286,7 @@ public class CarControllerTest {
                 );
         //THEN
         mockMvc.perform(
-                        MockMvcRequestBuilders.get("/cars/" + carSrc.getCarId() + "/delete-car")
+                        MockMvcRequestBuilders.get("/cars/" + carSrc.getCarId())
                 ).andDo(MockMvcResultHandlers.print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/cars"))
