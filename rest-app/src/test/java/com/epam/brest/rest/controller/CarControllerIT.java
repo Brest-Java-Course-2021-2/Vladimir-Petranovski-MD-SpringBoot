@@ -36,9 +36,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(SpringExtension.class)
 @AutoConfigureMockMvc
 @Transactional
-class CarControllerTestIT {
+class CarControllerIT {
 
-    public static final Logger LOG = LogManager.getLogger(CarControllerTestIT.class);
+    public static final Logger LOG = LogManager.getLogger(CarControllerIT.class);
 
     public static final String CARS_ENDPOINT = "/cars";
 
@@ -62,8 +62,6 @@ class CarControllerTestIT {
                 .setControllerAdvice(customExceptionHandlerCar)
                 .alwaysDo(MockMvcResultHandlers.print())
                 .build();
-
-//        objectMapper = new ObjectMapper();
     }
 
     @Test

@@ -25,7 +25,8 @@
 
     <properties>
         <java.version>11</java.version>
-        <spring-boot.version>2.6.1</spring-boot.version>
+        <spring-boot.version>2.5.7</spring-boot.version>
+        <springfox-boot-starter.version>3.0.0</springfox-boot-starter.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <junit.version>5.4.0</junit.version>
         <log4j2.version>2.14.1</log4j2.version>
@@ -122,6 +123,12 @@
                 <artifactId>spring-boot-starter-actuator</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
+            <!--swagger-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-boot-starter</artifactId>
+                <version>${springfox-boot-starter.version}</version>
+            </dependency>
             <!-- test-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -168,12 +175,6 @@
             </plugins>
         </pluginManagement>
 
-<!--        <plugins>-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-compiler-plugin</artifactId>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
