@@ -13,7 +13,7 @@ This is sample 'Motor depot' web application.
 ## Technology Stack
 
 - **Programming Language:** [Java](https://www.java.com) <a href="https://www.java.com" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="20" height="20"/> </a>
-- **Core Framework:** [Spring Boot](https://spring.io/projects/spring-boot) <a href="https://spring.io/projects/spring-boot" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="spring" width="18" height="18"/> </a>
+- **Core Framework:** [Spring Boot](https://spring.io/projects/spring-boot) <a href="~~https://spring.io/projects/spring-boot" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="spring" width="18" height="18"~~/> </a>
 - **Build System:** [Maven](https://maven.apache.org/)
 - **Control System:** [Git](https://git-scm.com/) <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="18" height="18"/> </a>
 - **License:** [Apache license, version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
@@ -22,6 +22,7 @@ This is sample 'Motor depot' web application.
     - [Mockito](http://site.mockito.org/)
 - **Log:** [Log4j 2](https://logging.apache.org/log4j/2.x/)
 - **Database:** [H2](http://www.h2database.com/html/main.html)
+- **Api Development:** [Swagger](https://swagger.io/)
 - **Template Engine:** [Thymeleaf](https://www.thymeleaf.org/)
 
 ## Requirements
@@ -58,6 +59,7 @@ In the root directory of the project:
 $ java -jar rest-app/target/rest-app-1.0-SNAPSHOT.jar
 ```
 The rest application will be accessible at [http://localhost:8088](http://localhost:8088).
+The swagger ui will be accessible at [http://localhost:8088](http://localhost:8088/swagger-ui/)
 
 ## Web
 
