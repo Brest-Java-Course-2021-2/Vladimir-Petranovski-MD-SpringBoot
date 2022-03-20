@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -36,7 +35,6 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
-@Disabled
 public class DriverControllerTest {
 
     public static final Logger LOG = LogManager.getLogger(DriverControllerTest.class);
@@ -300,7 +298,7 @@ public class DriverControllerTest {
     void shouldFailUpdateDriverOnEmptySalary() throws Exception {
         LOG.info("Method shouldFailUpdateDriverOnEmptyName() started of class {}", getClass().getName());
         // WHEN
-        Driver driver = createDriver(1, "VLADIMIR", Instant.parse("2001-01-01T00:00:01.00Z"), new BigDecimal(200));
+        Driver driver = createDriver(2, "VLAD", Instant.parse("2001-01-01T00:00:01.00Z"), new BigDecimal(200));
 
         mockRestServiceServer.expect(ExpectedCount.once(), requestTo(new URI(DRIVERS_URL + "/" + driver.getDriverId())))
                 .andExpect(method(HttpMethod.PATCH))

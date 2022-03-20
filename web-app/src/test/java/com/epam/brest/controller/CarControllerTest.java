@@ -32,7 +32,6 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
-@Disabled
 public class CarControllerTest {
 
     public static final Logger LOG = LogManager.getLogger(DriverControllerTest.class);
