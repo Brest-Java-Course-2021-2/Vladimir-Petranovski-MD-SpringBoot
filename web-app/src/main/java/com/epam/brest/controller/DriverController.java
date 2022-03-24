@@ -68,7 +68,7 @@ public class DriverController {
                 getClass().getName());
         model.addAttribute("driverList",
                 driverDtoService.findAllDriverWithCountCars());
-        return "drivers/drivers";
+        return "drivers";
     }
 
     /**

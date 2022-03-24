@@ -48,3 +48,46 @@
 <!--<hr>-->
 <!--<a th:href="@{/}">Back to menu of motor depot</a>-->
 <!--</html>-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}"
+      lang="en">
+
+<th:block layout:fragment="content">
+    <div class="container">
+        <div th:replace="fragments/accounts/header :: header"></div>
+        <div th:if="${error}">
+            <div th:replace="fragments/alert :: alert(isError=true, message=${error})"></div>
+        </div>
+        <div th:if="${message}">
+            <div th:replace="fragments/alert :: alert(isError=false, message=${message})"></div>
+        </div>
+        <div class="card">
+            <div class="card-body text-primary fs-5">
+                <div th:replace="fragments/accounts/filter :: filter"></div>
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="list-group">
+                            <li class="list-group-item active">
+                                <div th:replace="fragments/accounts/listheader :: listheader"></div>
+                            </li>
+                            <li class="list-group-item" th:each="account : ${accounts}">
+                                <div th:replace="fragments/accounts/listitem :: listitem(account=${account})"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div th:replace="fragments/modal :: modal"></div>
+        <form id="createCardForm"
+              th:action="@{/card}"
+              method="post">
+            <input type="hidden" name="accountId" />
+        </form>
+    </div>
+</th:block>
+
+</html>
