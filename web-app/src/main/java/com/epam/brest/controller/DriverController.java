@@ -10,10 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class DriverController {
@@ -80,10 +77,13 @@ public class DriverController {
 
     @GetMapping("/drivers/new-driver")
     public final String showFormAddingDriver(
-            @ModelAttribute("driver") final Driver driver) {
+            @ModelAttribute("driver") final Driver driver, final Model model) {
         LOG.info("Method showFormAddingDriver() "
                         + "with driver {} started of class {}",
                 driver, getClass().getName());
+
+        model.addAttribute("isNew", true);
+
         return "drivers/new-driver";
     }
 
@@ -125,6 +125,8 @@ public class DriverController {
         LOG.info("Method showFormForUpdatingDriver()"
                         + " with id {} started of class {}",
                 id, getClass().getName());
+
+        model.addAttribute("isNew", false);
         model.addAttribute("driver",
                 driverService.findDriverById(id));
         return "drivers/update-driver";
@@ -170,6 +172,13 @@ public class DriverController {
         return "redirect:/drivers_dto";
     }
 
+    /**
+     * Goto choice form for start work date.
+     *
+     * @param driverDto of DriverDto.
+     * @return view name.
+     */
+
     @GetMapping("/drivers_dto/form-range")
     public String showFormForChoseDateRange(
             @ModelAttribute("driver") final DriverDto driverDto) {
@@ -177,6 +186,14 @@ public class DriverController {
                 getClass().getName());
         return "drivers/form-range";
     }
+
+    /**
+     * Goto driver's list page after choice on start work date.
+     *
+     * @param driverDto of DriverDto class.
+     * @param model of Model class.
+     * @return view name.
+     */
 
     @GetMapping("/drivers_dto/drivers-range")
     public String showDriversListOnRange(

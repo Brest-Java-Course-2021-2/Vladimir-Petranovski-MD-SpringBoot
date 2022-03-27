@@ -66,9 +66,11 @@ public class CarController {
      */
 
     @GetMapping("/new-car")
-    public String showFormAddingCar(@ModelAttribute("car") final Car car) {
+    public String showFormAddingCar(@ModelAttribute("car") final Car car,
+                                    final Model model) {
         LOG.info("Method showFormAddingCar() with car {} started of class {}",
                 car, getClass().getName());
+        model.addAttribute("isNew", true);
         return "cars/new-car";
     }
 
@@ -90,6 +92,7 @@ public class CarController {
         if (result.hasErrors()) {
             return "cars/new-car";
         }
+
         carService.saveCar(car);
         return "redirect:/cars";
     }
@@ -107,6 +110,8 @@ public class CarController {
                                       final Model model) {
         LOG.info("Method showFormUpdatingCar() with id {} started of class {}",
                 id, getClass().getName());
+
+        model.addAttribute("isNew", false);
         model.addAttribute("car", carService.findCarById(id));
         return "cars/update-car";
     }
