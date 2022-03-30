@@ -37,7 +37,142 @@
             </div>
         </div>
     </nav>
+<!--    <nav id="sort-header"-->
+<!--         class="py-1 mb-3 navbar navbar-light bg-light text-dark">-->
+<!--        <span class="container-fluid">-->
+<!--            <span class="navbar-brand text-uppercase">Sort drivers by date of employment</span>-->
+<!--&lt;!&ndash;            <form class="row mb-2 gy-2"&ndash;&gt;-->
+<!--&lt;!&ndash;            <form id="rangeForm"&ndash;&gt;-->
+<!--&lt;!&ndash;                  action="drivers/form-range.html"&ndash;&gt;-->
+<!--&lt;!&ndash;                  th:action="@{/drivers/drivers-range}"&ndash;&gt;-->
+<!--&lt;!&ndash;                  th:object="${driver}"&ndash;&gt;-->
+<!--&lt;!&ndash;                  th:classappend="${filter} and ${#fields.hasErrors} ? 'pb-4'"&ndash;&gt;-->
+<!--&lt;!&ndash;                  method="get">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-lg-5 col-md-4 text-center my-auto">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="input-group position-relative">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="input-group-text ">Date from</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <input type="text"&ndash;&gt;-->
+<!--&lt;!&ndash;                               name="valueFromDate"&ndash;&gt;-->
+<!--&lt;!&ndash;                               th:value="${filter?.valueFromDate}"&ndash;&gt;-->
+<!--&lt;!&ndash;                               th:placeholder="#{range.date.placeholder}"&ndash;&gt;-->
+<!--&lt;!&ndash;                               class="form-control"&ndash;&gt;-->
+<!--&lt;!&ndash;                               th:classappend="${filter} and ${#fields.hasErrors('valueFromDate')} ? 'is-invalid'"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="invalid-tooltip"&ndash;&gt;-->
+<!--&lt;!&ndash;                             th:if="${filter} and ${#fields.hasErrors('valueFromDate')}"&ndash;&gt;-->
+<!--&lt;!&ndash;                             th:errors="*{valueFromDate}">&ndash;&gt;-->
+<!--&lt;!&ndash;                            From Date Error&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-lg-5 col-md-4 text-center my-auto">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="input-group position-relative">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="input-group-text">Expiry to</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <input type="text"&ndash;&gt;-->
+<!--&lt;!&ndash;                               name="valueToDate"&ndash;&gt;-->
+<!--&lt;!&ndash;                               th:value="${filter?.valueToDate}"&ndash;&gt;-->
+<!--&lt;!&ndash;                               th:placeholder="#{card.date.placeholder}"&ndash;&gt;-->
+<!--&lt;!&ndash;                               class="form-control"&ndash;&gt;-->
+<!--&lt;!&ndash;                               th:classappend="${filter} and ${#fields.hasErrors('valueToDate')} ? 'is-invalid'"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="invalid-tooltip"&ndash;&gt;-->
+<!--&lt;!&ndash;                             th:if="${filter} and ${#fields.hasErrors('valueToDate')}"&ndash;&gt;-->
+<!--&lt;!&ndash;                             th:errors="*{valueToDate}">&ndash;&gt;-->
+<!--&lt;!&ndash;                            Value Date Error&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-lg-2 col-md-4 text-center my-auto">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="btn-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <button class="btn btn-info text-white"&ndash;&gt;-->
+<!--&lt;!&ndash;                                type="submit">&ndash;&gt;-->
+<!--&lt;!&ndash;                            Apply&ndash;&gt;-->
+<!--&lt;!&ndash;                        </button>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <a href="../../cards.html"&ndash;&gt;-->
+<!--&lt;!&ndash;                           class="btn btn-warning text-white"&ndash;&gt;-->
+<!--&lt;!&ndash;                           th:href="@{/cards}">&ndash;&gt;-->
+<!--&lt;!&ndash;                            Reset&ndash;&gt;-->
+<!--&lt;!&ndash;                        </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </form>&ndash;&gt;-->
+<!--            <span class="container-fluid">-->
+<!--                <div class="row">-->
+<!--                    <div class="col">-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-body">-->
+<!--                                <form id="rangeDriverForm"-->
+<!--                                      th:object="${driver}"-->
+<!--                                      action="drivers/form-driver.html"-->
+<!--                                      th:action="@{/drivers_dto/drivers-range}"-->
+<!--                                      th:method="@{get}">-->
+
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;                                    <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;                                        <p>Please fix errors below:</p>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;                                    </div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;                                    <input id="field_driverId"&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;                                           type="hidden"&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;                                           th:field="*{driverId}"/>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<input type="datetime-local" th:field="*{fromDateChoose}" th:value="${driver.fromDateChoose}" name="fromDateChoose" id="fromDate"/>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--                                    <div class="mb-3">-->
+<!--                                        <label class="form-label"-->
+<!--                                               for="field_fromDate">From date</label>-->
+<!--                                        <input class="form-control "-->
+<!--                                               id="field_fromDate"-->
+<!--                                               type="datetime-local" value="FromDateChoose"-->
+<!--                                               th:field="*{fromDateChoose}"/>-->
+<!--&lt;!&ndash;                                        <div th:if="${#fields.hasErrors('driverName')}"&ndash;&gt;-->
+<!--&lt;!&ndash;                                             class="text-danger"&ndash;&gt;-->
+<!--&lt;!&ndash;                                             th:errors="*{driverName}">[errors]&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </div>&ndash;&gt;-->
+<!--                                    </div>-->
+<!--                                    <div class="mb-3">-->
+<!--                                        <label class="form-label"-->
+<!--                                               for="field_toDate">To date</label>-->
+<!--                                        <input class="form-control "-->
+<!--                                               id="field_toDate"-->
+<!--                                               type="datetime-local" value="toDateChoose"-->
+<!--                                               th:field="*{toDateChoose}"/>-->
+<!--                                        <div th:if="${#fields.hasErrors('toDateChoose')}"-->
+<!--                                             class="text-danger"-->
+<!--                                             th:errors="*{toDateChoose}">[errors]-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="d-flex justify-content-end">-->
+<!--                                        <a href="drivers/drivers.html"-->
+<!--                                           th:href="@{/drivers_dto}"-->
+<!--                                           class="btn btn-light me-1"-->
+<!--                                           title="Cancel">Cancel</a>-->
+<!--                                        <a href="drivers/drivers.html"-->
+<!--                                           th:href="@{/drivers_dto}"-->
+<!--                                           th:onclick="@{document.forms['rangeDriverForm'].submit(); return false;}"-->
+<!--                                           class="btn btn-primary"-->
+<!--                                           title="Apply choice">Apply</a>-->
+<!--                                    </div>-->
+<!--                                </form>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </span>-->
+<!--        </span>-->
+<!--    </nav>-->
     <nav id="main-header"
+         class="py-1 mb-3 navbar navbar-light bg-light text-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand text-uppercase">Sort drivers by date of employment</span>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="drivers/form-range.html"
+                       th:href="@{/drivers_dto/form-range}"
+                       class="btn btn-light"
+                       title="Sort driver">
+                        <i class="bi-plus"></i>&nbsp;<span class="d-none d-sm-inline">Choose dates</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <nav id="sort-driver"
          class="py-1 mb-3 navbar navbar-light bg-light text-dark">
         <div class="container-fluid">
             <span class="navbar-brand text-uppercase">Drivers</span>

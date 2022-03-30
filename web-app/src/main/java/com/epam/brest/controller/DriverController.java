@@ -199,8 +199,11 @@ public class DriverController {
     public String showDriversListOnRange(
             @ModelAttribute("driver") final DriverDto driverDto,
             final Model model) {
-        LOG.info("Method showDriversListOnRange() started of class {}", getClass().getName());
-        model.addAttribute("driverList", driverDtoService.chooseDriverOnDateRange(driverDto.getFromDateChoose(), driverDto.getToDateChoose()));
+        LOG.info("Method showDriversListOnRange() started of class {}",
+                getClass().getName());
+        model.addAttribute("driverList",
+                driverDtoService.chooseDriverOnDateRange(driverDto.getFromDateChoose(),
+                        driverDto.getToDateChoose()));
         return "drivers/drivers-range";
     }
 }

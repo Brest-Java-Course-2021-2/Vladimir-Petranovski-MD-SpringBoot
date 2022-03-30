@@ -16,7 +16,7 @@ public class DriverDaoJdbcRowMapper implements RowMapper<Driver> {
      * @param resultSet ResultSet.
      * @param i int.
      * @return driver mapRow.
-     * @throws SQLException
+     * @throws SQLException class.
      */
 
     @Override
