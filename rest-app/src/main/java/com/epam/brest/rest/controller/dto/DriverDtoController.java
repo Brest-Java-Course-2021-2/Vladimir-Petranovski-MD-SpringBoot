@@ -2,6 +2,7 @@ package com.epam.brest.rest.controller.dto;
 
 import com.epam.brest.model.dto.DriverDto;
 import com.epam.brest.service_api.dto.DriverDtoService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,9 @@ import java.util.Collection;
 @RestController
 @CrossOrigin
 @RequestMapping("/drivers_dto")
+@Tag(name = "driver-dto-controller",
+        description = "Allows to choose all drivers with assigning cars"
+                + " and sort on start work date")
 public class DriverDtoController {
 
     public static final Logger LOG = LogManager.getLogger(DriverDtoController.class);

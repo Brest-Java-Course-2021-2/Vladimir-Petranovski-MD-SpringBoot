@@ -2,6 +2,8 @@ package com.epam.brest.rest.controller;
 
 import com.epam.brest.model.Car;
 import com.epam.brest.service_api.CarService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,7 @@ import java.util.Collection;
 @RestController
 @CrossOrigin
 @RequestMapping("/cars")
+@Tag(name = "car-controller", description = "Allows to manage cars of motor depot")
 public class CarController {
 
     public static final Logger LOG = LogManager.getLogger(
@@ -41,6 +44,7 @@ public class CarController {
      * @return car's list in json.
      */
 
+    @Operation(description = "Get information for all bands with their repertoire duration and track count")
     @GetMapping()
     public final Collection<Car> findAllCars() {
         LOG.info("Method findAllCars() started of class {}",

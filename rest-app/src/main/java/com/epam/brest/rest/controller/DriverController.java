@@ -2,6 +2,8 @@ package com.epam.brest.rest.controller;
 
 import com.epam.brest.model.Driver;
 import com.epam.brest.service_api.DriverService;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
+@Tag(name = "driver-controller", description = "Allows to manage drivers of motor depot")
 @RestController
 @CrossOrigin
 public class DriverController {

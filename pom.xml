@@ -31,6 +31,7 @@
         <junit.version>5.4.0</junit.version>
         <log4j2.version>2.14.1</log4j2.version>
         <spring.version>5.3.13</spring.version>
+        <hiberbate-validator.version>6.2.1.Final</hiberbate-validator.version>
         <thymeleaf-spring5.version>3.0.12.RELEASE</thymeleaf-spring5.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <maven-failsafe-plugin.version>3.0.0-M5</maven-failsafe-plugin.version>
@@ -128,6 +129,12 @@
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-boot-starter</artifactId>
                 <version>${springfox-boot-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hiberbate-validator.version}</version>
             </dependency>
             <!-- test-->
             <dependency>
