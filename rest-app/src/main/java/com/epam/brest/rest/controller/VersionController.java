@@ -27,7 +27,7 @@ public class VersionController {
      * @return local variable VERSION.
      */
 
-    @Operation(description = "")
+    @Operation(summary = "Allowing to get application's version at present")
     @GetMapping(value = "/version")
     public String version() {
         LOG.info("Method version() started of class {}",

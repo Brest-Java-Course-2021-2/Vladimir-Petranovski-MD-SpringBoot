@@ -2,6 +2,7 @@ package com.epam.brest.rest.controller.dto;
 
 import com.epam.brest.model.dto.DriverDto;
 import com.epam.brest.service_api.dto.DriverDtoService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -42,6 +43,8 @@ public class DriverDtoController {
      * @return Driver Dto collection in json format.
      */
 
+    @Operation(summary = "Allows to get list of all drivers"
+            + " with a amount of assigning cars")
     @GetMapping()
     public final Collection<DriverDto> findAllDriversWithCountCars() {
         LOG.info("Method findAllDriversWithCountCars() started of class {}",
@@ -55,6 +58,7 @@ public class DriverDtoController {
      * @return Driver Dto collection in json format.
      */
 
+    @Operation(summary = "Allows to get list of all drivers within start work dates")
     @GetMapping("/drivers-range")
     public Collection<DriverDto> showDriversListOnRange(
             @ModelAttribute final DriverDto driverDto) {

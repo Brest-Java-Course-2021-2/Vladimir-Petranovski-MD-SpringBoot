@@ -3,6 +3,7 @@ package com.epam.brest.rest.controller;
 import com.epam.brest.model.Driver;
 import com.epam.brest.service_api.DriverService;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -43,6 +44,7 @@ public class DriverController {
      * @return driver's list in json.
      */
 
+    @Operation(summary = "Allows to get list of all drivers")
     @GetMapping("/drivers")
     public Collection<Driver> findAllDrivers() {
         LOG.info("Method findAllDrivers() started of class {}",
@@ -57,6 +59,7 @@ public class DriverController {
      * @return driver in json.
      */
 
+    @Operation(summary = "Allows to get driver by Id")
     @GetMapping(value = "/drivers/{id}")
     public final Driver findDriverById(@PathVariable("id") final Integer id) {
         LOG.info("Method findDriverById() with id {} started of class {}",
@@ -72,6 +75,7 @@ public class DriverController {
      * @return 200 ok.
      */
 
+    @Operation(summary = "Allows to create driver")
     @PostMapping(value = "/drivers_dto", consumes = "application/json",
             produces = "application/json")
     public ResponseEntity<Integer> saveDriver(
@@ -91,6 +95,7 @@ public class DriverController {
      * @return 200 ok.
      */
 
+    @Operation(summary = "Allows to update driver by Id")
     @PatchMapping(value = "/drivers/{id}", consumes = "application/json",
             produces = "application/json")
     public ResponseEntity<Integer> updateDriver(
@@ -111,6 +116,7 @@ public class DriverController {
      * @return 200 ok.
      */
 
+    @Operation(summary = "Allows to delete driver by Id")
     @DeleteMapping(value = "/drivers/{id}",
             produces = "application/json")
     public ResponseEntity<Integer> deleteDriverById(

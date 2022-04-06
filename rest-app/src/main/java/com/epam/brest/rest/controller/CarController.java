@@ -44,7 +44,7 @@ public class CarController {
      * @return car's list in json.
      */
 
-    @Operation(description = "Get information for all bands with their repertoire duration and track count")
+    @Operation(summary = "Allows to get list of all cars")
     @GetMapping()
     public final Collection<Car> findAllCars() {
         LOG.info("Method findAllCars() started of class {}",
@@ -59,6 +59,7 @@ public class CarController {
      * @return car in json.
      */
 
+    @Operation(summary = "Allows to get car by Id")
     @GetMapping(value = "/{id}")
     public final Car findCarById(@PathVariable final Integer id) {
         LOG.info("Method findCarById() with id: {} started of class {}",
@@ -74,6 +75,7 @@ public class CarController {
      * @return 200 ok.
      */
 
+    @Operation(summary = "Allows to create car")
     @PostMapping(consumes = "application/json",
             produces = "application/json")
     public ResponseEntity<Integer> saveCar(@RequestBody final Car car) {
@@ -92,6 +94,7 @@ public class CarController {
      * @return 200 ok.
      */
 
+    @Operation(summary = "Allows to update car by Id")
     @PatchMapping(value = "/{id}", consumes = {"application/json"},
             produces = {"application/json"})
     public ResponseEntity<Integer> updateCar(@RequestBody final Car car,
@@ -110,6 +113,7 @@ public class CarController {
      * @return 200 ok.
      */
 
+    @Operation(summary = "Allows to delete car by Id")
     @DeleteMapping(value = "/{id}",
             produces = "application/json")
     public ResponseEntity<Integer> deleteCar(
