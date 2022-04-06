@@ -1,8 +1,11 @@
 package com.epam.brest.model.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.math.BigDecimal;
 import java.time.Instant;
 
+@Schema(name = "driver-dto", description = "Driver like data transfer object")
 public class DriverDto {
 
     /**
