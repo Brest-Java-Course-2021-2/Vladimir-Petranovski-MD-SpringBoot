@@ -22,6 +22,12 @@ import java.util.List;
 @Configuration
 public class SpringFoxConfig {
 
+    /**
+     * @bean configure swagger openApi.
+     *
+     * @return Docket class.
+     */
+
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -30,63 +36,69 @@ public class SpringFoxConfig {
                 .paths(PathSelectors.any())
                 .build()
                 .useDefaultResponseMessages(false)
-                .globalResponses(HttpMethod.GET, List.of(
-                        new ResponseBuilder().code("200")
-                                .description("Very Good!!!").build(),
-                        new ResponseBuilder().code("400")
-                                .description("Bad Request!!!").build(),
-                        new ResponseBuilder().code("401")
-                                .description("Unauthorized!!!").build(),
-                        new ResponseBuilder().code("403")
-                                .description("Forbidden!!!!!").build(),
-                        new ResponseBuilder().code("404")
-                                .description("Not Found!!!").build(),
-                        new ResponseBuilder().code("500")
-                                .description("Internal Server Error!!!").build()
-                ))
-                .globalResponses(HttpMethod.POST, List.of(
-                        new ResponseBuilder().code("200")
-                                .description("Very Good!!!").build(),
-                        new ResponseBuilder().code("201")
-                                .description("Created!!!").build(),
-                        new ResponseBuilder().code("400")
-                                .description("Bad Request!!!").build(),
-                        new ResponseBuilder().code("500")
-                                .description("Internal Server Error!!!").build()
-                ))
-                .globalResponses(HttpMethod.PATCH, List.of(
-                        new ResponseBuilder().code("200")
-                                .description("Very Good!!!").build(),
-                        new ResponseBuilder().code("400")
-                                .description("Bad Request!!!").build(),
-                        new ResponseBuilder().code("404")
-                                .description("Not Found!!!").build(),
-                        new ResponseBuilder().code("500")
-                                .description("Internal Server Error!!!").build()
-                ))
-                .globalResponses(HttpMethod.DELETE, List.of(
-                        new ResponseBuilder().code("200")
-                                .description("Very Good!!!").build(),
-                        new ResponseBuilder().code("204")
-                                .description("No Content!!!").build(),
-                        new ResponseBuilder().code("301")
-                                .description("Forward!!!!").build(),
-                        new ResponseBuilder().code("302")
-                                .description("Redirect!!!").build(),
-                        new ResponseBuilder().code("400")
-                                .description("Bad Request!!!").build(),
-                        new ResponseBuilder().code("500")
-                                .description("Internal Server Error!!!").build()
-                ))
+//                .globalResponses(HttpMethod.GET, List.of(
+//                        new ResponseBuilder().code("200")
+//                                .description("Very Good!!!").build(),
+//                        new ResponseBuilder().code("400")
+//                                .description("Bad Request!!!").build(),
+//                        new ResponseBuilder().code("401")
+//                                .description("Unauthorized!!!").build(),
+//                        new ResponseBuilder().code("403")
+//                                .description("Forbidden!!!!!").build(),
+//                        new ResponseBuilder().code("404")
+//                                .description("Not Found!!!").build(),
+//                        new ResponseBuilder().code("500")
+//                                .description("Internal Server Error!!!").build()
+//                ))
+//                .globalResponses(HttpMethod.POST, List.of(
+//                        new ResponseBuilder().code("200")
+//                                .description("Very Good!!!").build(),
+//                        new ResponseBuilder().code("201")
+//                                .description("Created!!!").build(),
+//                        new ResponseBuilder().code("400")
+//                                .description("Bad Request!!!").build(),
+//                        new ResponseBuilder().code("500")
+//                                .description("Internal Server Error!!!").build()
+//                ))
+//                .globalResponses(HttpMethod.PATCH, List.of(
+//                        new ResponseBuilder().code("200")
+//                                .description("Very Good!!!").build(),
+//                        new ResponseBuilder().code("400")
+//                                .description("Bad Request!!!").build(),
+//                        new ResponseBuilder().code("404")
+//                                .description("Not Found!!!").build(),
+//                        new ResponseBuilder().code("500")
+//                                .description("Internal Server Error!!!").build()
+//                ))
+//                .globalResponses(HttpMethod.DELETE, List.of(
+//                        new ResponseBuilder().code("200")
+//                                .description("Very Good!!!").build(),
+//                        new ResponseBuilder().code("204")
+//                                .description("No Content!!!").build(),
+//                        new ResponseBuilder().code("301")
+//                                .description("Forward!!!!").build(),
+//                        new ResponseBuilder().code("302")
+//                                .description("Redirect!!!").build(),
+//                        new ResponseBuilder().code("400")
+//                                .description("Bad Request!!!").build(),
+//                        new ResponseBuilder().code("500")
+//                                .description("Internal Server Error!!!").build()
+//                ))
                 .apiInfo(apiInfo());
     }
+
+    /**
+     * Set a describing of openApi of swagger's page.
+     *
+     * @return ApiInfo class.
+     */
 
     private ApiInfo apiInfo() {
         return new ApiInfo(
                 "MOTOR DEPOT API",
                 "Motor depot is a web application that allows to manage car park.",
                 new VersionController().version(),
-                "Terms of service",
+                "Here are terms of service.",
                 new Contact("Vladimir Petranouski", "www.example.com", "vpetranovskij@gmail.com"),
                 "Apache 2.0", "https://www.apache.org/licenses/LICENSE-2.0", Collections.emptyList());
     }
