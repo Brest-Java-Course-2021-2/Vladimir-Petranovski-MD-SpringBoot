@@ -1,9 +1,9 @@
 package com.epam.brest.rest.controller.dto;
 
-import com.epam.brest.model.Driver;
 import com.epam.brest.model.dto.DriverDto;
 import com.epam.brest.service_api.dto.DriverDtoService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -11,11 +11,14 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
 @RestController
+@Validated
 @CrossOrigin
 @RequestMapping("/drivers_dto")
 @Tag(name = "driver-dto-controller",
@@ -87,10 +90,15 @@ public class DriverDtoController {
                     content = @Content)})
     @GetMapping("/drivers-range")
     public Collection<DriverDto> showDriversListOnRange(
-            @ModelAttribute final DriverDto driverDto) {
+            @RequestParam(value = "fromDateChoose", required = false) @Length(min = 24)
+                         @Parameter(description = "From date of choice",
+                                 example = "2001-01-08T06:22:33.482Z") String fromDateChoose,
+            @RequestParam(value = "toDateChoose", required = false) @Length(min = 24)
+                         @Parameter(description = "To date of choice",
+                                 example = "2022-04-08T06:22:33.482Z") String toDateChoose) {
         LOG.info("Method showDriversListOnRange() started of class {} - {}",
-                driverDto.getFromDateChoose(), driverDto.getToDateChoose());
-        return driverDtoService.chooseDriverOnDateRange(driverDto.getFromDateChoose(),
-                driverDto.getToDateChoose());
+                fromDateChoose, toDateChoose);
+        return driverDtoService.chooseDriverOnDateRange(fromDateChoose,
+                toDateChoose);
     }
 }
