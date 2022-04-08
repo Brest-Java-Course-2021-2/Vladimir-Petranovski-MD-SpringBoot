@@ -1,5 +1,6 @@
 package com.epam.brest.rest.controller.dto;
 
+import com.epam.brest.model.Driver;
 import com.epam.brest.model.dto.DriverDto;
 import com.epam.brest.service_api.dto.DriverDtoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -50,10 +51,15 @@ public class DriverDtoController {
     @Operation(summary = "Allows to get list of all drivers"
             + " with a amount of assigning cars")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Everything's OK",
-                    content = @Content),
+            @ApiResponse(responseCode = "200", description = "Driver's list was provide",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = DriverDto.class))}),
             @ApiResponse(responseCode = "404", description =
-                    "Trying to get a non-existent list of drivers", content = @Content)})
+                    "Trying to get a non-existent list of drivers",
+                    content = @Content),
+            @ApiResponse(responseCode = "500", description =
+                    "Something is wrong! We'll sort this out soon.",
+                    content = @Content)})
     @GetMapping()
     public final Collection<DriverDto> findAllDriversWithCountCars() {
         LOG.info("Method findAllDriversWithCountCars() started of class {}",
@@ -69,10 +75,16 @@ public class DriverDtoController {
 
     @Operation(summary = "Allows to get list of all drivers within start work dates")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Everything's OK",
-                    content = @Content),
+            @ApiResponse(responseCode = "200", description =
+                    "Driver's list was provide you within range of dates",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = DriverDto.class))}),
             @ApiResponse(responseCode = "404", description =
-                    "Trying to get a non-existent list of drivers", content = @Content)})
+                    "Trying to get a non-existent list of drivers",
+                    content = @Content),
+            @ApiResponse(responseCode = "500", description =
+                    "Something is wrong! We'll sort this out soon.",
+                    content = @Content)})
     @GetMapping("/drivers-range")
     public Collection<DriverDto> showDriversListOnRange(
             @ModelAttribute final DriverDto driverDto) {

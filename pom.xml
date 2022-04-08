@@ -131,11 +131,11 @@
                 <version>${springfox-boot-starter.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-validator</artifactId>
-                <version>${hiberbate-validator.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>org.hibernate</groupId>-->
+<!--                <artifactId>hibernate-validator</artifactId>-->
+<!--                <version>${hiberbate-validator.version}</version>-->
+<!--            </dependency>-->
             <!-- test-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>

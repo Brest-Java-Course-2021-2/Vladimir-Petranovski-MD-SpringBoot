@@ -12,12 +12,14 @@ public class DriverDto {
      * @serialField driverId Integer.
      */
 
+    @Schema(name = "driverId", description = "Driver's Id", example = "1", hidden = true)
     private Integer driverId;
 
     /**
      * @serialField driverName String.
      */
 
+    @Schema(description = "Driver's name", example = "Uladzimir")
     private String driverName;
 
     /**
@@ -30,23 +32,29 @@ public class DriverDto {
      * @serialField driverSalary BigDecimal.
      */
 
+    @Schema(description = "Driver's salary", example = "8000")
     private BigDecimal driverSalary;
 
     /**
      * @serialField countOfCarsAssignedToDriver Integer.
      */
 
+    @Schema(description = "Amount of cars which assigning dy driver",
+           example = "3")
     private Integer countOfCarsAssignedToDriver;
 
     /**
      * @serialField fromDateChoose String.
      */
 
+    @Schema(hidden = true)
     private String fromDateChoose;
 
     /**
      * @serialField toDateChoose String.
      */
+
+    @Schema(hidden = true)
     private String toDateChoose;
 
     /**
