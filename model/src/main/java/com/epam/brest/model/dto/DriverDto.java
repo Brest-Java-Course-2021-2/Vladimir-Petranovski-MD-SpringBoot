@@ -26,6 +26,7 @@ public class DriverDto {
      * @serialField driverDateStartWork Instant.
      */
 
+    @Schema(description = "Driver's start work date", example = "2000-01-01T01:01:01.001Z")
     private Instant driverDateStartWork;
 
     /**

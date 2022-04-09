@@ -21,6 +21,7 @@
         <module>web-app</module>
 
         <module>test-db</module>
+        <module>swagger-openapi</module>
     </modules>
 
     <properties>
@@ -96,6 +97,11 @@
             </dependency>
             <dependency>
                 <groupId>com.epam.brest</groupId>
+                <artifactId>swagger-openapi</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.epam.brest</groupId>
                 <artifactId>test-db</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -136,13 +142,7 @@
                 <artifactId>springfox-boot-starter</artifactId>
                 <version>${springfox-boot-starter.version}</version>
             </dependency>
-
-<!--            <dependency>-->
-<!--                <groupId>org.hibernate</groupId>-->
-<!--                <artifactId>hibernate-validator</artifactId>-->
-<!--                <version>${hiberbate-validator.version}</version>-->
-<!--            </dependency>-->
-            <!-- test-->
+            <!--test-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>

@@ -1,9 +1,9 @@
 package com.epam.brest.rest.controller;
 
 import com.epam.brest.model.Car;
-import com.epam.brest.model.Driver;
 import com.epam.brest.service_api.CarService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -88,7 +88,8 @@ public class CarController {
                     "Something is wrong! We'll sort this out soon.",
                     content = @Content)})
     @GetMapping(value = "/{id}")
-    public final Car findCarById(@PathVariable final Integer id) {
+    public final Car findCarById(@PathVariable("id") @Parameter(description =
+            "Car's unique number", example = "2") final Integer id) {
         LOG.info("Method findCarById() with id: {} started of class {}",
                 id, getClass().getName());
 
@@ -145,7 +146,9 @@ public class CarController {
     @PatchMapping(value = "/{id}", consumes = {"application/json"},
             produces = {"application/json"})
     public ResponseEntity<Integer> updateCar(@RequestBody final Car car,
-                                             @PathVariable final Integer id) {
+                                             @PathVariable("id") @Parameter(description =
+                                                     "Car's unique number", example = "2")
+                                             final Integer id) {
         LOG.info("Method updateCar() with car: {} started of class {}",
                 car, getClass().getName());
 
@@ -177,7 +180,8 @@ public class CarController {
     @DeleteMapping(value = "/{id}",
             produces = "application/json")
     public ResponseEntity<Integer> deleteCar(
-            @PathVariable final Integer id) {
+            @PathVariable("id") @Parameter(description =
+                    "Car's unique number", example = "2") final Integer id) {
         LOG.info("Method updateCar() with id: {} started of class {}",
                 id, getClass().getName());
 

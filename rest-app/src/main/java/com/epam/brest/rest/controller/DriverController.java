@@ -4,6 +4,7 @@ import com.epam.brest.model.Driver;
 import com.epam.brest.service_api.DriverService;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -88,7 +89,8 @@ public class DriverController {
                     "Something is wrong! We'll sort this out soon.",
                     content = @Content)})
     @GetMapping(value = "/drivers/{id}")
-    public final Driver findDriverById(@PathVariable("id") final Integer id) {
+    public final Driver findDriverById(@PathVariable("id") @Parameter(description =
+            "Driver's unique number", example = "2") final Integer id) {
         LOG.info("Method findDriverById() with id {} started of class {}",
                 id, getClass().getName());
 
@@ -113,8 +115,7 @@ public class DriverController {
                     "Something is wrong! We'll sort this out soon.")})
     @PostMapping(value = "/drivers_dto", consumes = "application/json",
             produces = "application/json")
-    public ResponseEntity<Integer> saveDriver(
-            @RequestBody final Driver driver) {
+    public ResponseEntity<Integer> saveDriver(@RequestBody final Driver driver) {
         LOG.info("Method findDriverById() with driver {} started of class {}",
                 driver, getClass().getName());
 
@@ -145,9 +146,10 @@ public class DriverController {
             content = @Content)})
     @PatchMapping(value = "/drivers/{id}", consumes = "application/json",
             produces = "application/json")
-    public ResponseEntity<Integer> updateDriver(
-            @RequestBody final Driver driver,
-            @PathVariable final Integer id) {
+    public ResponseEntity<Integer> updateDriver(@RequestBody final Driver driver,
+                                                @PathVariable("id") @Parameter(description =
+                                                "Driver's unique number", example = "2")
+                                                final Integer id) {
         LOG.info("Method updateDriver() with id: {}"
                         + " and driver: {} started of class {}",
                 id, driver, getClass().getName());
@@ -179,8 +181,9 @@ public class DriverController {
                     "Something is wrong! We'll sort this out soon.")})
     @DeleteMapping(value = "/drivers/{id}",
             produces = "application/json")
-    public ResponseEntity<Integer> deleteDriverById(
-            @PathVariable final Integer id) {
+    public ResponseEntity<Integer> deleteDriverById(@PathVariable("id")
+                                                    @Parameter(description =
+                    "Driver's unique number", example = "2") final Integer id) {
         LOG.info("Method deleteDriverById() with id: {} started of class {}",
                 id, getClass().getName());
 
