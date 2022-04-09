@@ -9,7 +9,6 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.http.HttpClient;
 import java.util.Arrays;
 import java.util.List;
 
@@ -98,8 +97,6 @@ public class CarServiceRest implements CarService {
         LOG.info("Method saveDriver()"
                         + " with driver: {} started of class {}",
                 car, getClass().getName());
-//        ResponseEntity<Integer> responseEntity = restTemplate.postForEntity(
-//                url, car, Integer.class);
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));
         HttpEntity<Car> entity = new HttpEntity<>(car, headers);

@@ -97,8 +97,6 @@ public class DriverServiceRest implements DriverService {
         LOG.info("Method saveDriver()"
                         + " with driver: {} started of class {}",
                 driver, getClass().getName());
-//        ResponseEntity<Integer> responseEntity = restTemplate.postForEntity(
-//                url + "_dto", driver, Integer.class);
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));
         HttpEntity<Driver> entity = new HttpEntity<>(driver, headers);

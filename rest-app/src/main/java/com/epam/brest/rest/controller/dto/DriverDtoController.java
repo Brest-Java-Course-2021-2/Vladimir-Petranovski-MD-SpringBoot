@@ -12,18 +12,17 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.validator.constraints.Length;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
+//@Validated
 @RestController
-@Validated
 @CrossOrigin
-@RequestMapping("/drivers_dto")
 @Tag(name = "driver-dto-controller",
         description = "Allows to choose all drivers with assigning cars"
                 + " and sort on start work date")
+@RequestMapping("/drivers_dto")
 public class DriverDtoController {
 
     public static final Logger LOG = LogManager.getLogger(DriverDtoController.class);

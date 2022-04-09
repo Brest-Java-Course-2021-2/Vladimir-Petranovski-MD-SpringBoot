@@ -44,20 +44,6 @@ public class DriverDto {
     private Integer countOfCarsAssignedToDriver;
 
     /**
-     * @serialField fromDateChoose String.
-     */
-
-    @Schema(hidden = true)
-    private String fromDateChoose;
-
-    /**
-     * @serialField toDateChoose String.
-     */
-
-    @Schema(hidden = true)
-    private String toDateChoose;
-
-    /**
      * Constructor without parameters.
      */
 
@@ -204,46 +190,6 @@ public class DriverDto {
         this.countOfCarsAssignedToDriver = countOfCarsAssignedToDriver;
     }
 
-    /**
-     * Getter for getFromDateChoose.
-     *
-     * @return getFromDateChoose.
-     */
-
-    public String getFromDateChoose() {
-        return fromDateChoose;
-    }
-
-    /**
-     * Setter for fromDateChoose.
-     *
-     * @param fromDateChoose String.
-     */
-
-    public void setFromDateChoose(final String fromDateChoose) {
-        this.fromDateChoose = fromDateChoose;
-    }
-
-    /**
-     * Getter for getToDateChoose.
-     *
-     * @return getToDateChoose.
-     */
-
-    public String getToDateChoose() {
-        return toDateChoose;
-    }
-
-    /**
-     * Setter for toDateChoose.
-     *
-     * @param toDateChoose String.
-     */
-
-    public void setToDateChoose(final String toDateChoose) {
-        this.toDateChoose = toDateChoose;
-    }
-
     @Override
     public String toString() {
         return "DriverDto{"
@@ -252,8 +198,6 @@ public class DriverDto {
                 + ", driverDateStartWork=" + driverDateStartWork
                 + ", driverSalary=" + driverSalary
                 + ", countOfCarsAssignedToDriver=" + countOfCarsAssignedToDriver
-                + ", fromDateChoose=" + fromDateChoose
-                + ", toDateChoose=" + toDateChoose
                 + '}';
     }
 }
