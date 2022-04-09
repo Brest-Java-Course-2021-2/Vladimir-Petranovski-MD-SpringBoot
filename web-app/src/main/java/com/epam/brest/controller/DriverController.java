@@ -174,7 +174,7 @@ public class DriverController {
     /**
      * Goto choice form for start work date.
      *
-//     * @param driverDto of DriverDto.
+     * @param model of Model.
      * @return view name.
      */
 
@@ -190,7 +190,8 @@ public class DriverController {
     /**
      * Goto driver's list page after choice on start work date.
      *
-//     * @param driverDto of DriverDto class.
+     * @param fromDateChoose of String class.
+     * @param toDateChoose of String class.
      * @param model of Model class.
      * @return view name.
      */

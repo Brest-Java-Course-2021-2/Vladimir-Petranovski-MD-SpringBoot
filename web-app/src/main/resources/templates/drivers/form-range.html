@@ -58,12 +58,10 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <form id="sortDriverForm" action="drivers/form-range.html" th:action="@{/drivers_dto/drivers-range}" th:method="@{get}">
-<!--                              th:object="{#date}"-->
-<!--                              action="drivers/form-range.html"-->
-<!--                              th:action="@{/drivers_dto/drivers-range}"-->
-<!--                              th:method="@{get}">-->
-
+                        <form id="sortDriverForm"
+                              action="drivers/form-range.html"
+                              th:action="@{/drivers_dto/drivers-range}"
+                              th:method="@{get}">
                             <div class="mb-3">
                                 <label class="form-label"
                                        for="field_fromDate">From date</label>
@@ -72,7 +70,6 @@
                                        type="datetime-local"
                                        th:name="fromDateChoose"
                                        th:value="${fromDateChoose}"/>
-<!--                                       th:field="*{fromDateChoose}"/>-->
                             </div>
                             <div class="mb-3">
                                 <label class="form-label"
