@@ -78,7 +78,8 @@
                                 <input class="form-control "
                                        id="field_carModel"
                                        type="text" value="Car model"
-                                       th:field="*{carModel}"/>
+                                       th:field="*{carModel}"
+                                       th:placeholder="AUDI"/>
                                 <div th:if="${#fields.hasErrors('carModel')}"
                                      class="text-danger"
                                      th:errors="*{carModel}">[errors]
@@ -90,7 +91,8 @@
                                 <input class="form-control "
                                        id="field_driver_id"
                                        type="text" value="Unique driver's number"
-                                       th:field="*{driverId}"/>
+                                       th:field="*{driverId}"
+                                       th:placeholder="'2'"/>
                                 <div th:if="${#fields.hasErrors('driverId')}"
                                      class="text-danger"
                                      th:errors="*{driverId}">[errors]

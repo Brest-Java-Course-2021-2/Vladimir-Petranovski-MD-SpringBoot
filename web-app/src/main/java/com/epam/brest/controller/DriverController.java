@@ -2,7 +2,6 @@ package com.epam.brest.controller;
 
 import com.epam.brest.controller.validator.DriverValidator;
 import com.epam.brest.model.Driver;
-import com.epam.brest.model.dto.DriverDto;
 import com.epam.brest.service_api.DriverService;
 import com.epam.brest.service_api.dto.DriverDtoService;
 import org.apache.logging.log4j.LogManager;
@@ -175,35 +174,40 @@ public class DriverController {
     /**
      * Goto choice form for start work date.
      *
-     * @param driverDto of DriverDto.
+     * @param model of Model.
      * @return view name.
      */
 
     @GetMapping("/drivers_dto/form-range")
-    public String showFormForChoseDateRange(
-            @ModelAttribute("driver") final DriverDto driverDto) {
+    public String showFormForChoseDateRange(final Model model) {
         LOG.info("Method showFormForChoseDateRange() started of class {}",
                 getClass().getName());
+        model.addAttribute("fromDateChoose", "");
+        model.addAttribute("toDateChoose", "");
         return "drivers/form-range";
     }
 
     /**
      * Goto driver's list page after choice on start work date.
      *
-     * @param driverDto of DriverDto class.
+     * @param fromDateChoose of String class.
+     * @param toDateChoose of String class.
      * @param model of Model class.
      * @return view name.
      */
 
     @GetMapping("/drivers_dto/drivers-range")
     public String showDriversListOnRange(
-            @ModelAttribute("driver") final DriverDto driverDto,
+            @RequestParam(value = "fromDateChoose", required = false)
+            final String fromDateChoose,
+            @RequestParam(value = "toDateChoose", required = false)
+            final String toDateChoose,
             final Model model) {
         LOG.info("Method showDriversListOnRange() started of class {}",
                 getClass().getName());
         model.addAttribute("driverList",
-                driverDtoService.chooseDriverOnDateRange(driverDto.getFromDateChoose(),
-                        driverDto.getToDateChoose()));
+                driverDtoService.chooseDriverOnDateRange(fromDateChoose,
+                        toDateChoose));
         return "drivers/drivers-range";
     }
 }

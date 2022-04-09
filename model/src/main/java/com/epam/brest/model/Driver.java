@@ -1,33 +1,40 @@
 package com.epam.brest.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Objects;
 
+@Schema(name = "Driver", description = "Driver")
 public class Driver {
 
     /**
      * @serialField driverId Integer.
      */
 
+    @Schema(name = "driverId", description = "driver's unique number", hidden = true)
     private Integer driverId;
 
     /**
      * @serialField driverName String.
      */
 
+    @Schema(name = "driverName", description = "driver's name", example = "Uladzimir")
     private String driverName;
 
     /**
      * @serialField driverDateStartWork Instant.
      */
 
+    @Schema(description = "Driver's start work date", example = "2000-01-01T01:01:01.001Z")
     private Instant driverDateStartWork;
 
     /**
      * @serialField driverSalary BigDecimal.
      */
 
+    @Schema(description = "driver's salary", example = "8000")
     private BigDecimal driverSalary;
 
     /**

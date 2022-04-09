@@ -78,7 +78,8 @@
                                 <input class="form-control "
                                        id="field_driverName"
                                        type="text" value="Driver name"
-                                       th:field="*{driverName}"/>
+                                       th:field="*{driverName}"
+                                       th:placeholder="Uladzimir"/>
                                 <div th:if="${#fields.hasErrors('driverName')}"
                                      class="text-danger"
                                      th:errors="*{driverName}">[errors]
@@ -90,7 +91,8 @@
                                 <input class="form-control "
                                        id="field_dateStartWork"
                                        type="text" value="Date when got job"
-                                       th:field="*{driverDateStartWork}"/>
+                                       th:field="*{driverDateStartWork}"
+                                       th:placeholder="'2000-01-01T01:01:01.000Z'"/>
                                 <div th:if="${#fields.hasErrors('driverDateStartWork')}"
                                      class="text-danger"
                                      th:errors="*{driverDateStartWork}">[errors]
@@ -102,7 +104,8 @@
                                 <input class="form-control "
                                        id="field_salary"
                                        type="text" value="Salary"
-                                       th:field="*{driverSalary}"/>
+                                       th:field="*{driverSalary}"
+                                th:placeholder="'8000'"/>
                                 <div th:if="${#fields.hasErrors('driverSalary')}"
                                      class="text-danger"
                                      th:errors="*{driverSalary}">[errors]

@@ -4,6 +4,9 @@
 
 # Vladimir-Petranovski-MD-SpringBoot
 
+<sub>Developed by <a href="https://github.com/Brest-Java-Course-2021-2/Vladimir-Petranovski-MD-SpringBoot">Uladzimir Petranouski</a>
+
+
 This is sample 'Motor depot' web application.
 
 ## Project Information
@@ -61,8 +64,11 @@ In the root directory of the project:
 ```bash
 $ java -jar rest-app/target/rest-app-1.0-SNAPSHOT.jar
 ```
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/18999675-2eae966d-2b48-4890-91ff-a0d7f181caa6?action=collection%2Ffork&collection-url=entityId%3D18999675-2eae966d-2b48-4890-91ff-a0d7f181caa6%26entityType%3Dcollection%26workspaceId%3D56c614c7-7bb5-44fe-b171-746dba387b30)
+
 The rest application will be accessible at [http://localhost:8088](http://localhost:8088).
-The swagger ui will be accessible at [http://localhost:8088](http://localhost:8088/swagger-ui/)
+The swagger ui will be accessible at [http://localhost:8088](http://localhost:8088/swagger-ui/).
 
 ## Web
 
@@ -73,7 +79,7 @@ In the root directory of the project:
 ```bash
 $ java -jar web-app/target/web-app-1.0-SNAPSHOT.jar
 ```
-The rest application will be accessible at [http://localhost:8080](http://localhost:8080).
+The web application will be accessible at [http://localhost:8080](http://localhost:8080).
 
 ## Available REST endpoints
 

@@ -1,50 +1,48 @@
 package com.epam.brest.model.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.math.BigDecimal;
 import java.time.Instant;
 
+@Schema(name = "driver-dto", description = "Driver like data transfer object")
 public class DriverDto {
 
     /**
      * @serialField driverId Integer.
      */
 
+    @Schema(name = "driverId", description = "Driver's Id", example = "1", hidden = true)
     private Integer driverId;
 
     /**
      * @serialField driverName String.
      */
 
+    @Schema(description = "Driver's name", example = "Uladzimir")
     private String driverName;
 
     /**
      * @serialField driverDateStartWork Instant.
      */
 
+    @Schema(description = "Driver's start work date", example = "2000-01-01T01:01:01.001Z")
     private Instant driverDateStartWork;
 
     /**
      * @serialField driverSalary BigDecimal.
      */
 
+    @Schema(description = "Driver's salary", example = "8000")
     private BigDecimal driverSalary;
 
     /**
      * @serialField countOfCarsAssignedToDriver Integer.
      */
 
+    @Schema(description = "Amount of cars which assigning dy driver",
+           example = "3")
     private Integer countOfCarsAssignedToDriver;
-
-    /**
-     * @serialField fromDateChoose String.
-     */
-
-    private String fromDateChoose;
-
-    /**
-     * @serialField toDateChoose String.
-     */
-    private String toDateChoose;
 
     /**
      * Constructor without parameters.
@@ -193,46 +191,6 @@ public class DriverDto {
         this.countOfCarsAssignedToDriver = countOfCarsAssignedToDriver;
     }
 
-    /**
-     * Getter for getFromDateChoose.
-     *
-     * @return getFromDateChoose.
-     */
-
-    public String getFromDateChoose() {
-        return fromDateChoose;
-    }
-
-    /**
-     * Setter for fromDateChoose.
-     *
-     * @param fromDateChoose String.
-     */
-
-    public void setFromDateChoose(final String fromDateChoose) {
-        this.fromDateChoose = fromDateChoose;
-    }
-
-    /**
-     * Getter for getToDateChoose.
-     *
-     * @return getToDateChoose.
-     */
-
-    public String getToDateChoose() {
-        return toDateChoose;
-    }
-
-    /**
-     * Setter for toDateChoose.
-     *
-     * @param toDateChoose String.
-     */
-
-    public void setToDateChoose(final String toDateChoose) {
-        this.toDateChoose = toDateChoose;
-    }
-
     @Override
     public String toString() {
         return "DriverDto{"
@@ -241,8 +199,6 @@ public class DriverDto {
                 + ", driverDateStartWork=" + driverDateStartWork
                 + ", driverSalary=" + driverSalary
                 + ", countOfCarsAssignedToDriver=" + countOfCarsAssignedToDriver
-                + ", fromDateChoose=" + fromDateChoose
-                + ", toDateChoose=" + toDateChoose
                 + '}';
     }
 }

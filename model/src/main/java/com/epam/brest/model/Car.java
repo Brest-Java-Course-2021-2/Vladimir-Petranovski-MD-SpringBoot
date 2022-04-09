@@ -1,25 +1,32 @@
 package com.epam.brest.model;
 
-import java.util.Objects;
+import io.swagger.v3.oas.annotations.media.Schema;
 
+import java.util.Objects;
+@Schema(name = "Car", description = "Car")
 public class Car {
 
     /**
      * @serialField carId Integer.
      */
 
+    @Schema(hidden = true)
     private Integer carId;
 
     /**
      * @serialField carModel String.
      */
 
+    @Schema(name = "carModel", description = "car's model", example = "AUDI")
     private String carModel;
 
     /**
      * @serialField driverId Integer.
      */
 
+    @Schema(name = "driverId", description =
+            "driver's unique number by which assigning this car",
+            example = "1")
     private Integer driverId;
 
     /**
