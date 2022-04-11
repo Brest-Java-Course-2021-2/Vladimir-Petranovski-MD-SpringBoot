@@ -20,7 +20,7 @@
         <module>service-rest</module>
         <module>web-app</module>
 
-        <module>test-db</module>
+<!--        <module>test-db</module>-->
         <module>swagger-openapi</module>
     </modules>
 
@@ -100,11 +100,11 @@
                 <artifactId>swagger-openapi</artifactId>
                 <version>${project.version}</version>
             </dependency>
-            <dependency>
-                <groupId>com.epam.brest</groupId>
-                <artifactId>test-db</artifactId>
-                <version>${project.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>com.epam.brest</groupId>-->
+<!--                <artifactId>test-db</artifactId>-->
+<!--                <version>${project.version}</version>-->
+<!--            </dependency>-->
 
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -168,6 +168,59 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                    <spring.profiles.active>dev</spring.profiles.active>
+            </properties>
+            <dependencies>
+
+            </dependencies>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+
+        <profile>
+            <id>test</id>
+            <properties>
+                <spring.profiles.active>test</spring.profiles.active>
+            </properties>
+            <modules>
+                <module>test-db</module>
+            </modules>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.epam.brest</groupId>
+                        <artifactId>test-db</artifactId>
+                        <version>${project.version}</version>
+                        <scope>compile</scope>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+<!--            <dependencies>-->
+<!--                <dependency>-->
+<!--                    <groupId>com.epam.brest</groupId>-->
+<!--                    <artifactId>test-db</artifactId>-->
+<!--                    <version>${project.version}</version>-->
+<!--                    <scope>compile</scope>-->
+<!--                </dependency>-->
+<!--            </dependencies>-->
+        </profile>
+
+        <profile>
+            <id>prod</id>
+            <properties>
+                <spring.profiles.active>prod</spring.profiles.active>
+            </properties>
+            <dependencies>
+
+            </dependencies>
+        </profile>
+    </profiles>
 
     <build>
         <pluginManagement>

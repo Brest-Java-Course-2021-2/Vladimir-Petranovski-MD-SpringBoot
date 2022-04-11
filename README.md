@@ -41,7 +41,10 @@ This is sample 'Motor depot' web application.
 ```bash
 $ git clone https://github.com/Brest-Java-Course-2021-2/Vladimir-Petranovski-MD-SpringBoot
 $ cd Vladimir-Petranovski-MD-SpringBoot
-$ mvn clean install
+Run for production:
+$ mvn clean install -Pprod
+Run for testing:
+$ mvn clean install -Ptest
 ```
 
 ## Run tests:
