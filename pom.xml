@@ -20,8 +20,9 @@
         <module>service-rest</module>
         <module>web-app</module>
 
-<!--        <module>test-db</module>-->
+        <module>test-db</module>
         <module>swagger-openapi</module>
+        <module>dev-db</module>
     </modules>
 
     <properties>
@@ -51,6 +52,7 @@
         <json-path.version>2.0.0</json-path.version>
         <httpclient.version>4.5.6</httpclient.version>
         <spring-boot-starter-validation.version>2.6.4</spring-boot-starter-validation.version>
+        <postgresql.version>42.3.3</postgresql.version>
     </properties>
 
     <dependencyManagement>
@@ -100,11 +102,16 @@
                 <artifactId>swagger-openapi</artifactId>
                 <version>${project.version}</version>
             </dependency>
-<!--            <dependency>-->
-<!--                <groupId>com.epam.brest</groupId>-->
-<!--                <artifactId>test-db</artifactId>-->
-<!--                <version>${project.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.epam.brest</groupId>
+                <artifactId>test-db</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.epam.brest</groupId>
+                <artifactId>dev-db</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -135,6 +142,12 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-validation</artifactId>
                 <version>${spring-boot-starter-validation.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-dbcp2</artifactId>
+                <version>2.9.0</version>
             </dependency>
             <!--swagger-->
             <dependency>
@@ -175,12 +188,34 @@
             <properties>
                     <spring.profiles.active>dev</spring.profiles.active>
             </properties>
-            <dependencies>
-
-            </dependencies>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
+            <modules>
+                <module>dev-db</module>
+            </modules>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.epam.brest</groupId>
+                        <artifactId>dev-db</artifactId>
+                        <version>${project.version}</version>
+                        <scope>compile</scope>
+                    </dependency>
+<!--                    <dependency>-->
+<!--                        <groupId>org.postgresql</groupId>-->
+<!--                        <artifactId>postgresql</artifactId>-->
+<!--                        <version>${postgresql.version}</version>-->
+<!--                    </dependency>-->
+                </dependencies>
+            </dependencyManagement>
+<!--            <dependencies>-->
+<!--                <dependency>-->
+<!--                    <groupId>org.postgresql</groupId>-->
+<!--                    <artifactId>postgresql</artifactId>-->
+<!--                    <version>42.3.3</version>-->
+<!--                </dependency>-->
+<!--            </dependencies>-->
+<!--            <activation>-->
+<!--                <activeByDefault>true</activeByDefault>-->
+<!--            </activation>-->
         </profile>
 
         <profile>
@@ -199,16 +234,13 @@
                         <version>${project.version}</version>
                         <scope>compile</scope>
                     </dependency>
+<!--                    <dependency>-->
+<!--                        <groupId>com.h2database</groupId>-->
+<!--                        <artifactId>h2</artifactId>-->
+<!--                        <version>1.4.200</version>-->
+<!--                    </dependency>-->
                 </dependencies>
             </dependencyManagement>
-<!--            <dependencies>-->
-<!--                <dependency>-->
-<!--                    <groupId>com.epam.brest</groupId>-->
-<!--                    <artifactId>test-db</artifactId>-->
-<!--                    <version>${project.version}</version>-->
-<!--                    <scope>compile</scope>-->
-<!--                </dependency>-->
-<!--            </dependencies>-->
         </profile>
 
         <profile>
@@ -223,6 +255,12 @@
     </profiles>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <pluginManagement>
             <plugins>
                 <plugin>

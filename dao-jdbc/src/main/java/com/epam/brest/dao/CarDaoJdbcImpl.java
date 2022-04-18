@@ -89,7 +89,7 @@ public class CarDaoJdbcImpl implements CarDao {
                         .addValue("driverId", car.getDriverId());
         KeyHolder keyHolder = new GeneratedKeyHolder();
         namedParameterJdbcTemplate.update(CAR_SAVE,
-                sqlParameterSource, keyHolder);
+                sqlParameterSource, keyHolder, new String[]{"car_id"});
         return (Integer) keyHolder.getKey();
     }
 

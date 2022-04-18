@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.sql.Timestamp;
+import java.sql.Types;
 import java.util.List;
 
 @Service
@@ -85,7 +87,9 @@ public class DriverDtoServiceRest implements DriverDtoService {
         UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromHttpUrl(
                 url + "/drivers-range")
                 .queryParam("fromDateChoose", fromDateChoose)
+//                .queryParam("fromDateChoose", Timestamp.valueOf(fromDateChoose), Types.TIMESTAMP)
                 .queryParam("toDateChoose", toDateChoose);
+//                .queryParam("toDateChoose", Timestamp.valueOf(toDateChoose), Types.TIMESTAMP);
         ParameterizedTypeReference<List<DriverDto>> typeReference =
                 new ParameterizedTypeReference<>(){};
         ResponseEntity<List<DriverDto>> responseEntity =

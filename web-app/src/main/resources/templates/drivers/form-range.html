@@ -67,7 +67,8 @@
                                        for="field_fromDate">From date</label>
                                 <input class="form-control "
                                        id="field_fromDate"
-                                       type="datetime-local"
+                                       type="text"
+                                       th:placeholder="'1996-05-01T10:20:30.329Z'"
                                        th:name="fromDateChoose"
                                        th:value="${fromDateChoose}"/>
                             </div>
@@ -76,7 +77,8 @@
                                        for="field_toDate">To date</label>
                                 <input class="form-control "
                                        id="field_toDate"
-                                       type="datetime-local"
+                                       type="text"
+                                       th:placeholder="'2022-03-29T12:43:45.987Z'"
                                        th:name="toDateChoose"
                                        th:value="${toDateChoose}"/>
                                 </div>

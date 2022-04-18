@@ -69,12 +69,12 @@ public class Queries {
      */
 
     public static final String DRIVER_FIND_DRIVERS_ON_RANGE_DATE =
-            "SELECT driverId, driverName, driverDateStartWork, driverSalary,"
-                    + " countOfCarsAssignedToDriver FROM (SELECT d.driver_id as driverId,"
+            "SELECT range.driverId, range.driverName, range.driverDateStartWork, range.driverSalary,"
+                    + " range.countOfCarsAssignedToDriver FROM (SELECT d.driver_id as driverId,"
                     + " d.name as driverName, d.dateStartWork as driverDateStartWork,"
                     + " d.salary as driverSalary, COUNT(c.car_id) as countOfCarsAssignedToDriver"
                     + " FROM driver d LEFT JOIN car c ON d.driver_id=c.driver_id GROUP BY"
-                    + " d.driver_id) WHERE driverDateStartWork BETWEEN"
+                    + " d.driver_id) AS range WHERE range.driverDateStartWork BETWEEN"
                     + " :fromDateChoose AND :toDateChoose";
 
     /**
