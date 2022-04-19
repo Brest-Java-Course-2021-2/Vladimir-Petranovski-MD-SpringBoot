@@ -16,7 +16,8 @@ import java.util.List;
 @ControllerAdvice
 public class CustomExceptionHandlerCar extends ResponseEntityExceptionHandler {
 
-    public static final Logger LOG = LogManager.getLogger(CustomExceptionHandlerCar.class);
+    public static final Logger LOG =
+            LogManager.getLogger(CustomExceptionHandlerCar.class);
 
     /**
      * Field CAR_NOT_FOUND.

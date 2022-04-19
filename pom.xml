@@ -28,7 +28,6 @@
     <properties>
         <java.version>11</java.version>
         <spring-boot.version>2.5.7</spring-boot.version>
-        <springfox-boot-starter.version>3.0.0</springfox-boot-starter.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <junit.version>5.4.0</junit.version>
         <log4j2.version>2.14.1</log4j2.version>
@@ -51,8 +50,6 @@
         <springfox-swagger-ui.version>3.0.0</springfox-swagger-ui.version>
         <json-path.version>2.0.0</json-path.version>
         <httpclient.version>4.5.6</httpclient.version>
-        <spring-boot-starter-validation.version>2.6.4</spring-boot-starter-validation.version>
-        <postgresql.version>42.3.3</postgresql.version>
     </properties>
 
     <dependencyManagement>
@@ -141,19 +138,18 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-validation</artifactId>
-                <version>${spring-boot-starter-validation.version}</version>
+                <version>${spring-boot.version}</version>
             </dependency>
-
             <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-dbcp2</artifactId>
-                <version>2.9.0</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-jdbc</artifactId>
+                <version>${spring-boot.version}</version>
             </dependency>
             <!--swagger-->
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-boot-starter</artifactId>
-                <version>${springfox-boot-starter.version}</version>
+                <version>${springfox-swagger-ui.version}</version>
             </dependency>
             <!--test-->
             <dependency>
@@ -191,28 +187,6 @@
             <modules>
                 <module>dev-db</module>
             </modules>
-            <dependencyManagement>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.epam.brest</groupId>
-                        <artifactId>dev-db</artifactId>
-                        <version>${project.version}</version>
-                        <scope>compile</scope>
-                    </dependency>
-<!--                    <dependency>-->
-<!--                        <groupId>org.postgresql</groupId>-->
-<!--                        <artifactId>postgresql</artifactId>-->
-<!--                        <version>${postgresql.version}</version>-->
-<!--                    </dependency>-->
-                </dependencies>
-            </dependencyManagement>
-<!--            <dependencies>-->
-<!--                <dependency>-->
-<!--                    <groupId>org.postgresql</groupId>-->
-<!--                    <artifactId>postgresql</artifactId>-->
-<!--                    <version>42.3.3</version>-->
-<!--                </dependency>-->
-<!--            </dependencies>-->
 <!--            <activation>-->
 <!--                <activeByDefault>true</activeByDefault>-->
 <!--            </activation>-->
@@ -226,21 +200,6 @@
             <modules>
                 <module>test-db</module>
             </modules>
-            <dependencyManagement>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.epam.brest</groupId>
-                        <artifactId>test-db</artifactId>
-                        <version>${project.version}</version>
-                        <scope>compile</scope>
-                    </dependency>
-<!--                    <dependency>-->
-<!--                        <groupId>com.h2database</groupId>-->
-<!--                        <artifactId>h2</artifactId>-->
-<!--                        <version>1.4.200</version>-->
-<!--                    </dependency>-->
-                </dependencies>
-            </dependencyManagement>
         </profile>
 
         <profile>
@@ -256,10 +215,10 @@
 
     <build>
         <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
+<!--            <resource>-->
+<!--                <directory>src/main/resources</directory>-->
+<!--                <filtering>true</filtering>-->
+<!--            </resource>-->
         </resources>
         <pluginManagement>
             <plugins>

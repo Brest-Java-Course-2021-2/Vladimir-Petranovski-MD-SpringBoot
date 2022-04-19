@@ -44,7 +44,10 @@ public class SpringFoxConfig {
                 "Motor depot is a web application that allows to manage car park.",
                 new VersionController().version(),
                 "Here are terms of service.",
-                new Contact("Vladimir Petranouski", "www.example.com", "vpetranovskij@gmail.com"),
-                "Apache 2.0", "https://www.apache.org/licenses/LICENSE-2.0", Collections.emptyList());
+                new Contact("Vladimir Petranouski",
+                        "www.example.com", "vpetranovskij@gmail.com"),
+                "Apache 2.0",
+                "https://www.apache.org/licenses/LICENSE-2.0",
+                Collections.emptyList());
     }
 }

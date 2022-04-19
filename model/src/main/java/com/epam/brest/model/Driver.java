@@ -1,8 +1,6 @@
 package com.epam.brest.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -29,9 +27,8 @@ public class Driver {
      * @serialField driverDateStartWork Instant.
      */
 
-    @Schema(description = "Driver's start work date", example = "2000-01-01T01:01:01.001Z")
-//    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
-//    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+    @Schema(description = "Driver's start work date",
+            example = "2000-01-01T01:01:01.001Z")
     private Instant driverDateStartWork;
 
     /**

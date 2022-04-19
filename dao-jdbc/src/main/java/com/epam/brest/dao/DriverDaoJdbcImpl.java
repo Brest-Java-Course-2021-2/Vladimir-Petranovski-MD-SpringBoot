@@ -5,7 +5,6 @@ import com.epam.brest.dao_api.DriverDao;
 import com.epam.brest.model.Driver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.postgresql.jdbc.TimestampUtils;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -96,12 +95,12 @@ public class DriverDaoJdbcImpl implements DriverDao {
                         .addValue("driverName",
                                 driver.getDriverName())
                         .addValue("driverDateStartWork",
-//                                TimestampUtils.parseBackendTimeZone(driver.getDriverDateStartWork().toString()))
-                                Timestamp.from(driver.getDriverDateStartWork()), Types.TIMESTAMP)
-//                        driver.getDriverDateStartWork())
+                                Timestamp.from(driver.getDriverDateStartWork()),
+                                Types.TIMESTAMP)
                         .addValue("driverSalary", driver.getDriverSalary());
         KeyHolder keyHolder = new GeneratedKeyHolder();
-        namedParameterJdbcTemplate.update(DRIVER_SAVE, sqlParameterSource, keyHolder, new String[]{"driver_id"});
+        namedParameterJdbcTemplate.update(DRIVER_SAVE, sqlParameterSource, keyHolder,
+                                          new String[]{"driver_id"});
         return (Integer) keyHolder.getKey();
     }
 
@@ -125,9 +124,7 @@ public class DriverDaoJdbcImpl implements DriverDao {
                 .addValue("driverName",
                         driver.getDriverName())
                 .addValue("driverDateStartWork",
-//                        driver.getDriverDateStartWork())
-        Timestamp.from(driver.getDriverDateStartWork()), Types.TIMESTAMP)
-
+                          Timestamp.from(driver.getDriverDateStartWork()), Types.TIMESTAMP)
                 .addValue("driverSalary", driver.getDriverSalary());
         return namedParameterJdbcTemplate.update(
                 DRIVER_UPDATE_BY_ID, sqlParameterSource);

@@ -11,8 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.sql.Timestamp;
-import java.sql.Types;
 import java.util.List;
 
 @Service
@@ -43,7 +41,7 @@ public class DriverDtoServiceRest implements DriverDtoService {
     /**
      * Constructor.
      *
-     * @param enterUrl String.
+     * @param enterUrl          String.
      * @param enterRestTemplate RestTemplate.
      */
 
@@ -65,7 +63,8 @@ public class DriverDtoServiceRest implements DriverDtoService {
         LOG.info("Method findAllDriverWithCountCars() started {}",
                 getClass().getName());
         ParameterizedTypeReference<List<DriverDto>> typeReference =
-                new ParameterizedTypeReference<>() {};
+                new ParameterizedTypeReference<>() {
+                };
         ResponseEntity<List<DriverDto>> responseEntity = restTemplate
                 .exchange(url, HttpMethod.GET, null, typeReference);
         return responseEntity.getBody();
@@ -85,16 +84,15 @@ public class DriverDtoServiceRest implements DriverDtoService {
                         + " with fromDate {} and toDate {} started {}",
                 fromDateChoose, toDateChoose, getClass().getName());
         UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromHttpUrl(
-                url + "/drivers-range")
+                        url + "/drivers-range")
                 .queryParam("fromDateChoose", fromDateChoose)
-//                .queryParam("fromDateChoose", Timestamp.valueOf(fromDateChoose), Types.TIMESTAMP)
                 .queryParam("toDateChoose", toDateChoose);
-//                .queryParam("toDateChoose", Timestamp.valueOf(toDateChoose), Types.TIMESTAMP);
         ParameterizedTypeReference<List<DriverDto>> typeReference =
-                new ParameterizedTypeReference<>(){};
+                new ParameterizedTypeReference<>() {
+                };
         ResponseEntity<List<DriverDto>> responseEntity =
                 restTemplate.exchange(uriComponentsBuilder.toUriString(),
-                        HttpMethod.GET,null, typeReference);
+                        HttpMethod.GET, null, typeReference);
         return responseEntity.getBody();
     }
 }

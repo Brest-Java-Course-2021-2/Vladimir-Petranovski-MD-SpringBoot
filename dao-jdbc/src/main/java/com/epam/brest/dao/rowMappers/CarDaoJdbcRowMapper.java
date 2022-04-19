@@ -15,8 +15,8 @@ public class CarDaoJdbcRowMapper implements RowMapper<Car> {
      *
      * @param resultSet ResultSet.
      * @param i int.
-     * @return car mapRow.
-     * @throws SQLException
+     * @return car Car class.
+     * @throws SQLException SQLException class.
      */
 
     @Override
