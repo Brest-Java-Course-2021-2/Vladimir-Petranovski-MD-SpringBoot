@@ -42,6 +42,9 @@ class DriverDaoJdbcImplTest {
     private ArgumentCaptor<RowMapper<Driver>> captorRowMapper;
 
     @Captor
+    private ArgumentCaptor<KeyHolder> captorKeyHolder;
+
+    @Captor
     private ArgumentCaptor<SqlParameterSource> sqlParameterSourceArgumentCaptor;
 
     private Driver driverOne;
@@ -56,10 +59,10 @@ class DriverDaoJdbcImplTest {
 
     @BeforeEach
     void setUp() {
-        driverOne = new Driver(1, "VASIA", Instant.parse("1998-10-01T12:02:01.8472Z"), new BigDecimal(500));
-        driverTwo = new Driver(2, "VOVA", Instant.parse("2010-10-11T08:30:30.1234Z"), new BigDecimal(850));
-        driverThree = new Driver(3, "VITALIY", Instant.parse("2005-04-28T14:44:50.5327Z"), new BigDecimal(650));
-        driverTest = new Driver(4, "SACHA", Instant.parse("2012-09-28T14:44:50.5327Z"), new BigDecimal(320));
+        driverOne = new Driver(1, "VASIA", Instant.parse("1998-10-01T12:02:01.847Z"), new BigDecimal(500));
+        driverTwo = new Driver(2, "VOVA", Instant.parse("2010-10-11T08:30:30.123Z"), new BigDecimal(850));
+        driverThree = new Driver(3, "VITALIY", Instant.parse("2005-04-28T14:44:50.532Z"), new BigDecimal(650));
+        driverTest = new Driver(4, "SACHA", Instant.parse("2012-09-28T14:44:50.532Z"), new BigDecimal(320));
 
         driversListSrc = new ArrayList<>();
         driversListSrc.add(driverOne);
@@ -115,12 +118,12 @@ class DriverDaoJdbcImplTest {
             KeyHolder keyHolder = a.getArgument(2);
             keyHolder.getKeyList().add(Map.of("", key));
             return null;
-        }).when(namedParameterJdbcTemplate).update(any(),any(),any());
+        }).when(namedParameterJdbcTemplate).update(any(),any(),any(), any());
         Integer result = driverDaoJdbc.saveDriver(driverTest);
         assertEquals(key, result);
         verify(namedParameterJdbcTemplate).queryForObject(eq(DRIVER_CHECK_UNIQUE_NAME), sqlParameterSourceArgumentCaptor.capture(), eq(Integer.class));
-        verify(namedParameterJdbcTemplate, times(1)).update(eq(DRIVER_SAVE), sqlParameterSourceArgumentCaptor.capture(), any(KeyHolder.class));
-        verify(namedParameterJdbcTemplate).update(eq(DRIVER_SAVE), sqlParameterSourceArgumentCaptor.capture(), any(KeyHolder.class));
+        verify(namedParameterJdbcTemplate, times(1)).update(eq(DRIVER_SAVE), sqlParameterSourceArgumentCaptor.capture(), captorKeyHolder.capture(), any());
+        verify(namedParameterJdbcTemplate).update(eq(DRIVER_SAVE), sqlParameterSourceArgumentCaptor.capture(), captorKeyHolder.capture(), any());
         List<SqlParameterSource> sqlParameterSources = sqlParameterSourceArgumentCaptor.getAllValues();
         assertEquals(3, sqlParameterSources.size());
     }

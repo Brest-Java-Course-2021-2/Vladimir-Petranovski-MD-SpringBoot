@@ -9,7 +9,9 @@ public class Queries {
      * Field constant DRIVER_FIND_ALL.
      */
 
-    public static final String DRIVER_FIND_ALL = "SELECT * FROM driver";
+    public static final String DRIVER_FIND_ALL =
+            "SELECT d.driver_id, d.name, d.dateStartWork,"
+                    + " d.salary FROM driver ORDER BY d.driver_id";
 
     /**
      * Field constant DRIVER_FIND_BY_ID.
@@ -62,26 +64,27 @@ public class Queries {
             "SELECT d.driver_id as driverId, d.name as driverName,"
                     + " d.dateStartWork as driverDateStartWork, d.salary as driverSalary,"
                     + " COUNT(c.car_id) as countOfCarsAssignedToDriver FROM driver d LEFT JOIN"
-                    + " car c ON d.driver_id=c.driver_id GROUP BY d.driver_id";
+                    + " car c ON d.driver_id=c.driver_id GROUP BY d.driver_id ORDER BY d.driver_id";
 
     /**
      * Field constant DRIVER_FIND_DRIVERS_ON_RANGE_DATE.
      */
 
     public static final String DRIVER_FIND_DRIVERS_ON_RANGE_DATE =
-            "SELECT driverId, driverName, driverDateStartWork, driverSalary,"
-                    + " countOfCarsAssignedToDriver FROM (SELECT d.driver_id as driverId,"
+            "SELECT range.driverId, range.driverName, range.driverDateStartWork, range.driverSalary,"
+                    + " range.countOfCarsAssignedToDriver FROM (SELECT d.driver_id as driverId,"
                     + " d.name as driverName, d.dateStartWork as driverDateStartWork,"
                     + " d.salary as driverSalary, COUNT(c.car_id) as countOfCarsAssignedToDriver"
                     + " FROM driver d LEFT JOIN car c ON d.driver_id=c.driver_id GROUP BY"
-                    + " d.driver_id) WHERE driverDateStartWork BETWEEN"
-                    + " :fromDateChoose AND :toDateChoose";
+                    + " d.driver_id) AS range WHERE range.driverDateStartWork BETWEEN"
+                    + " :fromDateChoose AND :toDateChoose ORDER BY range.driverId";
 
     /**
      * Field constant CAR_FIND_ALL.
      */
 
-    public static final String CAR_FIND_ALL = "SELECT * FROM car";
+    public static final String CAR_FIND_ALL =
+            "SELECT c.car_id, c.model, c.driver_id FROM car AS c ORDER BY c.car_id";
 
     /**
      * Field constant CAR_FIND_BY_ID.

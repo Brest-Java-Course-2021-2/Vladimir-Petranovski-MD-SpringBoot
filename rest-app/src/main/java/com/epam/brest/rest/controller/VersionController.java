@@ -1,6 +1,7 @@
 package com.epam.brest.rest.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,6 +20,7 @@ public class VersionController {
      * Field VERSION.
      */
 
+    @Schema(name = "version", description = "Shows a current version", example = "0.0.1")
     private static final String VERSION = "0.0.1";
 
     /**

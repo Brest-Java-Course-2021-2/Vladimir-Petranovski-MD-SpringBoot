@@ -12,6 +12,8 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
+import java.sql.Timestamp;
+import java.sql.Types;
 import java.util.List;
 
 import static com.epam.brest.dao.Queries.*;
@@ -93,10 +95,12 @@ public class DriverDaoJdbcImpl implements DriverDao {
                         .addValue("driverName",
                                 driver.getDriverName())
                         .addValue("driverDateStartWork",
-                                driver.getDriverDateStartWork())
+                                Timestamp.from(driver.getDriverDateStartWork()),
+                                Types.TIMESTAMP)
                         .addValue("driverSalary", driver.getDriverSalary());
         KeyHolder keyHolder = new GeneratedKeyHolder();
-        namedParameterJdbcTemplate.update(DRIVER_SAVE, sqlParameterSource, keyHolder);
+        namedParameterJdbcTemplate.update(DRIVER_SAVE, sqlParameterSource, keyHolder,
+                                          new String[]{"driver_id"});
         return (Integer) keyHolder.getKey();
     }
 
@@ -120,7 +124,7 @@ public class DriverDaoJdbcImpl implements DriverDao {
                 .addValue("driverName",
                         driver.getDriverName())
                 .addValue("driverDateStartWork",
-                        driver.getDriverDateStartWork())
+                          Timestamp.from(driver.getDriverDateStartWork()), Types.TIMESTAMP)
                 .addValue("driverSalary", driver.getDriverSalary());
         return namedParameterJdbcTemplate.update(
                 DRIVER_UPDATE_BY_ID, sqlParameterSource);

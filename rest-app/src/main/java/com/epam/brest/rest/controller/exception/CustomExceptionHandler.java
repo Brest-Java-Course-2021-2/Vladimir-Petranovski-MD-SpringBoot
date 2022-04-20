@@ -16,7 +16,8 @@ import java.util.List;
 @ControllerAdvice
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
-    public static final Logger LOG = LogManager.getLogger(CustomExceptionHandler.class);
+    public static final Logger LOG =
+            LogManager.getLogger(CustomExceptionHandler.class);
 
     /**
      * Field constant DRIVER_NOT_FOUND.

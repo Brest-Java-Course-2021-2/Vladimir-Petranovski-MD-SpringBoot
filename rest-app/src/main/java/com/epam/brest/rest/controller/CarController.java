@@ -4,6 +4,7 @@ import com.epam.brest.model.Car;
 import com.epam.brest.service_api.CarService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -53,7 +54,7 @@ public class CarController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Car's list was provide",
                     content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Car.class))}),
+                            array = @ArraySchema(schema = @Schema(implementation = Car.class)))}),
             @ApiResponse(responseCode = "404", description =
                     "Trying to get a non-existent list of cars",
                     content = @Content),

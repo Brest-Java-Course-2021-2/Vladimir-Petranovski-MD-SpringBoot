@@ -10,6 +10,9 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Component;
 
+import java.sql.Timestamp;
+import java.sql.Types;
+import java.time.Instant;
 import java.util.List;
 
 import static com.epam.brest.dao.Queries.DRIVER_COUNT_CAR;
@@ -62,9 +65,12 @@ public class DriverDtoDaoJdbcImpl implements DriverDtoDao {
                                                    final String toDate) {
         LOG.info("Method chooseDriverOnDateRange() of class {} started",
                 getClass().getName());
+
         SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
-                .addValue("fromDateChoose", fromDate)
-                .addValue("toDateChoose", toDate);
+                .addValue("fromDateChoose",
+                        Timestamp.from(Instant.parse(fromDate)), Types.TIMESTAMP)
+                .addValue("toDateChoose",
+                        Timestamp.from(Instant.parse(toDate)), Types.TIMESTAMP);
         return namedParameterJdbcTemplate.query(
                 DRIVER_FIND_DRIVERS_ON_RANGE_DATE, sqlParameterSource,
                 BeanPropertyRowMapper.newInstance(DriverDto.class));

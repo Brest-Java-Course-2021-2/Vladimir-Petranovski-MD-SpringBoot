@@ -41,7 +41,7 @@ public class DriverDtoServiceRest implements DriverDtoService {
     /**
      * Constructor.
      *
-     * @param enterUrl String.
+     * @param enterUrl          String.
      * @param enterRestTemplate RestTemplate.
      */
 
@@ -63,7 +63,8 @@ public class DriverDtoServiceRest implements DriverDtoService {
         LOG.info("Method findAllDriverWithCountCars() started {}",
                 getClass().getName());
         ParameterizedTypeReference<List<DriverDto>> typeReference =
-                new ParameterizedTypeReference<>() {};
+                new ParameterizedTypeReference<>() {
+                };
         ResponseEntity<List<DriverDto>> responseEntity = restTemplate
                 .exchange(url, HttpMethod.GET, null, typeReference);
         return responseEntity.getBody();
@@ -83,14 +84,15 @@ public class DriverDtoServiceRest implements DriverDtoService {
                         + " with fromDate {} and toDate {} started {}",
                 fromDateChoose, toDateChoose, getClass().getName());
         UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromHttpUrl(
-                url + "/drivers-range")
+                        url + "/drivers-range")
                 .queryParam("fromDateChoose", fromDateChoose)
                 .queryParam("toDateChoose", toDateChoose);
         ParameterizedTypeReference<List<DriverDto>> typeReference =
-                new ParameterizedTypeReference<>(){};
+                new ParameterizedTypeReference<>() {
+                };
         ResponseEntity<List<DriverDto>> responseEntity =
                 restTemplate.exchange(uriComponentsBuilder.toUriString(),
-                        HttpMethod.GET,null, typeReference);
+                        HttpMethod.GET, null, typeReference);
         return responseEntity.getBody();
     }
 }

@@ -2,9 +2,9 @@ package com.epam.brest.rest.controller;
 
 import com.epam.brest.model.Driver;
 import com.epam.brest.service_api.DriverService;
-
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -53,7 +53,7 @@ public class DriverController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Driver's list was provide",
                     content = {@Content(mediaType = "application/json",
-                    schema = @Schema(implementation = Driver.class))}),
+                    array = @ArraySchema(schema = @Schema(implementation = Driver.class)))}),
             @ApiResponse(responseCode = "404", description =
                     "Trying to get a non-existent list of drivers",
                     content = @Content),
@@ -79,7 +79,7 @@ public class DriverController {
             @ApiResponse(responseCode = "200", description =
                     "Driver was found by Id", content =
                     { @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = Driver.class))}),
+                    schema = @Schema(ref = "#/components/schemas/driver"))}),
             @ApiResponse(responseCode = "400", description =
                     "Something wrong! Bad request!", content = @Content),
             @ApiResponse(responseCode = "404", description =
@@ -89,12 +89,14 @@ public class DriverController {
                     "Something is wrong! We'll sort this out soon.",
                     content = @Content)})
     @GetMapping(value = "/drivers/{id}")
-    public final Driver findDriverById(@PathVariable("id") @Parameter(description =
+    public final ResponseEntity<Driver> findDriverById(@PathVariable("id") @Parameter(description =
             "Driver's unique number", example = "2") final Integer id) {
         LOG.info("Method findDriverById() with id {} started of class {}",
                 id, getClass().getName());
 
-        return driverService.findDriverById(id);
+        Driver driver = driverService.findDriverById(id);
+
+        return new ResponseEntity<>(driver, HttpStatus.OK);
     }
 
     /**
@@ -178,7 +180,8 @@ public class DriverController {
             @ApiResponse(responseCode = "404", description =
                     "Trying to delete a non-existent driver", content = @Content),
             @ApiResponse(responseCode = "500", description =
-                    "Something is wrong! We'll sort this out soon.")})
+                    "Something is wrong! We'll sort this out soon or violates foreign key constraint",
+                    content = @Content)})
     @DeleteMapping(value = "/drivers/{id}",
             produces = "application/json")
     public ResponseEntity<Integer> deleteDriverById(@PathVariable("id")
@@ -188,6 +191,7 @@ public class DriverController {
                 id, getClass().getName());
 
         Integer quantity = driverService.deleteDriverById(id);
+
         return new ResponseEntity<>(quantity, HttpStatus.OK);
     }
 }
