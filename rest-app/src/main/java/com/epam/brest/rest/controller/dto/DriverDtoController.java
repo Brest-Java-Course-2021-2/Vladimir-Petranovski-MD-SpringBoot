@@ -4,6 +4,7 @@ import com.epam.brest.model.dto.DriverDto;
 import com.epam.brest.service_api.dto.DriverDtoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -55,7 +56,7 @@ public class DriverDtoController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Driver's list was provide",
                     content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = DriverDto.class))}),
+                            array = @ArraySchema(schema = @Schema(implementation = DriverDto.class)))}),
             @ApiResponse(responseCode = "404", description =
                     "Trying to get a non-existent list of drivers",
                     content = @Content),
@@ -80,7 +81,7 @@ public class DriverDtoController {
             @ApiResponse(responseCode = "200", description =
                     "Driver's list was provide you within range of dates",
                     content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = DriverDto.class))}),
+                            array = @ArraySchema(schema = @Schema(implementation = DriverDto.class)))}),
             @ApiResponse(responseCode = "404", description =
                     "Trying to get a non-existent list of drivers",
                     content = @Content),
