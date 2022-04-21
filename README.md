@@ -104,8 +104,9 @@ The swagger ui will be accessible at [http://localhost:8088](http://localhost:80
 #### Run local tests (H2 in memory)
 
 In the root directory of the project:
+For example:
 ```bash
-$ java -jar web-app/target/web-app-1.0-SNAPSHOT.jar
+$ java -jar -Dspring.profiles.active=dev web-app/target/web-app-1.0-SNAPSHOT.jar
 ```
 The web application will be accessible at [http://localhost:8080](http://localhost:8080).
 
