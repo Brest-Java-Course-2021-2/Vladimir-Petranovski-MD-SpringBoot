@@ -178,40 +178,40 @@
         </dependencies>
     </dependencyManagement>
 
-    <profiles>
-        <profile>
-            <id>dev</id>
-            <properties>
-                    <spring.profiles.active>dev</spring.profiles.active>
-            </properties>
-            <modules>
-                <module>dev-db</module>
-            </modules>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
+<!--    <profiles>-->
+<!--        <profile>-->
+<!--            <id>dev</id>-->
+<!--            <properties>-->
+<!--                    <spring.profiles.active>dev</spring.profiles.active>-->
+<!--            </properties>-->
+<!--            <modules>-->
+<!--                <module>dev-db</module>-->
+<!--            </modules>-->
+<!--            <activation>-->
+<!--                <activeByDefault>true</activeByDefault>-->
+<!--            </activation>-->
+<!--        </profile>-->
 
-        <profile>
-            <id>test</id>
-            <properties>
-                <spring.profiles.active>test</spring.profiles.active>
-            </properties>
-            <modules>
-                <module>test-db</module>
-            </modules>
-        </profile>
+<!--        <profile>-->
+<!--            <id>test</id>-->
+<!--            <properties>-->
+<!--                <spring.profiles.active>test</spring.profiles.active>-->
+<!--            </properties>-->
+<!--            <modules>-->
+<!--                <module>test-db</module>-->
+<!--            </modules>-->
+<!--        </profile>-->
 
-        <profile>
-            <id>prod</id>
-            <properties>
-                <spring.profiles.active>prod</spring.profiles.active>
-            </properties>
-            <dependencies>
+<!--        <profile>-->
+<!--            <id>prod</id>-->
+<!--            <properties>-->
+<!--                <spring.profiles.active>prod</spring.profiles.active>-->
+<!--            </properties>-->
+<!--            <dependencies>-->
 
-            </dependencies>
-        </profile>
-    </profiles>
+<!--            </dependencies>-->
+<!--        </profile>-->
+<!--    </profiles>-->
 
     <build>
         <resources>
