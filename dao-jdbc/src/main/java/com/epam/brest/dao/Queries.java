@@ -11,7 +11,7 @@ public class Queries {
 
     public static final String DRIVER_FIND_ALL =
             "SELECT d.driver_id, d.name, d.dateStartWork,"
-                    + " d.salary FROM driver ORDER BY d.driver_id";
+                    + " d.salary FROM driver d ORDER BY d.driver_id";
 
     /**
      * Field constant DRIVER_FIND_BY_ID.

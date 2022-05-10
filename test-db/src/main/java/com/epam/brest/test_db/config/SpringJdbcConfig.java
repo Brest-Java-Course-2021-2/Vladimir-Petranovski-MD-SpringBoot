@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @Profile("test")
-@PropertySource("classpath:application.properties")
+@PropertySource("classpath:application-test.properties")
 public class SpringJdbcConfig {
 
     /**
