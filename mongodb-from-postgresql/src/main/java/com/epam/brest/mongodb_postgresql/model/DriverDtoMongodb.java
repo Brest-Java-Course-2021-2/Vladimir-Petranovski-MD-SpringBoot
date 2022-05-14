@@ -1,20 +1,20 @@
-package com.epam.brest.model.dto;
+package com.epam.brest.mongodb_postgresql.model;
 
 import com.epam.brest.model.Car;
-//import org.springframework.data.annotation.Id;
-//import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 
-//@Document(collection = "drivers")
+@Document(collection = "drivers")
 public class DriverDtoMongodb {
 
     /**
      * @serialField driverId Integer.
      */
 
-//    @Id
+    @Id
     private Integer driverId;
 
     /**
