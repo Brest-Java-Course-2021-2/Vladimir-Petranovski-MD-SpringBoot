@@ -23,7 +23,7 @@ public class DriverMongodbFromPostgresqlMapper {
      * @param carDao CarDaoJdbcImpl.
      */
 
-    public DriverMongodbFromPostgresqlMapper(CarDao carDao) {
+    public DriverMongodbFromPostgresqlMapper(final CarDao carDao) {
         this.carDao = carDao;
     }
 
@@ -33,7 +33,7 @@ public class DriverMongodbFromPostgresqlMapper {
      * @return driverDtoMongodb DriverDtoMongodb.
      */
 
-    public DriverDtoMongodb getDriverMongodbFromPostgresql(Driver driver) {
+    public DriverDtoMongodb getDriverMongodbFromPostgresql(final Driver driver) {
 
         List<Car> assignCars = carDao.getCarsAssignToDriver(driver.getDriverId());
 
