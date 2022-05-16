@@ -119,4 +119,11 @@ public class Queries {
      */
 
     public static final String CAR_COUNT = "SELECT count(*) FROM car";
+
+    /**
+     * Field constant CAR_COUNT.
+     */
+
+    public static final String CARS_LIST_ASSIGN_TO_DRIVER =
+            "SELECT * FROM car c WHERE c.driver_id = :driverId";
 }

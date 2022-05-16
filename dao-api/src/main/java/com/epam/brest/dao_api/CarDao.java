@@ -58,4 +58,12 @@ public interface CarDao {
      */
 
     Integer count();
+
+    /**
+     * Find all cars assign to driver by ID.
+     *
+     * @return list of cars.
+     */
+
+    List<Car> getCarsAssignToDriver(final Integer id);
 }

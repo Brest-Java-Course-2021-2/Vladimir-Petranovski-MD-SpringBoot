@@ -1,5 +1,8 @@
 package com.epam.brest.mongodb_postgresql.service;
 
+import com.epam.brest.dao_api.DriverDao;
+import com.epam.brest.model.Driver;
+import com.epam.brest.mongodb_postgresql.mapper.DriverMongodbFromPostgresqlMapper;
 import com.epam.brest.mongodb_postgresql.model.DriverDtoMongodb;
 import com.epam.brest.mongodb_postgresql.repository.DriverDtoMongodbRepository;
 import org.springframework.stereotype.Service;
@@ -16,14 +19,24 @@ public class DriverDtoMongodbServiceImpl implements DriverDtoMongodbService{
 
     private final DriverDtoMongodbRepository repository;
 
+    private final DriverDao driverDao;
+
+    private final DriverMongodbFromPostgresqlMapper driverMongodbFromPostgresqlMapper;
+
     /**
      * Constructor.
      *
-     * @param  repository DriverDtoMongodbRepository.
+     * @param repository DriverDtoMongodbRepository.
+     * @param driverDao DriverDao.
+     * @param driverMongodbFromPostgresqlMapper DriverMongodbFromPostgresqlMapper.
      */
 
-    public DriverDtoMongodbServiceImpl(DriverDtoMongodbRepository repository) {
+    public DriverDtoMongodbServiceImpl(final DriverDtoMongodbRepository repository,
+                                       final DriverDao driverDao,
+                                       final DriverMongodbFromPostgresqlMapper driverMongodbFromPostgresqlMapper) {
         this.repository = repository;
+        this.driverDao=driverDao;
+        this.driverMongodbFromPostgresqlMapper = driverMongodbFromPostgresqlMapper;
     }
 
     /**
@@ -35,6 +48,20 @@ public class DriverDtoMongodbServiceImpl implements DriverDtoMongodbService{
     @Transactional(readOnly = true)
     @Override
     public List<DriverDtoMongodb> findAllDriversMongodb() {
+        repository.deleteAll();
+        createDriversCollection();
         return repository.findAll();
+    }
+
+    /**
+     * Fill collection drivers in MongoDB database.
+     *
+     */
+
+    protected void createDriversCollection() {
+        List<Driver> driverList = driverDao.findAllDrivers();
+        for (int i = 0; i < driverList.size(); i++) {
+            repository.save(driverMongodbFromPostgresqlMapper.getDriverMongodbFromPostgresql(driverList.get(i)));
+        }
     }
 }

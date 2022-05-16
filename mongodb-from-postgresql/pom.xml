@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>mongodb-postgresql</artifactId>
+    <artifactId>mongodb-from-postgresql</artifactId>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -17,14 +17,6 @@
     </properties>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>com.epam.brest</groupId>-->
-<!--            <artifactId>model</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.epam.brest</groupId>-->
-<!--            <artifactId>dev-db</artifactId>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>com.epam.brest</groupId>
             <artifactId>service-api</artifactId>

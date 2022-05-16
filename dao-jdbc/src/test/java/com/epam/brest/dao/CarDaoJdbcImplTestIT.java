@@ -110,4 +110,17 @@ class CarDaoJdbcImplTestIT {
         assertEquals(carDaoJdbc.findAllCars().size(), quantity);
         LOG.info("Size of collection {} equals record's quantity {}", carDaoJdbc.findAllCars().size(), quantity);
     }
+
+    @Test
+    void getCarsAssignToDriverTest() {
+        LOG.info("Method started: getCarsAssignToDriverTest() of {}", getClass().getName());
+        assertNotNull(carDaoJdbc);
+        Integer countCarInTheBeginning = carDaoJdbc.getCarsAssignToDriver(2).size();
+        carDaoJdbc.saveCar(new Car("LUAZ", 2));
+        carDaoJdbc.saveCar(new Car("URAL", 2));
+        carDaoJdbc.saveCar(new Car("ZIL", 2));
+
+        int countCarsAfterSave = carDaoJdbc.getCarsAssignToDriver(2).size();
+        assertEquals(countCarInTheBeginning, countCarsAfterSave - 3);
+    }
 }

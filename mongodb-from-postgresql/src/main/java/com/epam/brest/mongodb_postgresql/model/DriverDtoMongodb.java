@@ -36,12 +36,6 @@ public class DriverDtoMongodb {
     private BigDecimal driverSalary;
 
     /**
-     * @serialField countOfCarsAssignedToDriver Integer.
-     */
-
-    private Integer countOfCarsAssignedToDriver;
-
-    /**
      * @serialField cars Car[].
      */
 
@@ -61,8 +55,16 @@ public class DriverDtoMongodb {
      * @param driverName String.
      * @param driverDateStartWork Instant.
      * @param driverSalary BigDecimal.
-     * @param countOfCarsAssignedToDriver Integer.
+     * @param assignCars Car[].
      */
+
+    public DriverDtoMongodb(Integer driverId, String driverName, Instant driverDateStartWork, BigDecimal driverSalary, Car[] assignCars) {
+        this.driverId = driverId;
+        this.driverName = driverName;
+        this.driverDateStartWork = driverDateStartWork;
+        this.driverSalary = driverSalary;
+        this.assignCars = assignCars;
+    }
 
     /**
      * Getter for driverId.
@@ -144,25 +146,17 @@ public class DriverDtoMongodb {
         this.driverSalary = driverSalary;
     }
 
-    /**
-     * Getter for countOfCarsAssignedToDriver.
-     *
-     * @return countOfCarsAssignedToDriver.
-     */
-
-    public Integer getCountOfCarsAssignedToDriver() {
-        return countOfCarsAssignedToDriver;
+    public Car[] getAssignCars() {
+        return assignCars;
     }
 
     /**
-     * Setter for countOfCarsAssignedToDriver.
+     * Setter for assignCars.
      *
-     * @param countOfCarsAssignedToDriver Integer.
+     * @param assignCars Car[].
      */
 
-    public void setCountOfCarsAssignedToDriver(
-            final Integer countOfCarsAssignedToDriver) {
-        this.countOfCarsAssignedToDriver = countOfCarsAssignedToDriver;
+    public void setAssignCars(Car[] assignCars) {
+        this.assignCars = assignCars;
     }
-
 }
