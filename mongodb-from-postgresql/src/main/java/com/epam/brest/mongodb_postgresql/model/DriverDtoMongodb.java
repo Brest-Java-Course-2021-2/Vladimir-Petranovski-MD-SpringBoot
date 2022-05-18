@@ -70,10 +70,31 @@ public class DriverDtoMongodb {
     }
 
     /**
+     * @Constructor
+     *
+     * @param driverId Integer.
+     * @param driverName String.
+     * @param driverDateStartWork Instant.
+     * @param driverSalary BigDecimal.
+     * @param assignCars Car[].
+     */
+    public DriverDtoMongodb(final Integer driverId, final String driverName,
+                            final Instant driverDateStartWork, final BigDecimal driverSalary,
+                            final Car[] assignCars) {
+        this.driverId = driverId;
+        this.driverName = driverName;
+        this.driverDateStartWork = driverDateStartWork;
+        this.driverSalary = driverSalary;
+        this.assignCars = assignCars;
+    }
+
+    /**
      * Getter for driverId.
      *
      * @return driverId.
      */
+
+
 
     public Integer getDriverId() {
         return driverId;

@@ -1,7 +1,9 @@
 package com.epam.brest.controller;
 
+import com.epam.brest.model.Car;
 import com.epam.brest.model.Driver;
 import com.epam.brest.model.dto.DriverDto;
+import com.epam.brest.mongodb_postgresql.model.DriverDtoMongodb;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -41,6 +43,8 @@ public class DriverControllerTest {
 
     public static final String DRIVERS_DTO_URL = "http://localhost:8088/drivers_dto";
     public static final String DRIVERS_URL = "http://localhost:8088/drivers";
+
+    public static final String DRIVERS_MONGODB_URL = "http://localhost:8088/mongo";
 
     @Autowired
     private WebApplicationContext wac;
@@ -398,6 +402,54 @@ public class DriverControllerTest {
                                 hasProperty("driverName", is(driverDto3.getDriverName())),
                                 hasProperty("driverDateStartWork", is(driverDto3.getDriverDateStartWork())),
                                 hasProperty("driverSalary", is(driverDto3.getDriverSalary()))
+                        )
+                )));
+        mockRestServiceServer.verify();
+    }
+
+    @Test
+    void showDriversListFromMongodbDatabaseTest() throws Exception {
+        LOG.info("Method showDriversListFromMongodbDatabaseTest() started of class {}", getClass().getName());
+
+        DriverDtoMongodb firstDriverDtoMongodb = new DriverDtoMongodb(1, "VASIA", Instant.parse("1998-10-01T12:02:01.8472Z"), BigDecimal.valueOf(500), new Car[]{new Car("SCKODA",3), new Car("JILY", 2)});
+        DriverDtoMongodb secondDriverDtoMongodb = new DriverDtoMongodb(2, "VOVA", Instant.parse("2010-10-11T08:30:30.1234Z"), BigDecimal.valueOf(850), new Car[]{new Car("AUDI", 2), new Car("NISSAN", 1)});
+        DriverDtoMongodb thirdDriverDtoMongodb = new DriverDtoMongodb(1, "VASIA", Instant.parse("1998-10-01T12:02:01.8472Z"), BigDecimal.valueOf(500), new Car[]{new Car("RENO",3)});
+
+        mockRestServiceServer.expect(ExpectedCount.once(), requestTo(new URI(DRIVERS_MONGODB_URL)))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(withStatus(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(objectMapper.writeValueAsString(Arrays.asList(firstDriverDtoMongodb, secondDriverDtoMongodb, thirdDriverDtoMongodb)))
+                );
+        mockMvc.perform(
+                        MockMvcRequestBuilders.get("/mongo")
+                ).andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().contentType("text/html;charset=UTF-8"))
+                .andExpect(view().name("drivers/mongo-driver"))
+                .andExpect(model().attribute("driversListMongo", hasItem(
+                        allOf(
+                                hasProperty("driverId", is(firstDriverDtoMongodb.getDriverId())),
+                                hasProperty("driverName", is(firstDriverDtoMongodb.getDriverName())),
+                                hasProperty("driverDateStartWork", is(firstDriverDtoMongodb.getDriverDateStartWork())),
+                                hasProperty("driverSalary", is(firstDriverDtoMongodb.getDriverSalary())),
+                                hasProperty("assignCars", is(firstDriverDtoMongodb.getAssignCars()))
+                        )
+                ))).andExpect(model().attribute("driversListMongo", hasItem(
+                        allOf(
+                                hasProperty("driverId", is(secondDriverDtoMongodb.getDriverId())),
+                                hasProperty("driverName", is(secondDriverDtoMongodb.getDriverName())),
+                                hasProperty("driverDateStartWork", is(secondDriverDtoMongodb.getDriverDateStartWork())),
+                                hasProperty("driverSalary", is(secondDriverDtoMongodb.getDriverSalary())),
+                                hasProperty("assignCars", is(secondDriverDtoMongodb.getAssignCars()))
+                        )
+                ))).andExpect(model().attribute("driversListMongo", hasItem(
+                        allOf(
+                                hasProperty("driverId", is(thirdDriverDtoMongodb.getDriverId())),
+                                hasProperty("driverName", is(thirdDriverDtoMongodb.getDriverName())),
+                                hasProperty("driverDateStartWork", is(thirdDriverDtoMongodb.getDriverDateStartWork())),
+                                hasProperty("driverSalary", is(thirdDriverDtoMongodb.getDriverSalary())),
+                                hasProperty("assignCars", is(thirdDriverDtoMongodb.getAssignCars()))
                         )
                 )));
         mockRestServiceServer.verify();
