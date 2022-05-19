@@ -1,10 +1,12 @@
 package com.epam.brest.controller.config;
 
+import com.epam.brest.mongodb_postgresql.service.DriverDtoMongodbService;
 import com.epam.brest.service_api.CarService;
 import com.epam.brest.service_api.DriverService;
 import com.epam.brest.service_api.dto.DriverDtoService;
 import com.epam.brest.service_rest.service.CarServiceRest;
 import com.epam.brest.service_rest.service.DriverServiceRest;
+import com.epam.brest.service_rest.service.dto.DriverDtoMongodbServiceRest;
 import com.epam.brest.service_rest.service.dto.DriverDtoServiceRest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -83,5 +85,17 @@ public class WebMvcConfig {
     CarService carService() {
         String url = String.format("%s://%s:%d/cars", protocol, host, port);
         return new CarServiceRest(url, restTemplate());
+    }
+
+    /**
+     * DriverDtoMongodbService's bean.
+     *
+     * @return driverDtoMongodbService DriverDtoMongodbService.
+     */
+
+    @Bean
+    DriverDtoMongodbService driverDtoMongodbService() {
+        String url = String.format("%s://%s:%d/mongo", protocol, host, port);
+        return new DriverDtoMongodbServiceRest(url, restTemplate());
     }
 }

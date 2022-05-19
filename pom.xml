@@ -23,6 +23,7 @@
         <module>test-db</module>
         <module>swagger-openapi</module>
         <module>dev-db</module>
+        <module>mongodb-from-postgresql</module>
     </modules>
 
     <properties>
@@ -107,6 +108,11 @@
             <dependency>
                 <groupId>com.epam.brest</groupId>
                 <artifactId>dev-db</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.epam.brest</groupId>
+                <artifactId>mongodb-from-postgresql</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

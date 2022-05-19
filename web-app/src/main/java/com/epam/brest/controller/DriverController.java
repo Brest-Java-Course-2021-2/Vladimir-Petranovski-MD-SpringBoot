@@ -2,6 +2,7 @@ package com.epam.brest.controller;
 
 import com.epam.brest.controller.validator.DriverValidator;
 import com.epam.brest.model.Driver;
+import com.epam.brest.mongodb_postgresql.service.DriverDtoMongodbService;
 import com.epam.brest.service_api.DriverService;
 import com.epam.brest.service_api.dto.DriverDtoService;
 import org.apache.logging.log4j.LogManager;
@@ -30,6 +31,12 @@ public class DriverController {
     private final DriverService driverService;
 
     /**
+     * Field driverDtoMongodbService.
+     */
+
+    private final DriverDtoMongodbService driverDtoMongodbService;
+
+    /**
      * Field driverValidator.
      */
 
@@ -38,17 +45,20 @@ public class DriverController {
     /**
      * Constructor.
      *
-     * @param driverDtoService driverDto Service.
-     * @param driverService driverService.
-     * @param driverValidator driverValidator.
+     * @param driverDtoService        DriverDtoService.
+     * @param driverService           DriverService.
+     * @param driverDtoMongodbService DriverDtoMongodbService.
+     * @param driverValidator         DriverValidator.
      */
 
     public DriverController(final DriverDtoService driverDtoService,
                             final DriverService driverService,
+                            final DriverDtoMongodbService driverDtoMongodbService,
                             final DriverValidator driverValidator) {
         this.driverDtoService = driverDtoService;
         this.driverService = driverService;
         this.driverValidator = driverValidator;
+        this.driverDtoMongodbService = driverDtoMongodbService;
     }
 
     /**
@@ -209,5 +219,14 @@ public class DriverController {
                 driverDtoService.chooseDriverOnDateRange(fromDateChoose,
                         toDateChoose));
         return "drivers/drivers-range";
+    }
+
+    @GetMapping("/mongo")
+    public String showDriversListFromMongodbDatabase(final Model model){
+        LOG.info("Method showDriversListFromMongodbDatabase() started of class {}",
+                getClass().getName());
+        model.addAttribute("driversListMongo",
+                driverDtoMongodbService.findAllDriversMongodb());
+        return "drivers/mongo-driver";
     }
 }

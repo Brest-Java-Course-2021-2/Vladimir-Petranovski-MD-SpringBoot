@@ -26,7 +26,8 @@ import java.util.Collection;
 @RequestMapping("/drivers_dto")
 public class DriverDtoController {
 
-    public static final Logger LOG = LogManager.getLogger(DriverDtoController.class);
+    public static final Logger LOG = LogManager.getLogger(
+            DriverDtoController.class);
 
     /**
      * Field driverDtoService.

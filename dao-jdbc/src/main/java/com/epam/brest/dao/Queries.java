@@ -11,7 +11,7 @@ public class Queries {
 
     public static final String DRIVER_FIND_ALL =
             "SELECT d.driver_id, d.name, d.dateStartWork,"
-                    + " d.salary FROM driver ORDER BY d.driver_id";
+                    + " d.salary FROM driver d ORDER BY d.driver_id";
 
     /**
      * Field constant DRIVER_FIND_BY_ID.
@@ -119,4 +119,11 @@ public class Queries {
      */
 
     public static final String CAR_COUNT = "SELECT count(*) FROM car";
+
+    /**
+     * Field constant CAR_COUNT.
+     */
+
+    public static final String CARS_LIST_ASSIGN_TO_DRIVER =
+            "SELECT * FROM car c WHERE c.driver_id = :driverId";
 }
