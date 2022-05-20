@@ -43,7 +43,8 @@ public class DriverMongodbFromPostgresqlMapper {
         driverDtoMongodb.setDriverName(driver.getDriverName());
         driverDtoMongodb.setDriverSalary(driver.getDriverSalary());
         driverDtoMongodb.setDriverDateStartWork(driver.getDriverDateStartWork());
-        driverDtoMongodb.setAssignCars(assignCars.toArray(new Car[0]));
+        driverDtoMongodb.setAssignCars(assignCars.toArray(new Car[0]));//liambda
+//        driverDtoMongodb.setAssignCars(assignCars.toArray(new Car[0]));
         return driverDtoMongodb;
     }
 }
