@@ -148,13 +148,19 @@ public class CarDaoJdbcImpl implements CarDao {
     }
 
     /**
-     * Find all cars assign to driver.
+     * Find all cars assign to driver by ID.
      *
-     * @return lis of the cars.
+     * @return list of the cars.
      */
 
-    public List<Car> getCarsAssignToDriver(final Integer id) {
-        SqlParameterSource sqlParameterSource = new MapSqlParameterSource("driverId", id);
-        return namedParameterJdbcTemplate.query(CARS_LIST_ASSIGN_TO_DRIVER, sqlParameterSource, new CarDaoJdbcRowMapper());
+    public List<Car> getCarsAssignToDriverById(final Integer id) {
+        LOG.info("Method getCarsAssignToDriverById() of class {} started",
+                getClass().getName());
+
+        SqlParameterSource sqlParameterSource =
+                new MapSqlParameterSource("driverId", id);
+
+        return namedParameterJdbcTemplate.query(CARS_LIST_ASSIGN_TO_DRIVER,
+                sqlParameterSource, new CarDaoJdbcRowMapper());
     }
 }

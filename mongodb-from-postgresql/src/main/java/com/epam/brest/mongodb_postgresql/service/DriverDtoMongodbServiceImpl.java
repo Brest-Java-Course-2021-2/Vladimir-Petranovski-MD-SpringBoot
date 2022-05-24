@@ -77,9 +77,8 @@ public class DriverDtoMongodbServiceImpl implements DriverDtoMongodbService{
 
     protected void createDriversCollection() {
         List<Driver> driverList = driverDao.findAllDrivers();
-        for (Driver driver : driverList) {
-            repository.save(driverMongodbFromPostgresqlMapper.
-                    getDriverMongodbFromPostgresql(driver));
-        }
+
+        driverList.forEach(s -> repository.save(
+                driverMongodbFromPostgresqlMapper.getDriverMongodbFromPostgresql(s)));
     }
 }

@@ -115,12 +115,12 @@ class CarDaoJdbcImplTestIT {
     void getCarsAssignToDriverTest() {
         LOG.info("Method started: getCarsAssignToDriverTest() of {}", getClass().getName());
         assertNotNull(carDaoJdbc);
-        Integer countCarInTheBeginning = carDaoJdbc.getCarsAssignToDriver(2).size();
+        Integer countCarInTheBeginning = carDaoJdbc.getCarsAssignToDriverById(2).size();
         carDaoJdbc.saveCar(new Car("LUAZ", 2));
         carDaoJdbc.saveCar(new Car("URAL", 2));
         carDaoJdbc.saveCar(new Car("ZIL", 2));
 
-        int countCarsAfterSave = carDaoJdbc.getCarsAssignToDriver(2).size();
+        int countCarsAfterSave = carDaoJdbc.getCarsAssignToDriverById(2).size();
         assertEquals(countCarInTheBeginning, countCarsAfterSave - 3);
     }
 }
