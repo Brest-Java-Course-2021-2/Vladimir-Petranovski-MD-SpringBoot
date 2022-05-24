@@ -65,5 +65,5 @@ public interface CarDao {
      * @return list of cars.
      */
 
-    List<Car> getCarsAssignToDriver(final Integer id);
+    List<Car> getCarsAssignToDriverById(final Integer id);
 }

@@ -35,7 +35,7 @@ public class DriverMongodbFromPostgresqlMapper {
 
     public DriverDtoMongodb getDriverMongodbFromPostgresql(final Driver driver) {
 
-        List<Car> assignCars = carDao.getCarsAssignToDriver(driver.getDriverId());
+        List<Car> assignCars = carDao.getCarsAssignToDriverById(driver.getDriverId());
 
         DriverDtoMongodb driverDtoMongodb = new DriverDtoMongodb();
 
