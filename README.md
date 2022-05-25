@@ -22,16 +22,19 @@ This is sample 'Motor depot' web application.
 - - **Data Access:**
 - [Spring JDBC](https://docs.spring.io/spring-framework/docs/5.3.x/reference/html/data-access.html#jdbc)
 <a href="https://spring.io/projects/spring-boot" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="spring" width="18" height="18"/> </a>
+- [Spring Data MongoDB](https://spring.io/projects/spring-data-mongodb)
+<a href="https://spring.io/projects/spring-boot" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="spring" width="18" height="18"/> </a>
 - **Build System:** [Maven](https://maven.apache.org/) <img height="20" width="20" src="https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/icons/file_type_maven.svg"/>
 - **Control System:** [Git](https://git-scm.com/) <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="18" height="18"/> </a>
 - **License:** [Apache license, version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 - **Automated Testing:**
   - [JUnit5](https://junit.org/junit5/) <img height="20" width="20" src="https://unpkg.com/simple-icons@v6/icons/junit5.svg"/>
-  - [Mockito](http://site.mockito.org/) <img height="20" width="40" src="documentation/img/mokito.svg"/>
+  - [Mockito](http://site.mockito.org/) <img height="20" width="40" src="https://cdn.nearsoft.com/uploads/2017/11/annotation-magic-with-mockito-mock-and-spy-lede.png"/>
 - **Log:** [Log4j 2](https://logging.apache.org/log4j/2.x/)
 - **Database:**
-  - [H2](http://www.h2database.com/html/main.html) <img height="20" width="20" src="documentation/img/h2.svg"/>
+  - [H2](http://www.h2database.com/html/main.html) <img height="20" width="20" src="https://www.h2database.com/html/images/h2-logo-2.png"/>
   - [PostgreSQL](https://www.postgresql.org/) <a href="https://www.postgresql.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" alt="postgresql" width="20" height="20"/> </a>
+  - [MongoDB](https://www.mongodb.com/) <img height="20" width="20" src="https://www.opc-router.de/wp-content/uploads/2021/03/mongodb_thumbnail.png"/>
 - **API documentation generation:**
   - [Swagger UI](https://swagger.io/tools/swagger-ui/) <img height="20" width="20" src="https://raw.githubusercontent.com/AliasIO/wappalyzer/master/src/drivers/webextension/images/icons/Swagger%20UI.svg"/>
 - **Code generation:**
