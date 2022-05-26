@@ -126,4 +126,14 @@ public class Queries {
 
     public static final String CARS_LIST_ASSIGN_TO_DRIVER =
             "SELECT * FROM car c WHERE c.driver_id = :driverId";
+
+    /**
+     * Field constant FIND_MODEL_SPECIFICATION_BY_CAR_MODEL.
+     */
+
+    public static final String FIND_MODEL_SPECIFICATION_BY_CAR_MODEL =
+    "SELECT ms.model_name AS modelName, ms.description AS description,"
+            + " ms.max_speed AS maxSpeed, ms.carrying_capacity AS carryingCapacity"
+            + " FROM model_specifications AS ms WHERE ms.model_name=:modelName";
+
 }
