@@ -69,6 +69,5 @@ class ModelSpecificationDaoImplTest {
         assertEquals(modelSpecificationDst, modelSpecification);
         LOG.info("ModelSpecification was received after getModelSpecificationByCarModel() {} equals modelSpecification till it {}",
                 modelSpecificationDst, modelSpecification);
-
     }
 }
