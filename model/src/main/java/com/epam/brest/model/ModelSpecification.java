@@ -45,6 +45,13 @@ public class ModelSpecification {
     private Integer carryingCapacity;
 
     /**
+     * @Constructor without parameters.
+     */
+
+    public ModelSpecification() {
+    }
+
+    /**
      * @Constructor
      *
      * @param modelId Integer.
@@ -62,9 +69,6 @@ public class ModelSpecification {
         this.description = description;
         this.maxSpeed = maxSpeed;
         this.carryingCapacity = carryingCapacity;
-    }
-
-    public ModelSpecification() {
     }
 
     /**

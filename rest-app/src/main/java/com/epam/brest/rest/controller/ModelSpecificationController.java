@@ -38,7 +38,8 @@ public class ModelSpecificationController {
      * @param modelSpecificationService ModelSpecificationService.
      */
 
-    public ModelSpecificationController(ModelSpecificationService modelSpecificationService) {
+    public ModelSpecificationController(
+            final ModelSpecificationService modelSpecificationService) {
         this.modelSpecificationService = modelSpecificationService;
     }
 
