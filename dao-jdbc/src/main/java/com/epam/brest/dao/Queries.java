@@ -132,7 +132,7 @@ public class Queries {
      */
 
     public static final String FIND_MODEL_SPECIFICATION_BY_CAR_MODEL =
-    "SELECT ms.model_name AS modelName, ms.description AS description,"
+    "SELECT ms.model_id AS modelId, ms.model_name AS modelName, ms.description AS description,"
             + " ms.max_speed AS maxSpeed, ms.carrying_capacity AS carryingCapacity"
             + " FROM model_specifications AS ms WHERE ms.model_name=:modelName";
 

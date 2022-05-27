@@ -16,8 +16,9 @@ import java.util.Collections;
 public class SpringFoxConfig {
 
     /**
+     * @Bean configure swagger openApi.
+     *
      * @return Docket class.
-     * @bean configure swagger openApi.
      */
 
     @Bean

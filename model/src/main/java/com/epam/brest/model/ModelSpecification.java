@@ -44,7 +44,9 @@ public class ModelSpecification {
             example = "12000")
     private Integer carryingCapacity;
 
-    public ModelSpecification(Integer modelId, String modelName, String description, Integer maxSpeed, Integer carryingCapacity) {
+    public ModelSpecification(final Integer modelId, final String modelName,
+                              final String description, final Integer maxSpeed,
+                              final Integer carryingCapacity) {
         this.modelId = modelId;
         this.modelName = modelName;
         this.description = description;
