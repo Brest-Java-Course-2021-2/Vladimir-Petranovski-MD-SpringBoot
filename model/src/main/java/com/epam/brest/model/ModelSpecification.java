@@ -44,6 +44,16 @@ public class ModelSpecification {
             example = "12000")
     private Integer carryingCapacity;
 
+    /**
+     * @Constructor
+     *
+     * @param modelId Integer.
+     * @param modelName String.
+     * @param description String.
+     * @param maxSpeed Integer.
+     * @param carryingCapacity Integer.
+     */
+
     public ModelSpecification(final Integer modelId, final String modelName,
                               final String description, final Integer maxSpeed,
                               final Integer carryingCapacity) {
