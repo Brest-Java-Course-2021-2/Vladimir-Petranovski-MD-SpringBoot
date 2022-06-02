@@ -63,7 +63,7 @@ class ModelSpecificationServiceRestTest {
                 1, carModel, "Passenger car: made in Japan",
                 210, 1740);
 
-        mockRestServiceServer.expect(ExpectedCount.once(), requestTo(new URI(MODEL_INFO_URL + "/" + carModel)))
+        mockRestServiceServer.expect(ExpectedCount.once(), requestTo(new URI(MODEL_INFO_URL + "/" + modelSpecification.getModelName())))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)

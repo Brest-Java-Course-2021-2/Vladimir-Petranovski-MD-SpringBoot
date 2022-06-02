@@ -11,5 +11,5 @@ public interface ModelSpecificationService {
      * @return ModelSpecification.
      */
 
-    ModelSpecification getModelSpecificationByCarModel(String carModel);
+    ModelSpecification getModelSpecificationByCarModel(final String carModel);
 }

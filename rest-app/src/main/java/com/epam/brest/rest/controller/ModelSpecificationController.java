@@ -1,6 +1,7 @@
 package com.epam.brest.rest.controller;
 
 import com.epam.brest.model.ModelSpecification;
+import com.epam.brest.rest.config.CacheModelSpecificationWithGuavaConfig;
 import com.epam.brest.service_api.ModelSpecificationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -33,14 +34,23 @@ public class ModelSpecificationController {
     private final ModelSpecificationService modelSpecificationService;
 
     /**
-     * @Constructor
-     *
+     * @Field cacheModelSpecification CacheModelSpecificationWithGuavaConfig.
+     */
+
+    private final CacheModelSpecificationWithGuavaConfig cacheModelSpecification;
+
+    /**
      * @param modelSpecificationService ModelSpecificationService.
+     * @param cacheModelSpecification CacheModelSpecificationWithGuavaConfig.
+     * @Constructor
      */
 
     public ModelSpecificationController(
-            final ModelSpecificationService modelSpecificationService) {
+            final ModelSpecificationService modelSpecificationService,
+            final CacheModelSpecificationWithGuavaConfig cacheModelSpecification) {
         this.modelSpecificationService = modelSpecificationService;
+        this.cacheModelSpecification = cacheModelSpecification;
+
     }
 
     @Operation(summary = "Allows to get car's specification by its model")
@@ -54,7 +64,7 @@ public class ModelSpecificationController {
             @ApiResponse(responseCode = "500", description =
                     "Something is wrong! We'll sort this out soon.",
                     content = @Content)})
-    @GetMapping("/model_info/{model}")
+    @GetMapping(value = "/model_info/{model}")
     public ResponseEntity<ModelSpecification> getModelSpecificationByCarModel(
             @PathVariable("model") @Parameter(description = "Car's model",
                     example = "URAL") final String carModel) {
@@ -62,8 +72,11 @@ public class ModelSpecificationController {
         LOG.info("Method getModelSpecificationByCarModel() with car's model {} started of class {}",
                 carModel, getClass().getName());
 
+
         ModelSpecification modelSpecification =
                 modelSpecificationService.getModelSpecificationByCarModel(carModel);
+
+        cacheModelSpecification.cacheRun(carModel);
 
         return new ResponseEntity<>(modelSpecification, HttpStatus.OK);
     }

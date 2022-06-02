@@ -1,14 +1,16 @@
 package com.epam.brest.service_rest.service;
 
+import com.epam.brest.model.Car;
 import com.epam.brest.model.ModelSpecification;
 import com.epam.brest.service_api.ModelSpecificationService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 @Service
 public class ModelSpecificationServiceRest implements ModelSpecificationService {
@@ -49,14 +51,19 @@ public class ModelSpecificationServiceRest implements ModelSpecificationService 
     }
 
     @Override
-    public ModelSpecification getModelSpecificationByCarModel(String carModel) {
+    public ModelSpecification getModelSpecificationByCarModel(final String carModel) {
         LOG.info("Method getModelSpecificationByCarModel() with parameter {} started {}",
                 carModel, getClass().getName());
-        ParameterizedTypeReference<ModelSpecification> typeReference =
-                new ParameterizedTypeReference<>() {};
-
-        ResponseEntity<ModelSpecification> responseEntity = restTemplate
-                .exchange(url + "/" + carModel, HttpMethod.GET, null, typeReference);
+//        ParameterizedTypeReference<ModelSpecification> typeReference =
+//                new ParameterizedTypeReference<>() {};
+//
+//        ResponseEntity<ModelSpecification> responseEntity = restTemplate
+//                .exchange(url + "/" + carModel, HttpMethod.GET, null, typeReference);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(List.of(MediaType.APPLICATION_JSON));
+        HttpEntity<String> entity = new HttpEntity<>(carModel, headers);
+        ResponseEntity<ModelSpecification> responseEntity = restTemplate.exchange(
+                url + "/" + carModel, HttpMethod.GET, entity, ModelSpecification.class);
         return responseEntity.getBody();
     }
 }

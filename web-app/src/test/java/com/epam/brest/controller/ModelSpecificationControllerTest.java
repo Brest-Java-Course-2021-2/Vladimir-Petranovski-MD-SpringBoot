@@ -1,8 +1,6 @@
 package com.epam.brest.controller;
 
-import com.epam.brest.model.Driver;
 import com.epam.brest.model.ModelSpecification;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,14 +21,10 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
 
-import java.math.BigDecimal;
 import java.net.URI;
-import java.net.URISyntaxException;
-import java.time.Instant;
 
 import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withStatus;
@@ -81,18 +75,14 @@ class ModelSpecificationControllerTest {
         mockMvc.perform(
                         MockMvcRequestBuilders.get("/model_info/" + modelSpecificationSrs.getModelName())
                                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                                .param("modelId", String.valueOf(modelSpecificationSrs.getModelId()))
-                                .param("modelName", modelSpecificationSrs.getModelName())
-                                .param("description", modelSpecificationSrs.getDescription())
-                                .param("maxSpeed", String.valueOf(modelSpecificationSrs.getMaxSpeed()))
-                                .param("carryingCapacity", String.valueOf(modelSpecificationSrs.getCarryingCapacity()))
+                                .param("model", modelSpecificationSrs.getModelName())
                 ).andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk())
-//                .andExpect(model().attribute("model", hasProperty("modelId", is(1))))
-//                .andExpect(model().attribute("model", hasProperty("modelName", is("VOLVO"))))
-//                .andExpect(model().attribute("model", hasProperty("description", is("Truck: made in China"))))
-//                .andExpect(model().attribute("model", hasProperty("maxSpeed", is(150))))
-//                .andExpect(model().attribute("model", hasProperty("carryingCapacity", is(25000))))
+                .andExpect(model().attribute("specification", hasProperty("modelId", is(modelSpecificationSrs.getModelId()))))
+                .andExpect(model().attribute("specification", hasProperty("modelName", is(modelSpecificationSrs.getModelName()))))
+                .andExpect(model().attribute("specification", hasProperty("description", is(modelSpecificationSrs.getDescription()))))
+                .andExpect(model().attribute("specification", hasProperty("maxSpeed", is(modelSpecificationSrs.getMaxSpeed()))))
+                .andExpect(model().attribute("specification", hasProperty("carryingCapacity", is(modelSpecificationSrs.getCarryingCapacity()))))
                 .andExpect(view().name("cars/cars"));
         mockRestServiceServer.verify();
     }
