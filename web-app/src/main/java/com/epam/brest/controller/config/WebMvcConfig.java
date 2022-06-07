@@ -3,9 +3,11 @@ package com.epam.brest.controller.config;
 import com.epam.brest.mongodb_postgresql.service.DriverDtoMongodbService;
 import com.epam.brest.service_api.CarService;
 import com.epam.brest.service_api.DriverService;
+import com.epam.brest.service_api.ModelSpecificationService;
 import com.epam.brest.service_api.dto.DriverDtoService;
 import com.epam.brest.service_rest.service.CarServiceRest;
 import com.epam.brest.service_rest.service.DriverServiceRest;
+import com.epam.brest.service_rest.service.ModelSpecificationServiceRest;
 import com.epam.brest.service_rest.service.dto.DriverDtoMongodbServiceRest;
 import com.epam.brest.service_rest.service.dto.DriverDtoServiceRest;
 import org.springframework.beans.factory.annotation.Value;
@@ -97,5 +99,17 @@ public class WebMvcConfig {
     DriverDtoMongodbService driverDtoMongodbService() {
         String url = String.format("%s://%s:%d/mongo", protocol, host, port);
         return new DriverDtoMongodbServiceRest(url, restTemplate());
+    }
+
+    /**
+     * ModelSpecificationService's bean.
+     *
+     * @return modelSpecificationService ModelSpecificationService.
+     */
+
+    @Bean
+    ModelSpecificationService modelSpecificationService() {
+        String url = String.format("%s://%s:%d/model_info", protocol, host, port);
+        return new ModelSpecificationServiceRest(url, restTemplate());
     }
 }
