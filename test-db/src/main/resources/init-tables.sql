@@ -6,3 +6,8 @@ INSERT INTO `car` (`car_id`, `model`, `driver_id`) VALUES (1, 'GAZ', 1),
                                                           (3, 'LADA', 3),
                                                           (4, 'GIGA', 1),
                                                           (5, 'URAL', 3);
+INSERT INTO `model_specifications` (`model_id`, `model_name`, `description`, `max_speed`, `carrying_capacity`) VALUES (1, 'GAZ', 'Truck: made in Russia', 90, 7500),
+                                                                                                                      (2, 'ZIL', 'Truck: made in Russia', 80, 8500),
+                                                                                                                      (3, 'LADA', 'Passenger car: made in Russia', 180, 1450),
+                                                                                                                      (4, 'GIGA', 'Passenger car: made in Russia', 150, 1200),
+                                                                                                                      (5, 'URAL', 'Truck: made in Russia', 80, 10400);

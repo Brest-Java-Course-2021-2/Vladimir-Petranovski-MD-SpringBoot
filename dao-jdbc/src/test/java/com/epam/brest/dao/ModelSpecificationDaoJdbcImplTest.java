@@ -37,7 +37,6 @@ class ModelSpecificationDaoJdbcImplTest {
 
     private ModelSpecification modelSpecification;
 
-
     @BeforeEach
     void setUp() {
         modelSpecification = new ModelSpecification(
