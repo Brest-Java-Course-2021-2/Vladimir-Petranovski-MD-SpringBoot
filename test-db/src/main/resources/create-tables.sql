@@ -18,7 +18,7 @@ CREATE TABLE car (
 
 CREATE TABLE model_specifications (
                                       model_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                                      model_name VARCHAR(20) NOT NULL ,
+                                      model_name VARCHAR(20) NOT NULL UNIQUE,
                                       description VARCHAR(255) NOT NULL ,
                                       max_speed INT NOT NULL ,
                                       carrying_capacity INT NOT NULL
