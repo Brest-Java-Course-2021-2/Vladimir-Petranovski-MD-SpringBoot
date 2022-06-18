@@ -44,9 +44,11 @@ public class ModelSpecificationController {
         LOG.info("Method getModelSpecificationByCarName() started in class {}",
                 getClass().getName());
 
+        model.addAttribute("name", carModel);
+
         model.addAttribute("specification",
                 modelSpecificationService.getModelSpecificationByCarModel(carModel));
 
-        return "cars/cars";
+        return "cars/details";
     }
 }

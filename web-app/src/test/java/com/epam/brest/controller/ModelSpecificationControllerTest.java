@@ -78,12 +78,13 @@ class ModelSpecificationControllerTest {
                                 .param("model", modelSpecificationSrs.getModelName())
                 ).andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk())
+                .andExpect(model().attribute("name", is(modelSpecificationSrs.getModelName())))
                 .andExpect(model().attribute("specification", hasProperty("modelId", is(modelSpecificationSrs.getModelId()))))
                 .andExpect(model().attribute("specification", hasProperty("modelName", is(modelSpecificationSrs.getModelName()))))
                 .andExpect(model().attribute("specification", hasProperty("description", is(modelSpecificationSrs.getDescription()))))
                 .andExpect(model().attribute("specification", hasProperty("maxSpeed", is(modelSpecificationSrs.getMaxSpeed()))))
                 .andExpect(model().attribute("specification", hasProperty("carryingCapacity", is(modelSpecificationSrs.getCarryingCapacity()))))
-                .andExpect(view().name("cars/cars"));
+                .andExpect(view().name("cars/details"));
         mockRestServiceServer.verify();
     }
 }

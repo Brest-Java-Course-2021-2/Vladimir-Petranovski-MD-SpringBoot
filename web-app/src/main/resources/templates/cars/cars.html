@@ -75,6 +75,7 @@
                             <td class="cell">
                                 <span style="text-decoration:underline;cursor:pointer"
                                       data-bs-toggle="modal" data-bs-target="#descriptionDialog"
+                                      th:object="${specification}"
                                       th:text="${car.carModel}"
                                       th:attr="data-id=${car.carId},data-name=${car.carModel}">
                                     <a href="/model_info/${car.carModel}.html" th:href="/model_info/${car.carModel}"
@@ -156,21 +157,17 @@
         th:src="@{/js/bootstrap.bundle.min.js}"></script>
 <script src="../../resources/static/js/jquery-3.4.1.slim.min.js"
         th:src="@{/js/jquery-3.4.1.slim.min.js}"></script>
-<!--<script>-->
-<!--    $('#descriptionDialog').on('show.bs.modal', function (event) {-->
-<!--        var target = $(event.relatedTarget)-->
-<!--        $(this).find('.modal-body').text('Name: ' + target.data('name'))-->
-<!--        // $(this).find('.modal-body').text('Name: ' + target.data('name') + target.data('spec'))-->
-<!--        // $(this).find('.modal-body').text('Model: ' + target.data('spec'))-->
-<!--        $(this).href = '/model_info/' + target.data('name')-->
-<!--        // $(this).find('.modal-body').text('Name: ' + target.data('spec'))-->
-<!--    })-->
-<!--</script>-->
+
 <script>
     $('#descriptionDialog').on('show.bs.modal', function (event) {
         var target = $(event.relatedTarget)
-        $(this).find('.modal-body').text('Name: ' + target.data('name'))
-        $(this).href = '/model_info/' + target.data('name')
+        $(this).find('.modal-body').text('Загружаю детали... Ждите :Р');
+
+        fetch('/model_info/' + target.data('name'))
+            .then((response) => response.text())
+            .then((html) => {
+                $(this).find('.modal-body').html(html);
+            })
     })
 </script>
 <script>
