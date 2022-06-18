@@ -52,11 +52,7 @@ public class ModelSpecificationServiceRest implements ModelSpecificationService 
     public ModelSpecification getModelSpecificationByCarModel(final String carModel) {
         LOG.info("Method getModelSpecificationByCarModel() with parameter {} started {}",
                 carModel, getClass().getName());
-//        ParameterizedTypeReference<ModelSpecification> typeReference =
-//                new ParameterizedTypeReference<>() {};
-//
-//        ResponseEntity<ModelSpecification> responseEntity = restTemplate
-//                .exchange(url + "/" + carModel, HttpMethod.GET, null, typeReference);
+
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));
         HttpEntity<String> entity = new HttpEntity<>(carModel, headers);

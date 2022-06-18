@@ -88,41 +88,101 @@ public class ModelSpecification {
         this.carryingCapacity = carryingCapacity;
     }
 
+    /**
+     * Getter for modelId.
+     *
+     * @return modelId.
+     */
+
     public Integer getModelId() {
         return modelId;
     }
+
+    /**
+     * Setter for modelId.
+     *
+     * @param  modelId Integer.
+     */
 
     public void setModelId(Integer modelId) {
         this.modelId = modelId;
     }
 
+    /**
+     * Getter for modelName.
+     *
+     * @return modelName.
+     */
+
     public String getModelName() {
         return modelName;
     }
+
+    /**
+     * Setter for modelName.
+     *
+     * @param  modelName String.
+     */
 
     public void setModelName(String modelName) {
         this.modelName = modelName;
     }
 
+    /**
+     * Getter for description.
+     *
+     * @return description.
+     */
+
     public String getDescription() {
         return description;
     }
+
+    /**
+     * Setter for description.
+     *
+     * @param  description String.
+     */
 
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * Getter for maxSpeed.
+     *
+     * @return maxSpeed Integer.
+     */
+
     public Integer getMaxSpeed() {
         return maxSpeed;
     }
+
+    /**
+     * Setter for maxSpeed.
+     *
+     * @param  maxSpeed Integer.
+     */
 
     public void setMaxSpeed(Integer maxSpeed) {
         this.maxSpeed = maxSpeed;
     }
 
+    /**
+     * Getter for carryingCapacity.
+     *
+     * @return carryingCapacity Integer.
+     */
+
     public Integer getCarryingCapacity() {
         return carryingCapacity;
     }
+
+    /**
+     * Setter for carryingCapacity.
+     *
+     * @param  carryingCapacity Integer.
+     */
 
     public void setCarryingCapacity(Integer carryingCapacity) {
         this.carryingCapacity = carryingCapacity;
