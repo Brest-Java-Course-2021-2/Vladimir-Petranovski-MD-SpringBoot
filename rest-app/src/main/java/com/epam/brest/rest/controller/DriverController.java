@@ -51,7 +51,7 @@ public class DriverController {
 
     @Operation(summary = "Allows to get list of all drivers")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Driver's list was provide",
+            @ApiResponse(responseCode = "200", description = "Driver's list was provided",
                     content = {@Content(mediaType = "application/json",
                     array = @ArraySchema(schema = @Schema(implementation = Driver.class)))}),
             @ApiResponse(responseCode = "404", description =
