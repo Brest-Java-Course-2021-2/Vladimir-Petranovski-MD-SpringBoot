@@ -69,7 +69,7 @@ public class ModelSpecificationController {
             @PathVariable("model") @Parameter(description = "Car's model",
                     example = "URAL") final String carModel) {
 
-        LOG.info("Method getModelSpecificationByCarModel() with car's model {} started of class {}",
+        LOG.warn("Method getModelSpecificationByCarModel() with car's model {} started of class {}",
                 carModel, getClass().getName());
 
 
@@ -77,6 +77,7 @@ public class ModelSpecificationController {
                 modelSpecificationService.getModelSpecificationByCarModel(carModel);
 
         cacheModelSpecification.cacheRun(carModel);
+        cacheModelSpecification.printMap();
         LOG.warn("{}", cacheModelSpecification.getCacheStats().toString());
 
         return new ResponseEntity<>(modelSpecification, HttpStatus.OK);
