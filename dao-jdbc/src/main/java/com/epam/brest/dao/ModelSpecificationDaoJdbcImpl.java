@@ -48,6 +48,8 @@ public class ModelSpecificationDaoJdbcImpl implements ModelSpecificationDao {
         SqlParameterSource sqlParameterSource =
                 new MapSqlParameterSource("modelName", carModel);
 
+
+
         return namedParameterJdbcTemplate.queryForObject(FIND_MODEL_SPECIFICATION_BY_CAR_MODEL,
                 sqlParameterSource, BeanPropertyRowMapper.newInstance(ModelSpecification.class));
     }
