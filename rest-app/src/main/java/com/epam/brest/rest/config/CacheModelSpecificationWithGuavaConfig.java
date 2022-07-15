@@ -39,9 +39,9 @@ public class CacheModelSpecificationWithGuavaConfig {
             .removalListener(new RemovalListener<String, ModelSpecification> () {
                 @Override
                 public void onRemoval(RemovalNotification<String, ModelSpecification> removalNotification) {
-                    LOG.info("Method  onRemoval() started in class {}", getClass().getName());
-                    LOG.info("Removed entry: {} -> {}", removalNotification.getKey(), removalNotification.getValue());
-                    LOG.info("Caused: {}", removalNotification.getCause().name());
+                    LOG.warn("Method  onRemoval() started in class {}", getClass().getName());
+                    LOG.warn("Removed entry: {} -> {}", removalNotification.getKey(), removalNotification.getValue());
+                    LOG.warn("Caused: {}", removalNotification.getCause().name());
                 }
             })
             .recordStats()
@@ -61,5 +61,9 @@ public class CacheModelSpecificationWithGuavaConfig {
     }
     public CacheStats getCacheStats() {
         return cache.stats();
+    }
+
+    public void printMap() {
+        LOG.warn("{}", cache.asMap().toString());
     }
 }
