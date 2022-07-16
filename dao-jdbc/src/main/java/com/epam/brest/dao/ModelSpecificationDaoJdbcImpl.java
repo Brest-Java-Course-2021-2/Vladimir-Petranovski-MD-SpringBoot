@@ -41,7 +41,7 @@ public class ModelSpecificationDaoJdbcImpl implements ModelSpecificationDao {
      */
 
     @Override
-    public ModelSpecification getModelSpecificationByCarModel(String carModel) {
+    public ModelSpecification getModelSpecificationByCarModel(final String carModel) {
         LOG.warn("Method getModelSpecificationByCarModel() of class {} started",
                 getClass().getName());
 

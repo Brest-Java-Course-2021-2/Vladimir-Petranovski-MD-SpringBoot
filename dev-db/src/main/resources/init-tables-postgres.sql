@@ -3,4 +3,5 @@ INSERT INTO model_specifications (model_id, model_name, description, max_speed, 
                                                                                                         (3, 'Nissan', 'Passenger car: made in Japan', 180, 1750),
                                                                                                         (4, 'MISTUBISHI', 'Passenger car: made in Japan', 210, 1800),
                                                                                                         (5, 'URAL', 'Truck: made in Russia', 80, 10400),
-                                                                                                        (6, 'GILY', 'Passenger car: made in BeloRussia', 80, 10400);
+                                                                                                        (6, 'GILY', 'Passenger car: made in Belarus', 80, 10400),
+                                                                                                        (7, 'GAZ', 'Truck: made in Russia', 90, 7500);
