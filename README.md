@@ -35,6 +35,8 @@ This is sample 'Motor depot' web application.
   - [H2](http://www.h2database.com/html/main.html) <img height="20" width="20" src="https://www.h2database.com/html/images/h2-logo-2.png"/>
   - [PostgreSQL](https://www.postgresql.org/) <a href="https://www.postgresql.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" alt="postgresql" width="20" height="20"/> </a>
   - [MongoDB](https://www.mongodb.com/) <img height="20" width="20" src="https://www.opc-router.de/wp-content/uploads/2021/03/mongodb_thumbnail.png"/>
+- **Temporary memory:**
+  - [Guava](https://www.baeldung.com/guava-guide)
 - **API documentation generation:**
   - [Swagger UI](https://swagger.io/tools/swagger-ui/) <img height="20" width="20" src="https://raw.githubusercontent.com/AliasIO/wappalyzer/master/src/drivers/webextension/images/icons/Swagger%20UI.svg"/>
 - **Code generation:**
