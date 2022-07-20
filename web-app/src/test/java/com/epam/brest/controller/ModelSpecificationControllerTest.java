@@ -84,7 +84,7 @@ class ModelSpecificationControllerTest {
                 .andExpect(model().attribute("specification", hasProperty("description", is(modelSpecificationSrs.getDescription()))))
                 .andExpect(model().attribute("specification", hasProperty("maxSpeed", is(modelSpecificationSrs.getMaxSpeed()))))
                 .andExpect(model().attribute("specification", hasProperty("carryingCapacity", is(modelSpecificationSrs.getCarryingCapacity()))))
-                .andExpect(view().name("cars/details"));
+                .andExpect(view().name("cars/model-specification"));
         mockRestServiceServer.verify();
     }
 }

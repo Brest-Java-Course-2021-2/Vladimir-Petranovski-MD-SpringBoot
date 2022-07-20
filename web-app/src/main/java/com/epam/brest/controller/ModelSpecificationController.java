@@ -49,6 +49,6 @@ public class ModelSpecificationController {
         model.addAttribute("specification",
                 modelSpecificationService.getModelSpecificationByCarModel(carModel));
 
-        return "cars/details";
+        return "cars/model-specification";
     }
 }

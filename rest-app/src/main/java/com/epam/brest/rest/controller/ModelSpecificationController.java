@@ -83,16 +83,23 @@ public class ModelSpecificationController {
                         + " {} started of class {} started",
                 carModel, getClass().getName());
 
+        if (cacheModelSpecification.cacheRun(carModel) != null) {
+            cacheModelSpecification.printMap();
+            LOG.warn("{}", cacheModelSpecification.getCacheStats().toString());
+            LOG.warn("================================================================="
+                    + "=============================================================");
+            return new ResponseEntity<>(cacheModelSpecification.cacheRun(carModel), HttpStatus.OK);
+        } else {
 
-        ModelSpecification modelSpecification =
-                modelSpecificationService.getModelSpecificationByCarModel(carModel);
+            ModelSpecification modelSpecification =
+                    modelSpecificationService.getModelSpecificationByCarModel(carModel);
 
-        cacheModelSpecification.cacheRun(carModel);
-        cacheModelSpecification.printMap();
-        LOG.warn("{}", cacheModelSpecification.getCacheStats().toString());
-        LOG.warn("================================================================="
-                + "=============================================================");
+            cacheModelSpecification.printMap();
+            LOG.warn("{}", cacheModelSpecification.getCacheStats().toString());
+            LOG.warn("================================================================="
+                    + "=============================================================");
 
-        return new ResponseEntity<>(modelSpecification, HttpStatus.OK);
+            return new ResponseEntity<>(modelSpecification, HttpStatus.OK);
+        }
     }
 }
