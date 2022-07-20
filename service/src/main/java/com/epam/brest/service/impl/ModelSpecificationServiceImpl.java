@@ -24,9 +24,16 @@ public class ModelSpecificationServiceImpl implements ModelSpecificationService 
         this.modelSpecificationDao = modelSpecificationDao;
     }
 
+    /**
+     * Getting car's model specification by model name.
+     *
+     * @param carModel String;
+     * @return ModelSpecification.
+     */
+
     @Transactional(readOnly = true)
     @Override
-    public ModelSpecification getModelSpecificationByCarModel(String carModel) {
+    public ModelSpecification getModelSpecificationByCarModel(final String carModel) {
         return modelSpecificationDao.getModelSpecificationByCarModel(carModel);
     }
 }

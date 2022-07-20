@@ -53,6 +53,16 @@ public class ModelSpecificationController {
         this.cacheModelSpecification = cacheModelSpecification;
 
     }
+
+    /**
+     * Find specification of model by model name.
+     * Writing a model in cache.
+     * Writing data of cache in file cacheLogs.
+     *
+     * @param carModel String.
+     * @return 200 ok.
+     */
+
     @Operation(summary = "Allows to get car's specification by its model")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Specification was provided",
@@ -69,17 +79,27 @@ public class ModelSpecificationController {
             @PathVariable("model") @Parameter(description = "Car's model",
                     example = "URAL") final String carModel) {
 
-        LOG.warn("Method getModelSpecificationByCarModel() with car's model {} started of class {}",
+        LOG.warn("Method getModelSpecificationByCarModel() with car's model"
+                        + " {} started of class {} started",
                 carModel, getClass().getName());
 
+        if (cacheModelSpecification.cacheRun(carModel) != null) {
+            cacheModelSpecification.printMap();
+            LOG.warn("{}", cacheModelSpecification.getCacheStats().toString());
+            LOG.warn("================================================================="
+                    + "=============================================================");
+            return new ResponseEntity<>(cacheModelSpecification.cacheRun(carModel), HttpStatus.OK);
+        } else {
 
-        ModelSpecification modelSpecification =
-                modelSpecificationService.getModelSpecificationByCarModel(carModel);
+            ModelSpecification modelSpecification =
+                    modelSpecificationService.getModelSpecificationByCarModel(carModel);
 
-        cacheModelSpecification.cacheRun(carModel);
-        cacheModelSpecification.printMap();
-        LOG.warn("{}", cacheModelSpecification.getCacheStats().toString());
+            cacheModelSpecification.printMap();
+            LOG.warn("{}", cacheModelSpecification.getCacheStats().toString());
+            LOG.warn("================================================================="
+                    + "=============================================================");
 
-        return new ResponseEntity<>(modelSpecification, HttpStatus.OK);
+            return new ResponseEntity<>(modelSpecification, HttpStatus.OK);
+        }
     }
 }

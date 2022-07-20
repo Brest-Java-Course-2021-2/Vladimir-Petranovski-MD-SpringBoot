@@ -41,8 +41,8 @@ public class ModelSpecificationDaoJdbcImpl implements ModelSpecificationDao {
      */
 
     @Override
-    public ModelSpecification getModelSpecificationByCarModel(String carModel) {
-        LOG.warn("Method getModelSpecificationByCarModel() of class {} started",
+    public ModelSpecification getModelSpecificationByCarModel(final String carModel) {
+        LOG.info("Method getModelSpecificationByCarModel() of class {} started",
                 getClass().getName());
 
         SqlParameterSource sqlParameterSource =

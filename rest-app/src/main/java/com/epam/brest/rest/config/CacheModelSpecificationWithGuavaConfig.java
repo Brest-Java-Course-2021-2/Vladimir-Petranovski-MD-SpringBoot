@@ -48,13 +48,13 @@ public class CacheModelSpecificationWithGuavaConfig {
             .build(new CacheLoader<String, ModelSpecification>() {
                 @Override
                 public ModelSpecification load(String s) throws Exception {
-                    LOG.info("Method  load() started in class {}", getClass().getName());
+                    LOG.warn("Method  load() started in class {}", getClass().getName());
                     return modelSpecificationService.getModelSpecificationByCarModel(s);
                 }
             });
-    public void cacheRun(String key) {
+    public ModelSpecification cacheRun(String key) {
         try {
-            cache.get(key);
+            return cache.get(key);
         } catch (ExecutionException e) {
             throw new RuntimeException(e);
         }
